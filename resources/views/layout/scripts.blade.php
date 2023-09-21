@@ -14,6 +14,10 @@
 <script>
     $(document).ready(function() {
         $("#table").DataTable();
+         //function to collapse sidebar
+        $(document).on('click', '#menu-toggle', () => {
+        $('#wrapper').toggleClass('toggled');
+    })
     });
 </script>
 {{-- Sweet Alert --}}

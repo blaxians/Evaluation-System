@@ -1,0 +1,161 @@
+*{
+    font-family: "Barlow-SemiBold", Helvetica;
+}
+
+:root {
+    --main-bg-color: #F3F2F7;
+    --main-text-color: #464154;
+    --second-text-color: #009d63;
+    --third-text-color:#d9d9d9;
+    --second-bg-color: #c1efde;
+}
+
+.primary-text {
+    color: var(--main-text-color);
+  }
+  
+  .second-text {
+    color: var(--second-text-color);
+  }
+  
+  .third-text {
+    color:var(--third-text-color);
+  }
+  
+  .primary-bg {
+    background-color: var(--main-bg-color);
+  }
+  
+  .secondary-bg {
+    background-color: var(--second-bg-color);
+  }
+
+.row-logo {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px 0 0 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.row-login{
+  border-radius: 0 20px 20px 0;
+}
+
+.btn-bg{
+  background-color:var(--second-text-color);
+  color:#fff;
+}
+
+/* ffefsef */
+.group {
+  position: relative;
+ }
+ 
+ .input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 150px;
+  border: none;
+  border-bottom: 1px solid var(--second-text-color);
+  background: transparent;
+ }
+ 
+ .input:focus {
+  outline: none;
+ }
+ 
+ label {
+  color: #999;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 20px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+ }
+ 
+ .input:focus ~ label, .input:valid ~ label {
+  top: -10px;
+  font-size: 14px;
+  color: var(--second-text-color);
+ }
+ 
+ .bar {
+  position: relative;
+  display: block;
+  width: 150px;
+ }
+ 
+ .bar:before, .bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: var(--second-text-color);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+ }
+ 
+ .bar:before {
+  left: 50%;
+ }
+ 
+ .bar:after {
+  right: 50%;
+ }
+ 
+ .input:focus ~ .bar:before, .input:focus ~ .bar:after {
+  width: 50%;
+ }
+ 
+ .highlight {
+  position: absolute;
+  height: 50%;
+  width: 100px;
+  top: 30%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+ }
+ 
+ .input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+ }
+ 
+ @keyframes inputHighlighter {
+  from {
+   background: var(--second-text-color);
+  }
+ 
+  to {
+   width: 0;
+   background: transparent;
+  }
+ }
+
+
+.forgot-pass{
+  font-size: 12px;
+}
+
+.main-card{
+  border-radius: 20px;
+}
+
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  width: 100%;
+  height:100%;
+}
+
+#main-container{
+  background:rgba(0, 157, 99, 0.15);
+}

@@ -11,9 +11,17 @@
 </head>
 
 <body>
-    @include('pages.admin.components.navabar')
-    @include('pages.admin.components.sidebar')
-    @yield('admin')
+    <div class="d-flex" id="wrapper">
+        @include('pages.admin.components.sidebar')
+        <div id="page-content-wrapper">
+            @include('pages.admin.components.navbar')
+
+            {{-- main content --}}
+            @yield('admin')
+            {{-- main content --}}
+        </div>
+    </div>
+
     @include('layout.scripts')
 </body>
 
