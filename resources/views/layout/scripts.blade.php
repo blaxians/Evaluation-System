@@ -32,14 +32,15 @@
             $('#wrapper').toggleClass('toggled');
         });
 
-        //function to set active
-        $('.nav-link').each(function() {
-            $(this).on('click', function() {
+        // //function to set active
+        // $('.nav-link').each(function() {
+        //     $(this).on('click', function() {
                 
-                $('.nav-link').removeClass('active');
-                $(this).addClass('active');
-            });
-        });
+        //         $('.nav-link').removeClass('active');
+        //         $(this).addClass('active');
+        //     });
+        // });
+        
 
     });
 
