@@ -10,14 +10,14 @@
 </head>
 <body style="background-image:url({{ asset('assets/img/main/basc_background.jpg') }});">
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh" id="main-container">
-        <div class="row main-card" style="height:350px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-            <div class="col-7 p-5 row-logo d-flex flex-column justify-content-center align-items-center">
-                <img src="{{ asset('assets/img/main/basc.png') }}" class="img-fluid rounded-circle" width="200">
-                <p class="m-0 mt-auto fw-medium text-center text-light">Lorem ipsum dolor sit amet.</p>
+        <div class="row main-card mx-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+            <div class="col-md-7 p-5 row-logo d-flex flex-column justify-content-center align-items-center" id="logo-wrapper">
+                <img src="{{ asset('assets/img/main/basc.png') }}" class="img-fluid rounded-circle" width="200" id="logo-basc">
+                <p class="m-0 mt-auto fw-medium text-center text-light">Powered by M I S.</p>
             </div>
-            <div class="col-5 row-login bg-light d-flex px-0 bg-white">
+            <div class="col-md-5 row-login bg-light d-flex px-0 bg-white justify-content-center">
 
-                <div class="card border-0 bg-light mt-5 bg-transparent">
+                <div class="card border-0 bg-light mt-5 bg-transparent" id="card">
                     <div class="card-body p-0 px-4 pb-1">
                         <h5 class="card-title mb-4 text-nowrap fs-5 fw-semibold text-success">Login your account</h5>
 

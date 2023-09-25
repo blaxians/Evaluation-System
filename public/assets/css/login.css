@@ -46,7 +46,7 @@
   color:#fff;
 }
 
-/* ffefsef */
+/* inputs */
 .group {
   position: relative;
  }
@@ -139,6 +139,7 @@
   }
  }
 
+/* input  end*/
 
 .forgot-pass{
   font-size: 12px;
@@ -146,6 +147,7 @@
 
 .main-card{
   border-radius: 20px;
+  
 }
 
 body{
@@ -158,4 +160,38 @@ body{
 
 #main-container{
   background:rgba(0, 157, 99, 0.15);
+}
+
+@media(max-width: 768px) {
+  .row-logo {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px 20px 0 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .row-login{
+    border-radius: 0 0 20px 20px;
+  }
+  
+  form .group{
+    margin-left: 15px;
+  }
+
+  #logo-basc{
+    width: 100px;
+  }
+
+  #logo-wrapper{
+  padding:1rem !important;
+  max-width: 100%;
+  }
+
+  #main-container{
+    background:rgba(0, 157, 99, 0.15);
+  }
+
+  #card{
+    margin-top: 2rem !important;
+  }
 }
