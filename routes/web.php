@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 
-Route::controller(AuthController::class)->group(function () {
-    Route::any('/', 'login')->name('login')->middleware('guest');
-    Route::any('/', 'logout')->name('logout')->middleware('auth');
-});
+// Route::controller(AuthController::class)->group(function () {
+//     Route::any('/', 'login')->name('login')->middleware('guest');
+//     Route::any('/', 'logout')->name('logout')->middleware('auth');
+// });
