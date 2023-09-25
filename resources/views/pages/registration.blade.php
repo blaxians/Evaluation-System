@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
     <title>BASC | Login</title>
 </head>
-<body style="background-image:url({{ asset('assets/img/main/basc_background.jpg') }});">
+<body style="background-image:url({{ asset('assets/img/main/bg-image.png') }});">
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh" id="main-container">
         <div class="row main-card mx-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;" style="width:100vw;">
 

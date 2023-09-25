@@ -8,7 +8,7 @@ Route::any('/dashboard', function(){
     return view('pages.admin.dashboard');
 });
 
-Route::any('registration', function(){
+Route::any('/registration', function(){
     return view('pages.registration');
 });
 
