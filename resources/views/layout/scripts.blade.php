@@ -11,15 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $("#table").DataTable();
-         //function to collapse sidebar
-        $(document).on('click', '#menu-toggle', () => {
-        $('#wrapper').toggleClass('toggled');
-    })
-    });
-</script>
+
 {{-- Sweet Alert --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 {{-- Sweet Alert Header --}}
@@ -31,6 +23,27 @@
         },
         buttonsStyling: false,
     });
+
+    $(document).ready(function() {
+        $("#table").DataTable();
+        
+         //function to collapse sidebar
+        $(document).on('click', '#menu-toggle', () => {
+            $('#wrapper').toggleClass('toggled');
+        });
+
+        //function to set active
+        $('.nav-link').each(function() {
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                $('.nav-link').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+
+    });
+
+
 </script>
 
 @include('layout.sweet_alert')
