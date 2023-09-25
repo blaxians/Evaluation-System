@@ -4,6 +4,14 @@ use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Authentication\AuthController;
 use Illuminate\Support\Facades\Route;
 
+Route::any('/dashboard', function(){
+    return view('pages.admin.dashboard');
+});
+
+Route::any('registration', function(){
+    return view('pages.registration');
+});
+
 
 
 // Route::get('/redirect', function () {

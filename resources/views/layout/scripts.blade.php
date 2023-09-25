@@ -34,8 +34,8 @@
 
         //function to set active
         $('.nav-link').each(function() {
-            $(this).on('click', function(e) {
-                e.preventDefault();
+            $(this).on('click', function() {
+                
                 $('.nav-link').removeClass('active');
                 $(this).addClass('active');
             });
