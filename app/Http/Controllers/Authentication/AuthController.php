@@ -10,7 +10,8 @@ class AuthController extends Controller
 {
     function login(Request $request)
     {
-        if ($request->isMethod('GET')) {
+        if ($request->isMethod('get')) {
+            return view('pages.login');
         }
 
         // Get the request data

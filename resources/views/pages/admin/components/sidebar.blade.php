@@ -12,7 +12,8 @@
         <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold">
             <i class="fas fa-university me-2"></i>Academic Year
         </a>
-        <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold">
+        <a href="{{ route('index.questionnaire') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold">
             <i class="fas fa-list me-2"></i>Questionnaire
         </a>
         <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold">
