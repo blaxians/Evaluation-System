@@ -26,24 +26,22 @@
 
     $(document).ready(function() {
         $("#table").DataTable();
-        
-         //function to collapse sidebar
+
+        //function to collapse sidebar
         $(document).on('click', '#menu-toggle', () => {
             $('#wrapper').toggleClass('toggled');
         });
 
         //function to set active
-        $('.nav-link').each(function() {
-            $(this).on('click', function() {
-                
-                $('.nav-link').removeClass('active');
-                $(this).addClass('active');
-            });
-        });
+        // $('.nav-link').each(function() {
+        //     $(this).on('click', function() {
+
+        //         $('.nav-link').removeClass('active');
+        //         $(this).addClass('active');
+        //     });
+        // });
 
     });
-
-
 </script>
 
 @include('layout.sweet_alert')

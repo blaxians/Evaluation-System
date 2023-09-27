@@ -1,38 +1,45 @@
 <?php
 
+use App\Http\Controllers\Admin\Dashboard\Dashboard;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Authentication\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::any('/dashboard', function(){
-    return view('pages.admin.dashboard');
-});
 
-Route::any('/registration', function(){
-    return view('pages.registration');
-});
+// Redirect the user if auth
+Route::get('/redirect', function () {
+    if (auth()->check()) {
+        $user =  auth()->user()->role;
+        if ($user === 'admin') {
+            return redirect()->route('dashboard');
+        } else if ($user === 'student') {
+            return redirect()->route('login');
+        } else {
+            return redirect()->route('login');
+        }
+    } else {
+        return redirect()->route('login');
+    }
+})->name('redirect');
 
 
+Route::get('/loading', function () {
+    if (auth()->check()) {
+        return view('pages.loading');
+    }
+})->name('loading')->middleware('auth');
 
-// Route::get('/redirect', function () {
-//     if (auth()->check()) {
-//         $user =  auth()->user()->role;
-//         if ($user === 'admin') {
-//             return redirect()->route('login');
-//         } else if ($user === 'student') {
-//             return redirect()->route('login');
-//         } else {
-//             return redirect()->route('login');
-//         }
-//     } else {
-//         return redirect()->route('login');
-//     }
-// })->name('redirect');
 
 // Authentication Controller
 Route::controller(AuthController::class)->group(function () {
     Route::any('/', 'login')->name('login')->middleware('guest');
     Route::any('/logout', 'logout')->name('logout')->middleware('auth');
+});
+
+// Admin Dashboard
+Route::controller(Dashboard::class)->group(function () {
+    // View Add
+    Route::any('/dashboard', 'index')->name('dashboard')->middleware('auth');
 });
 
 // Admin Questionnaire
