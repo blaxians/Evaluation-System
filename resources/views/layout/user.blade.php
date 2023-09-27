@@ -7,13 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     @include('layout.links')
+    <link rel="stylesheet" href="{{ asset('assets/css/user.css') }}">
 </head>
 
 <body>
+    <div class="d-flex" id="wrapper">
+        @include('pages.user.components.sidebar')
+        <div id="page-content-wrapper">
+            @include('pages.user.components.navbar')
 
-    @yield('user')
+            {{-- main content --}}
+            @yield('user')
+            {{-- main content --}}
+        </div>
+    </div>
+
     @include('layout.scripts')
-
+    
 </body>
 
 </html>
