@@ -32,5 +32,21 @@
             $('#wrapper').toggleClass('toggled');
         });
 
+        //function dropdown
+        $(".dropdown-btn").click(function() {
+
+            $(this).toggleClass("active");
+
+            var dropdownContent = $(this).next();
+            
+            if (dropdownContent.css("display") === "block") {
+            dropdownContent.css("display", "none");
+            } else {
+            dropdownContent.css("display", "block");
+            }
+        });
+     
+
+
     });
 </script>
