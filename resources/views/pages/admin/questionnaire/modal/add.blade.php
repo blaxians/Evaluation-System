@@ -11,8 +11,21 @@
                 <form action="{{ route('index.questionnaire') }}" method="post" class="px-5">
                     @csrf
                     <select class="form-select  " aria-label="Default select example" name="criteria">
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="Teacher's Personality">Teacher's
+                            Personality
+                        </option>
+                        <option value="Classroom Management">Classroom Management </option>
+                        <option value="Knowledge of the Subject Matter">Knowledge
+                            of the Subject Matter
+                        </option>
+                        <option value="Teaching Skills">Teaching Skills
+                        </option>
+                        <option value="Skills in Evaluating the Students">Skills
+                            in Evaluating the Students
+                        </option>
+                        <option value="Attitude towards the Subject and the Students">
+                            Attitude towards the Subject and the Students
+                        </option>
                     </select>
                     <textarea name="question" id="" class="form-control my-2" cols="30" rows="3"
                         placeholder="Question..." required></textarea>

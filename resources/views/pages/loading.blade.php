@@ -42,5 +42,5 @@
 <script>
     setTimeout(function() {
         window.location.href = "{{ route('redirect') }}";
-    }, 5000);
+    }, 1000);
 </script>

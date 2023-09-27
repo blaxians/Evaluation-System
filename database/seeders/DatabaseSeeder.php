@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\User;
+use App\Models\YearSem;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,8 +19,13 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Sulit Ralph',
             'username' => 'admin',
-            'password' => Hash::make('1'),
+            'password' => Hash::make('12'),
             'role' => 'admin'
+        ]);
+
+        YearSem::create([
+            'year' => '2023-2024',
+            'semester' => '1'
         ]);
     }
 }

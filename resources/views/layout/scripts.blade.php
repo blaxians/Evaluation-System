@@ -34,5 +34,3 @@
 
     });
 </script>
-
-@include('layout.sweet_alert')
