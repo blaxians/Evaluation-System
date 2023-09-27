@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Dashboard\Dashboard;
+use App\Http\Controllers\Admin\Dean\Dean;
 use App\Http\Controllers\Admin\Faculties\Faculties;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Authentication\AuthController;
@@ -56,4 +57,12 @@ Route::controller(Faculties::class)->group(function () {
     // View Add
     Route::get('/faculties', 'index')->name('index.faculties')->middleware(['auth', 'admin']);
     Route::post('/faculties', 'post')->name('post.faculties')->middleware(['auth', 'admin']);
+});
+
+// Admin Dean 
+Route::controller(Dean::class)->group(function () {
+    // View Add
+    Route::get('/dean', 'index')->name('index.dean')->middleware(['auth', 'admin']);
+    Route::post('/dean/post/', 'post')->name('post.dean')->middleware(['auth', 'admin']);
+    Route::patch('/dean/edit/', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
 });
