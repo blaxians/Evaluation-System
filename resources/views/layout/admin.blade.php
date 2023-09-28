@@ -23,6 +23,7 @@
     </div>
 
     @include('layout.scripts')
+    @include('layout.admin_script.questionnaire.script')
     @include('pages.admin.components.sweet_alert_msg')
 
 </body>
