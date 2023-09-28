@@ -11,8 +11,14 @@ class Questionnaire extends Controller
 {
     public function index(Request $request)
     {
-        $questions = Question::all();
-        return response()->json($questions);
+        return view('pages.admin.questionnaire.index');
+    }
+
+    // Show all Question
+    public function show()
+    {
+        $question = Question::all();
+        return response()->json($question);
     }
 
     public function post(Request $request)
