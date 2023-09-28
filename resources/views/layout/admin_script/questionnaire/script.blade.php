@@ -50,10 +50,21 @@
         })
     }
 
+    //show questionnaire table
+    function showQuestion(){
+        $.ajax({
+            url: "",
+            method: 'get',
+            success: function(res){
+                console.log(res);
+            }
+        })
+    }
+
     //edit question
     function editQuestion(){
         $(documennt).on('click', '#questionnaire_btn_edit', function(e){
-            
+
         })
     }
 </script>
