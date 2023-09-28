@@ -49,6 +49,7 @@ Route::controller(Dashboard::class)->group(function () {
 Route::controller(Questionnaire::class)->group(function () {
     // View Add
     Route::get('/questionnaire', 'index')->name('index.questionnaire')->middleware(['auth', 'admin']);
+    Route::get('/questionnaire/view/{id}', 'view')->name('view.questionnaire')->middleware(['auth', 'admin']);
     Route::get('/questionnaire/show', 'show')->name('show.questionnaire')->middleware(['auth', 'admin']);
     Route::post('/questionnaire', 'post')->name('post.questionnaire')->middleware(['auth', 'admin']);
     Route::patch('/questionnaire/edit/{id}', 'edit')->name('edit.questionnaire')->middleware(['auth', 'admin']);
@@ -59,6 +60,7 @@ Route::controller(Questionnaire::class)->group(function () {
 Route::controller(Faculties::class)->group(function () {
     // View Add
     Route::get('/faculties', 'index')->name('index.faculties')->middleware(['auth', 'admin']);
+    Route::get('/faculties/view/{id}', 'view')->name('view.faculties')->middleware(['auth', 'admin']);
     Route::get('/faculties/show', 'show')->name('show.faculties')->middleware(['auth', 'admin']);
     Route::post('/faculties', 'post')->name('post.faculties')->middleware(['auth', 'admin']);
     Route::patch('/faculties/active/{id}', 'active')->name('active.faculties')->middleware(['auth', 'admin']);
@@ -69,9 +71,10 @@ Route::controller(Faculties::class)->group(function () {
 Route::controller(Dean::class)->group(function () {
     // View Add
     Route::get('/dean', 'index')->name('index.dean')->middleware(['auth', 'admin']);
+    Route::get('/dean/view/{id}', 'view')->name('view.dean')->middleware(['auth', 'admin']);
     Route::get('/dean/show', 'show')->name('show.dean')->middleware(['auth', 'admin']);
     Route::post('/dean/post/', 'post')->name('post.dean')->middleware(['auth', 'admin']);
-    Route::patch('/dean/edit/', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
+    Route::patch('/dean/edit/{id}', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
 });
 
 // Admin Student
@@ -79,5 +82,5 @@ Route::controller(Student::class)->group(function () {
     // View Add
     Route::get('/students', 'index')->name('index.student')->middleware(['auth', 'admin']);
     Route::get('/student/show', 'show')->name('show.student')->middleware(['auth', 'admin']);
-    Route::get('/student/view/', 'post')->name('view.student')->middleware(['auth', 'admin']);
+    Route::get('/student/view/{id}', 'post')->name('view.student')->middleware(['auth', 'admin']);
 });

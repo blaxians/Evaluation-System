@@ -21,6 +21,16 @@ class Dean extends Controller
         return response()->json($deans);
     }
 
+    public function view(String $id)
+    {
+        $dean = User::find($id);
+
+        if ($dean === null) {
+            return response()->json(['error' => 'Dean not found']);
+        } else {
+            return response()->json($dean);
+        }
+    }
     public function post(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -29,15 +29,25 @@ class Questionnaire extends Controller
         ]);
 
         if ($valid->fails()) {
-            return response()->json(['errors'=>$valid->messages()]);
+            return response()->json(['errors' => $valid->messages()]);
         } else {
             $validated = $request->all();
             array_shift($validated);
             Question::create($validated);
-            return response()->json(['status'=>'success']);
+            return response()->json(['status' => 'success']);
         }
     }
 
+    public function view(String $id)
+    {
+        $question = Question::find($id);
+
+        if ($question === null) {
+            return response()->json(['error' => 'Question not found']);
+        } else {
+            return response()->json($question);
+        }
+    }
     public function edit(Request $request, String $id)
     {
         $valid = Validator::make($request->all(), [

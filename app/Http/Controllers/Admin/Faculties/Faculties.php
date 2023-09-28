@@ -43,6 +43,16 @@ class Faculties extends Controller
         }
     }
 
+    public function view(String $id)
+    {
+        $faculties = ModelsFaculties::find($id);
+
+        if ($faculties === null) {
+            return response()->json(['error' => 'Faculties not found']);
+        } else {
+            return response()->json($faculties);
+        }
+    }
     // Edit the Faculties details
     public function edit(Request $request, String $id)
     {
