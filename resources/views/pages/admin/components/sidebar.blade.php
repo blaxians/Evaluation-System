@@ -24,6 +24,11 @@
         {{ Request::segment(1) === 'faculties' ? 'active' : '' }}">
             <i class="fas fa-chalkboard-teacher me-2"></i>Faculties
         </a>
+        <a href="{{ route('index.dean') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link
+        {{ Request::segment(1) === 'dean' ? 'active' : '' }}">
+            <i class="fa-solid fa-user-tie me-2"></i>Dean's
+        </a>
         <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
             <i class="fas fa-users me-2"></i>Students
         </a>
@@ -49,7 +54,7 @@
             </a>
         </div>
 
-    
+
     </div>
 </div>
 <!-- sidebar end -->

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Dashboard\Dashboard;
+use App\Http\Controllers\Admin\Dean\Dean;
 use App\Http\Controllers\Admin\Faculties\Faculties;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Authentication\AuthController;
@@ -49,6 +50,7 @@ Route::controller(Questionnaire::class)->group(function () {
     Route::get('/questionnaire', 'index')->name('index.questionnaire')->middleware(['auth', 'admin']);
     Route::post('/questionnaire', 'post')->name('post.questionnaire')->middleware(['auth', 'admin']);
     Route::patch('/questionnaire/edit/{id}', 'edit')->name('edit.questionnaire')->middleware(['auth', 'admin']);
+    Route::delete('/questionnaire/delete/{id}', 'delete')->name('delete.questionnaire')->middleware(['auth', 'admin']);
 });
 
 // Admin Faculties 
@@ -56,4 +58,14 @@ Route::controller(Faculties::class)->group(function () {
     // View Add
     Route::get('/faculties', 'index')->name('index.faculties')->middleware(['auth', 'admin']);
     Route::post('/faculties', 'post')->name('post.faculties')->middleware(['auth', 'admin']);
+    Route::patch('/faculties/active/{id}', 'active')->name('active.faculties')->middleware(['auth', 'admin']);
+    Route::patch('/faculties/inactive/{id}', 'inActive')->name('inactive.faculties')->middleware(['auth', 'admin']);
+});
+
+// Admin Dean 
+Route::controller(Dean::class)->group(function () {
+    // View Add
+    Route::get('/dean', 'index')->name('index.dean')->middleware(['auth', 'admin']);
+    Route::post('/dean/post/', 'post')->name('post.dean')->middleware(['auth', 'admin']);
+    Route::patch('/dean/edit/', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
 });
