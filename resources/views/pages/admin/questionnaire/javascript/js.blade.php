@@ -67,7 +67,7 @@
                 _token: "{{ csrf_token() }}"},
                 success: function(res){
                    const {id, question, criteria} = res;
-                   
+                   //set select data
                     var $select = $('#question_select');
                     var optionExists = $select.find('option[value="' + criteria + '"]').length > 0;
 

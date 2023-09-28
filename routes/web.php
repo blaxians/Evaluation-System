@@ -60,9 +60,10 @@ Route::controller(Questionnaire::class)->group(function () {
 Route::controller(Faculties::class)->group(function () {
     // View Add
     Route::get('/faculties', 'index')->name('index.faculties')->middleware(['auth', 'admin']);
-    Route::get('/faculties/view/{id}', 'view')->name('view.faculties')->middleware(['auth', 'admin']);
+    Route::get('/faculties/view', 'view')->name('view.faculties')->middleware(['auth', 'admin']);
     Route::get('/faculties/show', 'show')->name('show.faculties')->middleware(['auth', 'admin']);
     Route::post('/faculties', 'post')->name('post.faculties')->middleware(['auth', 'admin']);
+    Route::post('/faculties/edit', 'edit')->name('edit.faculties')->middleware(['auth', 'admin']);
     Route::patch('/faculties/active/{id}', 'active')->name('active.faculties')->middleware(['auth', 'admin']);
     Route::patch('/faculties/inactive/{id}', 'inActive')->name('inactive.faculties')->middleware(['auth', 'admin']);
 });
