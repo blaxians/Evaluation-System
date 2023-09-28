@@ -49,11 +49,11 @@ Route::controller(Dashboard::class)->group(function () {
 Route::controller(Questionnaire::class)->group(function () {
     // View Add
     Route::get('/questionnaire', 'index')->name('index.questionnaire')->middleware(['auth', 'admin']);
-    Route::get('/questionnaire/view/{id}', 'view')->name('view.questionnaire')->middleware(['auth', 'admin']);
+    Route::get('/questionnaire/view', 'view')->name('view.questionnaire')->middleware(['auth', 'admin']);
     Route::get('/questionnaire/show', 'show')->name('show.questionnaire')->middleware(['auth', 'admin']);
     Route::post('/questionnaire', 'post')->name('post.questionnaire')->middleware(['auth', 'admin']);
-    Route::patch('/questionnaire/edit/{id}', 'edit')->name('edit.questionnaire')->middleware(['auth', 'admin']);
-    Route::delete('/questionnaire/delete/{id}', 'delete')->name('delete.questionnaire')->middleware(['auth', 'admin']);
+    Route::post('/questionnaire/edit', 'edit')->name('edit.questionnaire')->middleware(['auth', 'admin']);
+    Route::post('/questionnaire/delete', 'delete')->name('delete.questionnaire')->middleware(['auth', 'admin']);
 });
 
 // Admin Faculties 

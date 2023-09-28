@@ -14,12 +14,16 @@
             <div class="col-12 my-2 d-flex justify-content-end">
                 <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_question_modal"><i
                         class="fa-solid fa-circle-plus"></i> New Question</button>
-                @include('pages.admin.questionnaire.modal.add')
             </div>
             <div class="col overflow-x-scroll" id="questionnaire_table">
             </div>
         </div>
         <!-- table end -->
+
+        {{-- modals start --}}
+        @include('pages.admin.questionnaire.modal.add')
+        @include('pages.admin.questionnaire.modal.edit')
+        {{-- modals end --}}
     </div>
 @endsection
 

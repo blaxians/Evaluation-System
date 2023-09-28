@@ -17,9 +17,37 @@ class Questionnaire extends Controller
     // Show all Question
     public function show()
     {
-        $question = Question::all();
-        return response()->json($question);
+        $questions = Question::all();
+        $table = '';
+        if($questions->count()>'0'){
+           $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="50">#</th>
+                                <th scope="col">Question</th>
+                                <th scope="col">Criteria</th>
+                                <th scope="col" width="200px">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+                            foreach ($questions as $key => $question){
+                                $table .= '<tr>
+                                            <td>'.intval($key+1).'</td>
+                                            <td>'.$question->question.'</td>
+                                            <td>'.$question->criteria.'</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-secondary" id="questionnaire_btn_edit" data-id="'.$question->id.'">Edit</button>
+                                                <button class="btn btn-sm btn-danger" id="question_btn_delete" data-id="'.$question->id.'">Remove</button>
+                                            </td>
+                                        </tr>';
+                            }
+                                
+            $table .= '</tbody></table>';
+        }
+        echo $table;
+        
     }
+
 
     public function post(Request $request)
     {
@@ -38,8 +66,8 @@ class Questionnaire extends Controller
         }
     }
 
-    public function view(String $id)
-    {
+    public function view(Request $request)
+    {   $id = $request->id;
         $question = Question::find($id);
 
         if ($question === null) {
@@ -48,8 +76,9 @@ class Questionnaire extends Controller
             return response()->json($question);
         }
     }
-    public function edit(Request $request, String $id)
-    {
+    public function edit(Request $request)
+    {  
+        $id = $request->id;
         $valid = Validator::make($request->all(), [
             'criteria' => 'required',
             'question' => 'required',
@@ -72,8 +101,9 @@ class Questionnaire extends Controller
         }
     }
 
-    public function delete(String $id)
+    public function delete(Request $request)
     {
+        $id = $request->id;
         $question = Question::find($id);
         if ($question === null) {
             return response()->json(['error' => 'Question not found']);
