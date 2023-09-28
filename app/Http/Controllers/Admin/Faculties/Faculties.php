@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Validator;
 
 class Faculties extends Controller
 {
-    //
-
+    //Show all Faculties
     public function index()
     {
         $faculties = ModelsFaculties::all();
-        return view('pages.admin.faculties.index', compact('faculties'));
+        return response()->json($faculties);
     }
 
+    // Create a new Faculties
     public function post(Request $request)
     {
         $valid = Validator::make($request->all(), [
@@ -26,7 +26,6 @@ class Faculties extends Controller
             'middle_name' => 'required',
             'last_name' => 'required',
         ]);
-
 
         if ($valid->fails()) {
             return response()->json($valid->messages());
@@ -38,6 +37,7 @@ class Faculties extends Controller
         }
     }
 
+    // Edit the Faculties details
     public function edit(Request $request, String $id)
     {
 
@@ -59,6 +59,32 @@ class Faculties extends Controller
             $faculties->middle_name = $valid['middle_name'];
             $faculties->last_name = $valid['last_name'];
             $faculties->update();
+            return response()->json('success');
+        }
+    }
+
+    // Active the faculties
+    public function active(String $id)
+    {
+        $faculty = ModelsFaculties::find($id);
+        if ($faculty === null) {
+            return response()->json(['error' => 'faculties not found']);
+        } else {
+            $faculty->status = 'active';
+            $faculty->update();
+            return response()->json('success');
+        }
+    }
+
+    // Inactive or disable the faculties
+    public function inActive(String $id)
+    {
+        $faculty = ModelsFaculties::find($id);
+        if ($faculty === null) {
+            return response()->json(['error' => 'faculties not found']);
+        } else {
+            $faculty->status = 'inactive';
+            $faculty->update();
             return response()->json('success');
         }
     }
