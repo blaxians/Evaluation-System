@@ -17,31 +17,12 @@
                 @include('pages.admin.questionnaire.modal.add')
             </div>
             <div class="col overflow-x-scroll" id="questionnaire_table">
-                <table class="table bg-white rounded shadow-sm  table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="50"></th>
-                            <th scope="col">Question</th>
-                            <th scope="col">Criteria</th>
-                            <th scope="col" width="100px">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($questions as $question)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $question->question }}</td>
-                                <td>{{ $question->criteria }}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-secondary" id="questionnaire_btn_edit">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Remove</button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
             </div>
         </div>
         <!-- table end -->
     </div>
+@endsection
+
+@section('javascript')
+    @include('pages.admin.questionnaire.javascript.js')
 @endsection
