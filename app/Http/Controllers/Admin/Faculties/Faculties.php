@@ -15,6 +15,7 @@ class Faculties extends Controller
         return view('pages.admin.faculties.index');
     }
 
+    // Show all faculties
     public function show()
     {
         $faculties = ModelsFaculties::all();

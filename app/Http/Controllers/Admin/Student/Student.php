@@ -10,5 +10,12 @@ class Student extends Controller
 {
     public function index()
     {
+        return view('pages.admin.student.index');
+    }
+
+    public function show()
+    {
+        $student = User::all();
+        return response()->json($student);
     }
 }
