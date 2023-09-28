@@ -12,18 +12,18 @@
         <!-- table start -->
         <div class="row my-5 p-2 border">
             <div class="col-12 my-2 d-flex justify-content-end">
-                <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_question"><i
+                <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_question_modal"><i
                         class="fa-solid fa-circle-plus"></i> New Question</button>
                 @include('pages.admin.questionnaire.modal.add')
             </div>
-            <div class="col overflow-x-scroll">
+            <div class="col overflow-x-scroll" id="questionnaire_table">
                 <table class="table bg-white rounded shadow-sm  table-hover" id="table">
                     <thead>
                         <tr>
                             <th scope="col" width="50"></th>
                             <th scope="col">Question</th>
                             <th scope="col">Criteria</th>
-                            <th scope="col" width="30px">Action</th>
+                            <th scope="col" width="100px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,10 +33,9 @@
                                 <td>{{ $question->question }}</td>
                                 <td>{{ $question->criteria }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#edit_question{{ $question->id }}">Edit</button>
+                                    <button class="btn btn-sm btn-secondary" id="questionnaire_btn_edit">Edit</button>
+                                    <button class="btn btn-sm btn-danger">Remove</button>
                                 </td>
-                                @include('pages.admin.questionnaire.modal.edit')
                             </tr>
                         @endforeach
                     </tbody>

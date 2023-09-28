@@ -24,12 +24,12 @@ class Questionnaire extends Controller
         ]);
 
         if ($valid->fails()) {
-            return response()->json($valid->messages());
+            return response()->json(['errors'=>$valid->messages()]);
         } else {
             $validated = $request->all();
             array_shift($validated);
             Question::create($validated);
-            return response()->json('success');
+            return response()->json(['status'=>'success']);
         }
     }
 

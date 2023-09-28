@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="add_question" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="add_question_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('index.questionnaire') }}" method="post" class="px-5">
+                <form action="#" method="post" class="px-5" id="add_questionnaire">
                     @csrf
                     <select class="form-select  " aria-label="Default select example" name="criteria">
                         <option value="Teacher's Personality">Teacher's
@@ -31,7 +31,7 @@
                         placeholder="Question..." required></textarea>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" class="btn btn-success" id="btn_submit">Submit</button>
                     </div>
                 </form>
             </div>
