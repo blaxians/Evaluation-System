@@ -11,8 +11,14 @@ class Questionnaire extends Controller
 {
     public function index(Request $request)
     {
-        $questions = Question::all();
-        return view('pages.admin.questionnaire.index', compact('questions'));
+        return view('pages.admin.questionnaire.index');
+    }
+
+    // Show all Question
+    public function show()
+    {
+        $question = Question::all();
+        return response()->json($question);
     }
 
     public function post(Request $request)
@@ -53,6 +59,17 @@ class Questionnaire extends Controller
             } catch (\Throwable $th) {
                 return response()->json(['error' => 'Question is already exist']);
             }
+        }
+    }
+
+    public function delete(String $id)
+    {
+        $question = Question::find($id);
+        if ($question === null) {
+            return response()->json(['error' => 'Question not found']);
+        } else {
+            Question::destroy($id);
+            return response()->json('success');
         }
     }
 }

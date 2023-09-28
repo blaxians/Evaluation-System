@@ -12,6 +12,11 @@ class Dean extends Controller
 {
     public function index()
     {
+        return view('pages.admin.dean.index');
+    }
+
+    public function show()
+    {
         $deans = User::where('role', 'dean')->get();
         return response()->json($deans);
     }

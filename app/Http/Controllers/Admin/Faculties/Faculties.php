@@ -12,6 +12,11 @@ class Faculties extends Controller
     //Show all Faculties
     public function index()
     {
+        return view('pages.admin.faculties.index');
+    }
+
+    public function show()
+    {
         $faculties = ModelsFaculties::all();
         return response()->json($faculties);
     }
