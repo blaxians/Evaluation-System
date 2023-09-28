@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Dashboard\Dashboard;
 use App\Http\Controllers\Admin\Dean\Dean;
 use App\Http\Controllers\Admin\Faculties\Faculties;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
+use App\Http\Controllers\Admin\Student\Student;
 use App\Http\Controllers\Authentication\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,4 +72,12 @@ Route::controller(Dean::class)->group(function () {
     Route::get('/dean/show', 'show')->name('show.dean')->middleware(['auth', 'admin']);
     Route::post('/dean/post/', 'post')->name('post.dean')->middleware(['auth', 'admin']);
     Route::patch('/dean/edit/', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
+});
+
+// Admin Student
+Route::controller(Student::class)->group(function () {
+    // View Add
+    Route::get('/students', 'index')->name('index.student')->middleware(['auth', 'admin']);
+    Route::get('/student/show', 'show')->name('show.student')->middleware(['auth', 'admin']);
+    Route::get('/student/view/', 'post')->name('view.student')->middleware(['auth', 'admin']);
 });

@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->foreignId('faculties_id')->references('id')->on('faculties');
+            $table->string('year_sem');
+            $table->integer('total')->nullable();
+            $table->integer('done')->default(0);
             $table->timestamps();
         });
     }

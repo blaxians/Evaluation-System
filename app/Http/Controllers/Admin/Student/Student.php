@@ -18,4 +18,15 @@ class Student extends Controller
         $student = User::all();
         return response()->json($student);
     }
+
+    public function view(String $id)
+    {
+        $student = User::find($id);
+        if ($student === null) {
+            return response()->json(['error' => 'Student not found']);
+        } else {
+            $student->evaluations;
+            return response()->json($student);
+        }
+    }
 }

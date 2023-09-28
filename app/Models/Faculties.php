@@ -10,4 +10,9 @@ class Faculties extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
 }
