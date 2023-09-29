@@ -93,10 +93,10 @@ Route::controller(Faculties::class)->group(function () {
 Route::controller(Dean::class)->group(function () {
     // View Add
     Route::get('/dean', 'index')->name('index.dean')->middleware(['auth', 'admin']);
-    Route::get('/dean/view/{id}', 'view')->name('view.dean')->middleware(['auth', 'admin']);
+    Route::get('/dean/view', 'view')->name('view.dean')->middleware(['auth', 'admin']);
     Route::get('/dean/show', 'show')->name('show.dean')->middleware(['auth', 'admin']);
     Route::post('/dean/post/', 'post')->name('post.dean')->middleware(['auth', 'admin']);
-    Route::patch('/dean/edit/{id}', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
+    Route::post('/dean/edit', 'edit')->name('edit.dean')->middleware(['auth', 'admin']);
 });
 
 // Admin Student
