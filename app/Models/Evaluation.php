@@ -9,13 +9,13 @@ class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
-    public function user()
+    public function evaluations()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Evaluate::class);
     }
-    public function faculties()
+
+    public function question()
     {
-        return $this->belongsTo(Faculties::class);
+        return $this->hasMany(Question::class);
     }
 }

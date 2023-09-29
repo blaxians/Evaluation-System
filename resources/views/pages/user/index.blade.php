@@ -24,47 +24,52 @@
 
 
         <!-- table start -->
-        <div class="row my-5 p-2 border">
+        {{-- <div class="row my-5 p-2 border">
             <h3 class="fs-4 mb-3 primary-text">Random Table</h3>
             <div class="col overflow-x-scroll">
-                <table class="table bg-white rounded shadow-sm  table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="50">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Contact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Ian Blas</td>
-                            <td>ianblas@gmail.com</td>
-                            <td>09353306534</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Justin Bibe</td>
-                            <td>justinbibe@gmail.com</td>
-                            <td>09353306535</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Paul Jay Walker</td>
-                            <td>pauljay@gmail.com</td>
-                            <td>09353306536</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Rock Solid</td>
-                            <td>gobas@gmail.com</td>
-                            <td>09353306537</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form action="{{ route('evaluate.user', 1) }}" method="post">
+                    @csrf
+                    @method('PATCH')
+                    <table class="table bg-white rounded shadow-sm  table-hover" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($faculties as $faculty)
+                                <tr>
+                                    <td>{{ $faculty->question }}</td>
+                                    <td>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio"
+                                                name="{{ 'question' . '-' . $faculty->id }}" value="1"
+                                                id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Default radio
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio"
+                                                name="{{ 'question' . '-' . $faculty->id }}" value="2"
+                                                id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                Default radio
+                                            </label>
+                                        </div>
+
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <button type="submit">adasd</button>
+                </form>
             </div>
-        </div>
+        </div> --}}
         <!-- table end -->
 
     </div>
