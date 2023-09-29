@@ -86,6 +86,8 @@
                 method: 'post',
                 data: fd,
                 cache: false,
+
+                
                 contentType: false,
                 processData: false,
                 success: function(res){

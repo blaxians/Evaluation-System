@@ -18,11 +18,36 @@ class Dean extends Controller
     public function show()
     {
         $deans = User::where('role', 'dean')->get();
-        return response()->json($deans);
+        $table = '';
+        if($deans->count()>0){
+            $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" width="50"></th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Institute</th>
+                                    <th scope="col" width="30px">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+                            foreach($deans as $key => $dean){
+                                $table .= '<tr>
+                                            <td>'.intval($key+1).'</td>
+                                            <td>'.$dean->name.'</td>
+                                            <td>'.$dean->institute.'</td>
+                                            <td><button class="btn btn-secondary btn-sm" id="edit_dean_btn" data-id="'.$dean->id.'">Edit</button></td>
+                                        </tr>';
+                            }
+                            $table .= '</tbody>
+                            </table>';
+        }
+        echo $table;
+        
     }
 
-    public function view(String $id)
+    public function view(Request $request)
     {
+        $id = $request->id;
         $dean = User::find($id);
 
         if ($dean === null) {
@@ -31,6 +56,8 @@ class Dean extends Controller
             return response()->json($dean);
         }
     }
+
+
     public function post(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -55,28 +82,37 @@ class Dean extends Controller
         }
     }
 
-    public function edit(Request $request, String $id)
+    public function edit(Request $request)
     {
+        $id = $request->id;
+        $password = $request->password;
+        $confirmed = $request->confirmed;
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'password' => 'required|min:6|max:20',
             'confirmed' => 'required|password',
         ]);
+        if($password == $confirmed){
 
-        if ($validator->failed()) {
-            return response()->json($validator->messages());
-        } else {
-            $user = User::find($id);
-            $valid = $request->all();
-            array_shift($valid);
-            if ($user === null) {
-                return response()->json('invalid user id');
-            } else {
-                $user->username = $valid['username'];
-                $user->password = $valid['password'];
-                $user->update();
-                return response()->json('success');
+            if ($validator->failed()) {
+                return response()->json($validator->messages());
+            } else{
+                $user = User::find($id);
+                $valid = $request->all();
+                array_shift($valid);
+                if ($user === null) {
+                    return response()->json('invalid user id');
+                } else {
+                    $user->name = $valid['name'];
+                    $user->password = $valid['password'];
+                    $user->update();
+                    return response()->json('success');
+                }
             }
+        } else {
+            return response()->json(['error'=>"Password doesn't match!"]);
         }
+        
     }
 }

@@ -12,33 +12,22 @@
         <!-- table start -->
         <div class="row my-5 p-2 border">
             <div class="col-12 my-2 d-flex justify-content-end">
-                <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_question"><i
+                <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_dean"><i
                         class="fa-solid fa-circle-plus"></i> New Dean</button>
             </div>
-            <div class="col overflow-x-scroll">
-                <table class="table bg-white rounded shadow-sm  table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="50"></th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Institute</th>
-                            <th scope="col" width="30px">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($deans as $dean)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $dean->name }}</td>
-                                <td>{{ $dean->institute }}</td>
-                                {{-- EDIT PASSWORD --}}
-                                <td><button class="btn btn-secondary btn-sm">Edit</button></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+            <div class="col overflow-x-scroll" id="deans_table">
+                
             </div>
         </div>
         <!-- table end -->
+
+        {{-- modals start--}}
+            @include('pages.admin.dean.modal.add')
+            @include('pages.admin.dean.modal.edit')
+        {{-- modals end--}}
     </div>
+@endsection
+
+@section('javascript')
+    @include('pages.admin.dean.javascript.js')
 @endsection
