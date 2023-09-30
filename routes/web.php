@@ -85,3 +85,8 @@ Route::controller(Student::class)->group(function () {
     Route::get('/student/show', 'show')->name('show.student')->middleware(['auth', 'admin']);
     Route::get('/student/view/{id}', 'post')->name('view.student')->middleware(['auth', 'admin']);
 });
+
+//test routes
+Route::any('/select-faculty', function(){
+    return view('pages.user.select_faculty');
+});

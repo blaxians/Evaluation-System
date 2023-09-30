@@ -63,6 +63,7 @@
             method: 'get',
             success: function(res){
                 $('#deans_table').html(res);
+                $('#table').DataTable();
             }
         })
     }

@@ -10,13 +10,22 @@
         <!-- title of the page end -->
 
         <!-- table start -->
-        <div class="row my-5 p-2 border">
-            <div class="col-12 my-2 d-flex justify-content-end">
-                <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_dean"><i
-                        class="fa-solid fa-circle-plus"></i> New Dean</button>
-            </div>
-            <div class="col overflow-x-scroll" id="deans_table">
+        <div class="row my-4 p-2">
+            <div class="col p-0">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-end">
+                        <button class="btn btn-md btn-success" data-bs-toggle="modal" data-bs-target="#add_faculties"><i
+                            class="bi bi-plus-circle me-2"></i>New Dean</button>
+                    </div>
                 
+                    <div class="card-body overflow-x-scroll" id="deans_table">
+                        <div class="text-center">
+                            <div class="spinner-border text-secondary my-5"  role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- table end -->

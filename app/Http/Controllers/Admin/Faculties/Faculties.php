@@ -48,8 +48,11 @@ class Faculties extends Controller
                             }
 
             $table .= '</tbody></table>';
+            echo $table;
+        } else {
+            echo '<div class="h1 text-center text-secondary my-5">There is no record in database.</div>';
+            
         }
-        echo $table;
     }
 
     // Create a new Faculties
