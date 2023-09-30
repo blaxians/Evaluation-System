@@ -1,24 +1,42 @@
 <?php
 
-use App\Http\Controllers\Admin\Dashboard\Dashboard;
-use App\Http\Controllers\Admin\Dean\Dean;
-use App\Http\Controllers\Admin\Faculties\Faculties;
-use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
-use App\Http\Controllers\Admin\Student\Student;
-use App\Http\Controllers\Authentication\AuthController;
+use App\Models\YearSem;
+use App\Models\Evaluation;
+use App\Http\Controllers\User\User;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\Dean\Dean;
+use App\Http\Controllers\Admin\Student\Student;
+use App\Http\Controllers\Admin\Dashboard\Dashboard;
+use App\Http\Controllers\Admin\Faculties\Faculties;
+use App\Http\Controllers\Authentication\AuthController;
+use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
+use App\Models\Evaluate;
 
 // Redirect the user if auth
 Route::get('/redirect', function () {
     if (auth()->check()) {
-        $user =  auth()->user()->role;
-        if ($user === 'admin') {
+        $user = auth()->user();
+        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $new_year_sem = $year_sem->year . " " . $year_sem->semester;
+
+        if ($user->role === 'admin') {
             return redirect()->route('dashboard');
-        } else if ($user === 'student') {
-            return redirect()->route('loading');
+        } else if ($user->role === 'student') {
+
+            $evaluation = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
+
+            if (count($evaluation) === 0) {
+                return response()->json('Redirect sa Select Faculty');
+            } else {
+                return redirect()->route('index.user');
+            }
         } else {
-            return redirect()->route('loading');
+            $evaluation  = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
+            if (count($evaluation) === 0) {
+                return redirect()->route('post2.user');
+            } else {
+                return redirect()->route('index.user');
+            }
         }
     } else {
         return redirect()->route('login');
@@ -42,7 +60,10 @@ Route::controller(AuthController::class)->group(function () {
 // Admin Dashboard
 Route::controller(Dashboard::class)->group(function () {
     // View Add
-    Route::any('/dashboard', 'index')->name('dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard', 'index')->name('index.dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard/show', 'show')->name('show.dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard/post', 'post')->name('post.dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard/edit/{id}', 'edit')->name('edit.dashboard')->middleware(['auth', 'admin']);
 });
 
 // Admin Questionnaire
@@ -89,4 +110,19 @@ Route::controller(Student::class)->group(function () {
 //test routes
 Route::any('/select-faculty', function(){
     return view('pages.user.select_faculty');
+});
+
+
+//User Routes
+Route::controller(User::class)->group(function () {
+    // View Add
+    Route::get('/evaluation', 'index')->name('index.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/selection', 'select')->name('select.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/show', 'show')->name('show.user')->middleware(['auth', 'admin']);
+    Route::post('/evaluation/show/student', 'post')->name('post.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('viewEvaluate.user')->middleware(['auth', 'admin']);
+    Route::patch('/evaluation/faculties/{id}', 'evaluations')->name('evaluate.user')->middleware(['auth', 'admin']);
 });
