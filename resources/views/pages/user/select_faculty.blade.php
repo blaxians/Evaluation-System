@@ -11,52 +11,28 @@
     
     <div class="container" style="height:100vh;">
         <div class="row">
-            <div class="col">
-                <div class="card mt-3">
-                    <div class="card-header d-flex justify-content-between">
-                        <h2 class="card-title text-success">Choose your prossefor</h2>
-                        <button class="btn btn-success"><i class="bi bi-plus-circle me-2"></i>Add Professor</button>
+            <div class="col my-3">
+                <div class="alert alert-success fw-semibold" role="alert">
+                    Before you start evaluating, make sure to select all of your professors 
+                    by checking the checkboxes and then click the <strong>submit</strong> button.
+                  </div>
+                <div class="card">
+                    <div class="card-header d-flex justify-content-end justify-content-sm-between">
+                        <h2 class="card-title text-success d-none d-sm-block">Sellect professor</h2>
+                        <button id="btn_prof_finalize" class="btn btn-success d-flex justify-content-sm-end"
+                        data-bs-toggle="modal" data-bs-target="#add_professor"><i class="bi bi-check-circle me-2"></i>Finalize</button>
                     </div>
-                    <div class="card-body">
-                        {{-- <h1 class="text-center text-success my-5">Hello mama</h1> --}}
-                        <div class="p-2 border">
-                            <table class="table table-hover hover-success" id="table">
-                                <thead class="table-success">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th width="150">Checkbox</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ralp Juts</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Ralp Juts</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Ralp Juts</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Ralp Juts</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="card-body" id="faculties_table">
                     </div>
                 </div>
             </div>
         </div>
+
+        {{-- modals start--}}
+        @include('pages.user.modal.add')
+        {{-- modals end--}}
     </div>
     @include('layout.scripts')
+    @include('pages.user.javascript.scripts')
 </body>
 </html>

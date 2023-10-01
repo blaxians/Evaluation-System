@@ -20,7 +20,7 @@ Route::get('/redirect', function () {
         $new_year_sem = $year_sem->year . " " . $year_sem->semester;
 
         if ($user->role === 'admin') {
-            return redirect()->route('dashboard');
+            return redirect()->route('index.dashboard');
         } else if ($user->role === 'student') {
 
             $evaluation = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
