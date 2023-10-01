@@ -107,10 +107,6 @@ Route::controller(Student::class)->group(function () {
     Route::get('/student/view/{id}', 'post')->name('view.student')->middleware(['auth', 'admin']);
 });
 
-//test routes
-Route::any('/select-faculty', function(){
-    return view('pages.user.select_faculty');
-});
 
 
 //User Routes
@@ -126,3 +122,4 @@ Route::controller(User::class)->group(function () {
     Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('viewEvaluate.user')->middleware(['auth', 'admin']);
     Route::patch('/evaluation/faculties/{id}', 'evaluations')->name('evaluate.user')->middleware(['auth', 'admin']);
 });
+

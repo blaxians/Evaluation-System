@@ -25,78 +25,20 @@
     }
 
     function showTable(){
-        const table = `<table class="table table-hover hover-success" id="table">
-                                <thead class="table-success">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Checkbox</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Ma. Melanie Ablaza Cruz</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Ian Blas</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Ralp Juts</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Jek jek</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>gelo</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>Jermyn</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>Myrtel</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>Mich</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>Jerome</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>Florentino</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>11</td>
-                                        <td>Crisper</td>
-                                        <td><input type="checkbox"></td>
-                                    </tr>
-                                </tbody>
-                            </table>`;
-        $('#faculties_table').html(table);
+        $.ajax({
+            url: "{{ route('show.user') }}",
+            method: 'get',
+            success: function(res){
+                $('#faculties_table').html(res);
+                modifyDataTable();
+            }
+        })
     }
 
     function addProffessor() {
-        var selectedItems = [];
 
+
+        var selectedItems = [];
 
         function updateSelectedItems() {
             $('#table tbody tr').each(function() {
@@ -117,7 +59,6 @@
                 }
             });
 
-            console.log(selectedItems);
         }
 
         $(document).on('input', '#table tbody tr input[type="checkbox"]', function() {
@@ -128,9 +69,9 @@
 
         $(document).on('click', '#btn_prof_finalize', function() {
             $('#table').DataTable().search('').draw();
-            console.log(selectedItems);
 
-            var selectedItemsHtml = selectedItems.map(function(item) {
+            if(selectedItems.length > 0){
+                var selectedItemsHtml = selectedItems.map(function(item) {
                 return '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
                     '<strong>' + item + '</strong>' +
                     '<button type="button" class="btn-close" data-bs-dismiss="alert" id="dismiss-alert" aria-label="Close"></button>' +
@@ -138,7 +79,13 @@
             }).join('');
 
             $('#selected-items').html(selectedItemsHtml);
+            $('#btn_prof_confirm').prop('disabled', false);
+            } else {
+                $('#selected-items').html(`<h3 class="text-center text-secondary my-4">No data!</h3>`);
+                $('#btn_prof_confirm').prop('disabled', true);
+            }
         });
+        
 
         //confirm button
         $(document).on('click', '#btn_prof_confirm', function() {
@@ -151,6 +98,7 @@
                 names.push(name);
             })
             console.log(names);
+            // window.location.href = "{{ route('index.questionnaire') }}"; 
 
         });
 
@@ -165,24 +113,19 @@
         });
             
         //remove unchecked data in selected var
+        
         var index = selectedItems.indexOf(dismissedName);
             if (index !== -1) {
                 selectedItems.splice(index, 1);
         }
-
-        console.log(selectedItems);
-        
         
         });
         
-        // Listen for DataTables search event and update selectedItems when the search criteria change
         $('#table').on('search.dt', function () {
             updateSelectedItems();
         });    
 
 
 }
-
-
 
   </script>

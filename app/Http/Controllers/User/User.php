@@ -23,13 +23,37 @@ class User extends Controller
     public function select()
     {
         // lalagay name ng design para sa pag pipilian
-        return view('');
+        return view('pages.user.select_faculty');
     }
 
     public function show()
     {
         $faculties = Faculties::all();
-        return response()->json($faculties);
+        $table = '';
+        if($faculties->count()>0){
+            $table .= '<table class="table table-hover hover-success" id="table">
+            <thead class="table-success">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Checkbox</th>
+                </tr>
+            </thead>
+            <tbody>';
+            foreach($faculties as $key => $faculty){
+                $table .= '<tr>
+                            <td>'.intval($key+1).'</td>
+                            <td>'.$faculty->first_name.' '.$faculty->last_name.'</td>
+                            <td><input type="checkbox"></td>
+                        </tr>';
+            }
+                
+            $table .= '</tbody>
+        </table>';
+        echo $table;
+             
+        }
+
     }
 
     // Get all the selected faculties
