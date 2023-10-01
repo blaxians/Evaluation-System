@@ -24,8 +24,6 @@
         }
     }
 
-
-    //add profeffor
     function showTable(){
         const table = `<table class="table table-hover hover-success" id="table">
                                 <thead class="table-success">
@@ -56,29 +54,80 @@
                                         <td>Jek jek</td>
                                         <td><input type="checkbox"></td>
                                     </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>gelo</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Jermyn</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Myrtel</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Mich</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Jerome</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Florentino</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Crisper</td>
+                                        <td><input type="checkbox"></td>
+                                    </tr>
                                 </tbody>
                             </table>`;
         $('#faculties_table').html(table);
     }
+
     function addProffessor() {
         var selectedItems = [];
 
-            // save selected items in array
-            function updateSelectedItems() {
-                selectedItems = [];
-                $('#table tbody tr').each(function() {
-                    var checkbox = $(this).find('input[type="checkbox"]');
-                    if (checkbox.prop('checked')) {
-                        var name = $(this).find('td:eq(1)').text();
+
+        function updateSelectedItems() {
+            $('#table tbody tr').each(function() {
+                var checkbox = $(this).find('input[type="checkbox"]');
+                var name = $(this).find('td:eq(1)').text();
+
+                if (checkbox.prop('checked')) {
+                    $(this).addClass('checked');
+                    if (selectedItems.indexOf(name) === -1) {
                         selectedItems.push(name);
                     }
-                });
-            }
+                } else {
+                    $(this).removeClass('checked');
+                    var index = selectedItems.indexOf(name);
+                    if (index !== -1) {
+                        selectedItems.splice(index, 1);
+                    }
+                }
+            });
 
-        //button finalize
+            console.log(selectedItems);
+        }
+
+        $(document).on('input', '#table tbody tr input[type="checkbox"]', function() {
+            updateSelectedItems();
+                
+        });
+
+
         $(document).on('click', '#btn_prof_finalize', function() {
             $('#table').DataTable().search('').draw();
-            updateSelectedItems();
             console.log(selectedItems);
 
             var selectedItemsHtml = selectedItems.map(function(item) {
@@ -88,7 +137,6 @@
                     '</div>';
             }).join('');
 
-            console.log(selectedItemsHtml);
             $('#selected-items').html(selectedItemsHtml);
         });
 
@@ -114,9 +162,25 @@
                 if (name === dismissedName) {
                     $(this).find('input[type="checkbox"]').prop('checked', false);
                 }
-            });
+        });
+            
+        //remove unchecked data in selected var
+        var index = selectedItems.indexOf(dismissedName);
+            if (index !== -1) {
+                selectedItems.splice(index, 1);
+        }
+
+        console.log(selectedItems);
+        
         
         });
+        
+        // Listen for DataTables search event and update selectedItems when the search criteria change
+        $('#table').on('search.dt', function () {
+            updateSelectedItems();
+        });    
+
+
 }
 
 
