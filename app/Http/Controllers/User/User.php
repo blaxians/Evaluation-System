@@ -23,7 +23,7 @@ class User extends Controller
     public function select()
     {
         // lalagay name ng design para sa pag pipilian
-        return view('pages.user.select_faculty');
+        return view('pages.user.select_faculty.index');
     }
 
     public function show()
@@ -31,7 +31,7 @@ class User extends Controller
         $faculties = Faculties::all();
         $table = '';
         if($faculties->count()>0){
-            $table .= '<table class="table table-hover hover-success" id="table">
+            $table .= '<table class="table table-hover" id="table">
             <thead class="table-success">
                 <tr>
                     <th>#</th>

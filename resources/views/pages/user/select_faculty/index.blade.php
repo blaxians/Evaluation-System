@@ -29,10 +29,12 @@
         </div>
 
         {{-- modals start--}}
-        @include('pages.user.modal.add')
+        @include('pages.user.select_faculty.modal.add')
         {{-- modals end--}}
     </div>
+    
     @include('layout.scripts')
-    @include('pages.user.javascript.scripts')
+    @include('pages.user.select_faculty.javascript.js')
+   
 </body>
 </html>

@@ -3,7 +3,7 @@
         showTable();
         modifyDataTable();
         addProffessor();
-        
+
     });
 
     //modify datatable 
@@ -98,7 +98,7 @@
                 names.push(name);
             })
             console.log(names);
-            // window.location.href = "{{ route('index.questionnaire') }}"; 
+            window.location.href = "{{ route('index.user') }}"; 
 
         });
 
@@ -117,7 +117,7 @@
         var index = selectedItems.indexOf(dismissedName);
             if (index !== -1) {
                 selectedItems.splice(index, 1);
-        }
+            }
         
         });
         
@@ -128,4 +128,9 @@
 
 }
 
+
+
+
   </script>
+
+  

@@ -23,7 +23,7 @@
     </div>
 
     @include('layout.scripts')
-    @include('pages.admin.components.sweet_alert_msg')
+        @include('pages.admin.components.sweet_alert_msg')
     @yield('javascript')
 
 </body>

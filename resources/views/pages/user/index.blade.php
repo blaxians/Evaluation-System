@@ -22,6 +22,21 @@
         </div>
         <!-- title of the page end -->
 
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card rounded">
+                    <div class="card-header bg-white d-flex">
+                        <h3 class="card-title text-success m-0 p-2">Evaluate Professor</h3>
+                    </div>
+                    <div class="card-body" id="evaluate_professor_table">
+                        <h1 class="text-center text-secondary my-5">Loading...</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
 
         <!-- table start -->
         {{-- <div class="row my-5 p-2 border">
@@ -74,3 +89,10 @@
 
     </div>
 @endsection
+
+@section('javascript')
+    @include('pages.user.javascript.js')
+@endsection
+
+
+

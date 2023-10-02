@@ -11,8 +11,8 @@
 </head>
 
 <body>
-    <div class="d-flex" id="wrapper">
-        @include('pages.user.components.sidebar')
+    <div id="wrapper">
+       
         <div id="page-content-wrapper">
             @include('pages.user.components.navbar')
 
@@ -23,6 +23,7 @@
     </div>
 
     @include('layout.scripts')
+    @yield('javascript')
     
 </body>
 
