@@ -120,7 +120,7 @@ Route::controller(User::class)->group(function () {
     Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth']);
     Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth']);
     Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth']);
-    Route::get('/evaluation/faculties', 'viewEvaluate')->name('viewEvaluate.user')->middleware(['auth']);
-    Route::patch('/evaluation/faculties/{id}', 'evaluations')->name('evaluate.user')->middleware(['auth']);
+    Route::post('/evaluation/faculties', 'evaluations')->name('evaluate.user')->middleware(['auth']);
+    Route::get('/evaluation/faculties/{id}', 'viewEvaluate' )->name('evaluate.viewEvaluate')->middleware(['auth']);
 });
 

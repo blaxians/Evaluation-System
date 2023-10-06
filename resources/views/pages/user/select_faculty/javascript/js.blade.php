@@ -146,7 +146,7 @@
        
 
         });
-
+        
         //finalizing event unchecking
         $(document).on('click', '#dismiss-alert', function() {
             var dismissedName = $(this).siblings('strong').text();

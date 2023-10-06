@@ -29,26 +29,7 @@
                         <h3 class="card-title text-success m-0 p-2">Evaluate Professor</h3>
                     </div>
                     <div class="card-body" id="evaluate_professor_table">
-                        {{-- <h1 class="text-center text-secondary my-5">Loading...</h1> --}}
-                        <div class="row g-3">
-                            <div class="col-md border border-danger">
-                                .card
-                            </div>
-                            <div class="col-md border border-danger">
-                                hello teacher 1 here 
-                            </div>
-                            <div class="col-md border border-danger">
-                                hello teacher 1 here 
-                            </div>
-                            <div class="col-md border border-danger">
-                                hello teacher 1 here 
-                            </div>
-                            <div class="col-md border border-danger">
-                                hello teacher 1 here 
-                            </div>
-                            <div class="col-md border border-danger">
-                                hello teacher 1 here 
-                            </div>
+                        <h1 class="text-center text-secondary my-5">Loading...</h1>
                         </div>
                     </div>
                 </div>

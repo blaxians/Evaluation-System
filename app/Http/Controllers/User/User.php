@@ -72,7 +72,6 @@ class User extends Controller
             $new_year_sem = $year_sem->year . " " . $year_sem->semester;
 
             $evaluate_proffessor  = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
-
             $htmlTable = '<table class="table table-hover" id="table">
                             <thead>
                                 <tr>
@@ -85,6 +84,7 @@ class User extends Controller
                             <tbody>';
 
             foreach ($evaluate_proffessor as $key => $value) {
+                $id = $value->id;
                 $faculties = Faculties::find($value->faculties_id);
                 $name = $faculties->last_name . ' ' . $faculties->middle_name . ' ' . $faculties->first_name;
                 $status = $value->status;
@@ -97,7 +97,8 @@ class User extends Controller
                                 <td>' . $name . '</td>
                                 <td>' . $institute . '</td>
                                 <td><span class="badge rounded-pill ' . $statusBadgeClass . '">' . $statusBadgeName . '</span></td>
-                                <td><button class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></button></td>
+                                <td><button class="btn btn-success btn-sm" id="btn_evaluate"
+                                data-id="'.$id.'"><i class="bi bi-pencil-square"></i></button></td>
                             </tr>';
             }
 
@@ -157,9 +158,9 @@ class User extends Controller
     }
 
     // Route the page to evaluate
-    public function viewEvaluate()
+    public function viewEvaluate(String $id)
     {
-        return view('pages.user.evaluate.index');
+        return view('pages.user.evaluate.index',compact('id'));
     }
 
     //palabasin lahat ng question
@@ -209,30 +210,29 @@ class User extends Controller
 
         foreach ($array_1 as $key => $question){
             $criteria_1 .= '<div class="card my-3">
-                        <div class="card-header bg-white">
-                        <input type="hidden" name="id" value="'.$question->id.'">
+                        <div class="card-header bg-white">                            
                             <div class="card-title fs-6">'.$question->question.'</div>
                         </div>
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+1).'" id="radio_5" value="5" required>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_5" value="5" required>
                                 <label class="form-check-label" for="radio_5">5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+1).'" id="radio_4" value="4" required>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_4" value="4" required>
                                 <label class="form-check-label" for="radio_4">4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+1).'" id="radio_3" value="3" required>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_3" value="3" required>
                                 <label class="form-check-label" for="radio_3">3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+1).'" id="radio_2" value="2" required>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_2" value="2" required>
                                 <label class="form-check-label" for="radio_2">2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+1).'" id="radio_1" value="1" required>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_1" value="1" required>
                                 <label class="form-check-label" for="radio_1">1</label>
                             </div>
                         </div>
@@ -243,58 +243,196 @@ class User extends Controller
         foreach ($array_2 as $key => $question2){
             $criteria_2 .= '<div class="card my-3">
                         <div class="card-header bg-white">
-                        <input type="hidden" name="id" value="'.$question2->id.'">
                             <div class="card-title fs-6">'.$question2->question.'</div>
                         </div>
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+10).'" id="radio_5" value="5" required>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_5" value="5" required>
                                 <label class="form-check-label" for="radio_5">5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+10).'" id="radio_4" value="4" required>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_4" value="4" required>
                                 <label class="form-check-label" for="radio_4">4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+10).'" id="radio_3" value="3" required>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_3" value="3" required>
                                 <label class="form-check-label" for="radio_3">3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+10).'" id="radio_2" value="2" required>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_2" value="2" required>
                                 <label class="form-check-label" for="radio_2">2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radio_'.intval($key+10).'" id="radio_1" value="1" required>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_1" value="1" required>
+                                <label class="form-check-label" for="radio_1">1</label>
+                            </div>
+                        </div>
+                    </div>';
+        }
+
+        foreach ($array_3 as $key => $question3){
+            $criteria_3 .= '<div class="card my-3">
+                        <div class="card-header bg-white">
+                            <div class="card-title fs-6">'.$question3->question.'</div>
+                        </div>
+                        <div class="card-body d-flex justify-content-evenly">
+                        
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_5" value="5" required>
+                                <label class="form-check-label" for="radio_5">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_4" value="4" required>
+                                <label class="form-check-label" for="radio_4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_3" value="3" required>
+                                <label class="form-check-label" for="radio_3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_2" value="2" required>
+                                <label class="form-check-label" for="radio_2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_1" value="1" required>
+                                <label class="form-check-label" for="radio_1">1</label>
+                            </div>
+                        </div>
+                    </div>';
+        }
+
+        foreach ($array_4 as $key => $question4){
+            $criteria_4 .= '<div class="card my-3">
+                        <div class="card-header bg-white">
+                            <div class="card-title fs-6">'.$question4->question.'</div>
+                        </div>
+                        <div class="card-body d-flex justify-content-evenly">
+                        
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_5" value="5" required>
+                                <label class="form-check-label" for="radio_5">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_4" value="4" required>
+                                <label class="form-check-label" for="radio_4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_3" value="3" required>
+                                <label class="form-check-label" for="radio_3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_2" value="2" required>
+                                <label class="form-check-label" for="radio_2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_1" value="1" required>
+                                <label class="form-check-label" for="radio_1">1</label>
+                            </div>
+                        </div>
+                    </div>';
+        }
+
+        foreach ($array_5 as $key => $question5){
+            $criteria_5 .= '<div class="card my-3">
+                        <div class="card-header bg-white">
+                            <div class="card-title fs-6">'.$question5->question.'</div>
+                        </div>
+                        <div class="card-body d-flex justify-content-evenly">
+                        
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_5" value="5" required>
+                                <label class="form-check-label" for="radio_5">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_4" value="4" required>
+                                <label class="form-check-label" for="radio_4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_3" value="3" required>
+                                <label class="form-check-label" for="radio_3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_2" value="2" required>
+                                <label class="form-check-label" for="radio_2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_1" value="1" required>
+                                <label class="form-check-label" for="radio_1">1</label>
+                            </div>
+                        </div>
+                    </div>';
+        }
+
+        foreach ($array_6 as $key => $question6){
+            $criteria_6 .= '<div class="card my-3">
+                        <div class="card-header bg-white">
+                            <div class="card-title fs-6">'.$question6->question.'</div>
+                        </div>
+                        <div class="card-body d-flex justify-content-evenly">
+                        
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_5" value="5" required>
+                                <label class="form-check-label" for="radio_5">5</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_4" value="4" required>
+                                <label class="form-check-label" for="radio_4">4</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_3" value="3" required>
+                                <label class="form-check-label" for="radio_3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_2" value="2" required>
+                                <label class="form-check-label" for="radio_2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_1" value="1" required>
                                 <label class="form-check-label" for="radio_1">1</label>
                             </div>
                         </div>
                     </div>';
         }
         
-        return response()->json(['criteria_1'=>$criteria_1, 'criteria_2'=>$criteria_2]);
+        return response()->json([
+            'criteria_1'=>$criteria_1,
+            'criteria_2'=>$criteria_2,
+            'criteria_3'=>$criteria_3,
+            'criteria_4'=>$criteria_4,
+            'criteria_5'=>$criteria_5,
+            'criteria_6'=>$criteria_6,
+
+        ]);
 
         
     }
 
     //kukunin ang sagot, tas pasok sa database
-    public function evaluations(Request $request, String $id)
+    public function evaluations(Request $request)
     {
+       
+        
+        $id = $request->id;
         $user = auth()->user();
-        $valid = $request->all();
+      
+        $id = $request->input('evaluation_id');
+        $valid =  $request->except('_token');
 
-        $question = Question::all();
-        // Count the question
-        if (count($question) !== count($valid)) {
-            return response()->json(['error' => 'All items are required']);
-        } else {
-            $evaluation = new Evaluation();
+        
+      
+           
             foreach ($valid as $key => $value) {
-                $data = explode('-', $key);
+                if($key!='evaluation_id')
+                {
+                $evaluation = new Evaluation();
                 $evaluation->evaluate_id = $id;
-                $evaluation->question_id = $data[1];
+                $evaluation->question_id = $key;
                 $evaluation->score = $value;
                 $evaluation->save();
+
+                }
+
             }
 
             // update the evaluate status
@@ -302,7 +440,8 @@ class User extends Controller
             $evaluate->status = 1;
             $evaluate->update();
 
-            return redirect()->route('index.student');
-        }
+            // return redirect()->route('index.student');
+            return response()->json('success');
     }
+
 }
