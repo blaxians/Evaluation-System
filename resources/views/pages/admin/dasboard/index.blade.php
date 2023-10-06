@@ -9,13 +9,29 @@
             </div>
             <div class="col align-items-center">
                 <div class="row p-2 d-flex flex-nowrap">
-                    <div class="col d-flex flex-shrink-1 align-items-center p-0 me-2">
-                        <i data-bs-toggle="modal" data-bs-target="#year_sem_set"
-                            class="fas ms-2 ms-sm-auto fa-calendar fs-4 primary-text p-2 rounded-1 second-text secondary-bg"></i>
+                    <div class="col d-flex flex-shrink-1 justify-content-end p-0 me-2">
+                       <div class="dropdown" id="year_dropdown">
+                            <a role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas ms-2 ms-sm-auto fa-calendar fs-4 primary-text p-2 rounded-1 second-text secondary-bg"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                
+                                <li><a role="button" class="dropdown-item fs-6" href="#" id="btn_update_year">Update Academic Year</a></li>
+                                    <li><a role="button" class="dropdown-item fs-6" href="#"
+                                        data-bs-toggle="modal" data-bs-target="#edit_sem">Edit Semester</a></li>
+                            </ul>
+                       </div>
                     </div>
                     <div class="col p-0">
                         <div class="m-0 fs-6 fw-semibold primary-text">Academic Year</div>
-                        <div class="m-0 fs-6 primary-text text-nowrap">2023-2024 1st Semester</div>
+                        <div class="m-0 fs-6 primary-text d-flex text-nowrap">
+                            <div class="p-0 m-0 fs-6" id="academic_year">
+                                {{-- academic year --}}
+                            </div> 
+                            <a href="#" role="button" class="p-0 primary-text fs-6 ms-1" 
+                            data-bs-toggle="modal" data-bs-target="#edit_sem" id="semester">
+                                {{-- semester --}}
+                            </a></div>
                     </div>
                 </div>
             </div>
@@ -66,5 +82,14 @@
         </div>
         <!-- widgets end -->
 
+        {{-- modals start --}}
+       
+        @include('pages.admin.dasboard.modal.edit')
+        {{-- modals end --}}
+
     </div>
+@endsection
+
+@section('javascript')
+    @include('pages.admin.dasboard.javascript.js')
 @endsection

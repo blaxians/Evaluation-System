@@ -21,21 +21,23 @@ class Dashboard extends Controller
         return response()->json($year_sem);
     }
 
+
     // Add School Year
     public function post(Request $request)
     {
+       
         $validatator = Validator::make($request->all(), [
-            'year' => 'required',
+            'year' => 'required|unique:year_sems',
         ]);
 
         if ($validatator->fails()) {
-            return response()->json($validatator->messages());
+            return response()->json(['error'=>$validatator->messages()]);
         } else {
             $valid = $request->all();
+            
             array_shift($valid);
-
             $year_sem = new YearSem();
-            $year_sem->year = $valid['semester'];
+            $year_sem->year = $valid['year'];
             $year_sem->semester = 1;
             $year_sem->save();
             return response()->json('success');
@@ -44,9 +46,10 @@ class Dashboard extends Controller
 
 
     // Edit the Semester
-    public function edit(Request $request, String $id)
+    public function edit(Request $request)
     {
 
+        $id = $request->id;
         $year_sem = YearSem::find($id);
         if ($year_sem === null) {
             return response()->json(['error' => 'School Year not found']);
@@ -60,14 +63,21 @@ class Dashboard extends Controller
                 return response()->json(['error' => $validatator->messages()]);
             } else {
                 $valid = $request->all();
-                array_shift($valid);
 
-                if ($year_sem->semester === $valid['semester']) {
+                if ($year_sem->semester == $valid['semester']) {
                     return response()->json(['error' => 'Semester is already set']);
                 } else {
-                    $year_sem->semester = $valid['semester'];
-                    $year_sem->update();
-                    return response()->json('success');
+
+                    if($year_sem->semester==2 && $valid['semester']==1)
+                    {
+                        return response()->json(['error' => 'Semester is cant back set']);
+                    }else{
+                        $year_sem->semester = $valid['semester'];
+                        $year_sem->update();
+                        return response()->json('success');
+
+                    }
+                  
                 }
             }
         }

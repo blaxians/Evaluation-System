@@ -26,7 +26,8 @@ Route::get('/redirect', function () {
             $evaluation = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
 
             if (count($evaluation) === 0) {
-                return response()->json('Redirect sa Select Faculty');
+                
+                return redirect()->route('select.user');
             } else {
                 return redirect()->route('index.user');
             }
@@ -63,7 +64,7 @@ Route::controller(Dashboard::class)->group(function () {
     Route::any('/dashboard', 'index')->name('index.dashboard')->middleware(['auth', 'admin']);
     Route::any('/dashboard/show', 'show')->name('show.dashboard')->middleware(['auth', 'admin']);
     Route::any('/dashboard/post', 'post')->name('post.dashboard')->middleware(['auth', 'admin']);
-    Route::any('/dashboard/edit/{id}', 'edit')->name('edit.dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard/edit', 'edit')->name('edit.dashboard')->middleware(['auth', 'admin']);
 });
 
 // Admin Questionnaire
@@ -112,14 +113,14 @@ Route::controller(Student::class)->group(function () {
 //User Routes
 Route::controller(User::class)->group(function () {
     // View Add
-    Route::get('/evaluation', 'index')->name('index.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/selection', 'select')->name('select.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/show', 'show')->name('show.user')->middleware(['auth', 'admin']);
-    Route::post('/evaluation/show/student', 'post')->name('post.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth', 'admin']);
-    Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('viewEvaluate.user')->middleware(['auth', 'admin']);
-    Route::patch('/evaluation/faculties/{id}', 'evaluations')->name('evaluate.user')->middleware(['auth', 'admin']);
+    Route::get('/evaluation', 'index')->name('index.user')->middleware(['auth']);
+    Route::get('/evaluation/selection', 'select')->name('select.user')->middleware(['auth']);
+    Route::get('/evaluation/show', 'show')->name('show.user')->middleware(['auth']);
+    Route::post('/evaluation/show/student', 'post')->name('post.user')->middleware(['auth']);
+    Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth']);
+    Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth']);
+    Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth']);
+    Route::get('/evaluation/faculties', 'viewEvaluate')->name('viewEvaluate.user')->middleware(['auth']);
+    Route::patch('/evaluation/faculties/{id}', 'evaluations')->name('evaluate.user')->middleware(['auth']);
 });
 
