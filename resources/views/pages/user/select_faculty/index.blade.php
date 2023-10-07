@@ -10,8 +10,8 @@
 <body>
     
     <div class="container" style="height:100vh;">
-        <div class="row">
-            <div class="col my-3">
+        <div class="row px-md-5">
+            <div class="col my-3 px-sm-5">
                 <div class="alert alert-success fw-semibold" role="alert">
                     Before you start evaluating, make sure to select all of your professors 
                     by checking the checkboxes and then click the <strong>submit</strong> button.

@@ -34,17 +34,19 @@ class User extends Controller
         return view('pages.user.select_faculty.index');
     }
 
+    //show yung faculty namay checkbox
     public function show()
     {
         $faculties = Faculties::all();
         $table = '';
-        if($faculties->count()>0){
+        if($faculties->count() > 0){
             $table .= '<table class="table table-hover" id="table">
             <thead class="table-success">
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Checkbox</th>
+                    <th>Institute</th>
+                    <th>Select</th>
                 </tr>
             </thead>
             <tbody>';
@@ -52,7 +54,8 @@ class User extends Controller
                 $table .= '<tr>
                             <td>'.intval($key+1).'</td>
                             <td>'.$faculty->first_name.' '.$faculty->last_name.'</td>
-                            <td><input type="checkbox" data-id="'.$faculty->id.'" id="faculty_checkbox"></td>
+                            <td>'.$faculty->institute.'</td>
+                            <td style="text-align:center;"><input type="checkbox" data-id="'.$faculty->id.'" id="faculty_checkbox"></td>
                         </tr>';
             }
                 
@@ -64,7 +67,7 @@ class User extends Controller
 
     }
 
-    // Get all the selected faculties tas labas dito sa table
+    // view yung mga na select na faculty ni user sa table
     public function view()
         {
             $user = auth()->user();
@@ -72,43 +75,38 @@ class User extends Controller
             $new_year_sem = $year_sem->year . " " . $year_sem->semester;
 
             $evaluate_proffessor  = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
-            $htmlTable = '<table class="table table-hover" id="table">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Institute</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>';
+            $htmlCard = '';
 
             foreach ($evaluate_proffessor as $key => $value) {
+
                 $id = $value->id;
                 $faculties = Faculties::find($value->faculties_id);
                 $name = $faculties->last_name . ' ' . $faculties->middle_name . ' ' . $faculties->first_name;
                 $status = $value->status;
                 $institute = $faculties->institute;
 
-                $statusBadgeClass = $status == 0 ? 'text-bg-danger' : 'text-bg-success';
+                //responsive design sa badge at button depende sa status
+                $statusBadgeClass = $status == 0 ? 'text-bg-secondary' : 'text-bg-success';
                 $statusBadgeName = $status == 0 ? 'To Evaluate' : 'Evaluated';
+                $btn_disable = $status == 1 ? '<button type="button" class="btn btn-success  btn-sm" disabled><i class="bi bi-dash-circle"></i></button>' : '
+                <button class="btn btn-success btn-sm" id="btn_evaluate" data-id="'.$id.'"><i class="bi bi-pencil-square me-1"></i>Evaluate</button>';
 
-                $htmlTable .= '<tr>
-                                <td>' . $name . '</td>
-                                <td>' . $institute . '</td>
-                                <td><span class="badge rounded-pill ' . $statusBadgeClass . '">' . $statusBadgeName . '</span></td>
-                                <td><button class="btn btn-success btn-sm" id="btn_evaluate"
-                                data-id="'.$id.'"><i class="bi bi-pencil-square"></i></button></td>
-                            </tr>';
+                $htmlCard .= '<div class="col-md-3 p-3">
+                                <div class="card shadow-sm h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">' . $name . '</h5>
+                                        <p class="card-text">Instute of Engineering and Applied Technology</p>
+                                        <span class="badge '.$statusBadgeClass.'">'.$statusBadgeName.'</span> 
+                                    </div>
+                                    <div class="card-footer d-flex  justify-content-end"> 
+                                        '.$btn_disable.'
+                                    </div>
+                                </div>
+                            </div>';
             }
 
-            $htmlTable .= '</tbody></table>';
-
-            echo $htmlTable;
+            echo $htmlCard;
         }
-
-    
-
 
 
     // Select Faculties for Student pasok sa database yung mga na select na faculty

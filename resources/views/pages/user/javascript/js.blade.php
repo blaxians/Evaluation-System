@@ -30,9 +30,7 @@
         url: "{{ route('view.user') }}",
         method: 'get',
         success: function(res){
-            $('#evaluate_professor_table').html(res);
-            modifyDataTable();
-            $('#table').DataTable(); 
+            $('#card_faculty').append(res); 
         }
        })
     }

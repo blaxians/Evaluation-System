@@ -21,7 +21,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-fill text-dark fs-4"></i>
+                <i class="bi bi-person-fill text-dark fs-4 align-self-baseline"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
