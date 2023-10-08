@@ -30,7 +30,14 @@
         url: "{{ route('view.user') }}",
         method: 'get',
         success: function(res){
-            $('#card_faculty').append(res); 
+            if(res.status == 'success'){
+                $('#alert_message').html(res.alert)
+                $('#card_faculty').append(res.card);
+            } else {
+                $('#card_faculty').append(res.card);
+            }
+             
+            
         }
        })
     }

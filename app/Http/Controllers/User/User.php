@@ -76,7 +76,7 @@ class User extends Controller
 
             $evaluate_proffessor  = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
             $htmlCard = '';
-
+            $status_array = [];
             foreach ($evaluate_proffessor as $key => $value) {
 
                 $id = $value->id;
@@ -84,6 +84,7 @@ class User extends Controller
                 $name = $faculties->last_name . ' ' . $faculties->middle_name . ' ' . $faculties->first_name;
                 $status = $value->status;
                 $institute = $faculties->institute;
+                $status_array[] = $status;
 
                 //responsive design sa badge at button depende sa status
                 $statusBadgeClass = $status == 0 ? 'text-bg-secondary' : 'text-bg-success';
@@ -104,8 +105,22 @@ class User extends Controller
                                 </div>
                             </div>';
             }
+            $result = array_reduce($status_array, function($carry, $stats) {
+                return $carry && ($stats == 1);
+            }, true);
+            
+            $alert_message = '<div class="alert alert-success d-flex align-items-center my-3" role="alert">
+                <i class="bi bi-check-circle-fill me-3 fs-4"></i>
+                <div class="fw-semibold">
+                  You have successfully evaluated all faculties on your list!
+                </div>
+              </div>';
 
-            echo $htmlCard;
+            if($result){
+                return response()->json(['status'=>'success', 'card'=>$htmlCard, 'alert'=>$alert_message]);
+            } else {
+                return response()->json(['card'=>$htmlCard]);
+            }
         }
 
 

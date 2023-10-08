@@ -23,7 +23,18 @@
 
         <div class="row">
             <div class="col">
-                <div class="bg-white rounded mt-3 shadow-sm px-4">
+
+                {{-- <div class="alert alert-success d-flex align-items-center my-3" role="alert">
+                    <i class="bi bi-check-circle-fill me-3 fs-4"></i>
+                    <div class="fw-semibold">
+                      You have successfully evaluated all faculties on your list!
+                    </div>
+                  </div> --}}
+                <div id="alert_message">
+
+                </div>
+                  
+                <div class="bg-white rounded shadow-sm px-4">
                     <div class="pt-2 border-bottom">
                         <h2 class="text-success text-center">List of Faculties</h3>
                     </div>

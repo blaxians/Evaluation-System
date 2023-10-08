@@ -14,7 +14,7 @@
             <div class="col my-3 px-sm-5">
                 <div class="alert alert-success fw-semibold" role="alert">
                     Before you start evaluating, make sure to select all of your professors 
-                    by checking the checkboxes and then click the <strong>submit</strong> button.
+                    by checking the checkboxes and then click the <span class="badge text-bg-success">Finalize</span> button.
                   </div>
                 <div class="card">
                     <div class="card-header d-flex justify-content-end justify-content-sm-between">
