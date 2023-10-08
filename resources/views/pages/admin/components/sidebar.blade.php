@@ -6,17 +6,14 @@
     </div>
 
     <div class="list-group list-group-flush my-3">
-        <a href="#"
+        <a href="{{ route('index.dashboard') }}"
             class="list-group-item py-3 ps-5 list-group-item-action fw-bold third-text nav-link
-        {{ request()->is('dashboard*') ? 'active' : '' }}">
+        {{ request()->is('dashboard') ? 'active' : '' }}">
             <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-        </a>
-        <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
-            <i class="fas fa-university me-2"></i>Academic Year
         </a>
         <a href="{{ route('index.questionnaire') }}"
             class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link 
-        {{ request()->is('questionnaire*') ? 'active' : '' }}">
+        {{ request()->is('questionnaire') ? 'active' : '' }}">
             <i class="fas fa-list me-2"></i>Questionnaire
         </a>
         <a href="{{ route('index.faculties') }}"
@@ -29,7 +26,9 @@
         {{ Request::segment(1) === 'dean' ? 'active' : '' }}">
             <i class="fa-solid fa-user-tie me-2"></i>Dean's
         </a>
-        <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
+        <a href="{{ route('index.student') }}" 
+        class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link 
+        {{ Request::segment(1) === 'students' ? 'active' : '' }}">
             <i class="fas fa-users me-2"></i>Students
         </a>
         <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
@@ -43,14 +42,14 @@
             <i class="fa fa-caret-down"></i>Hi, ian blas
         </button>
         <div class="dropdown-container ms-2">
-            <a href="#" class="list-group-item ps-5 py-2  list-group-item-action fs-6 nav-link">
+            {{-- <a href="#" class="list-group-item ps-5 py-2  list-group-item-action fs-6 nav-link">
                 Profile
             </a>
             <a href="#" class="list-group-item ps-5 py-2  list-group-item-action fs-6 nav-link">
                 Settings
-            </a>
-            <a href="#" class="list-group-item ps-5 py-2  list-group-item-action fs-6 nav-link">
-                Login
+            </a> --}}
+            <a href="{{ route('logout') }}" class="list-group-item ps-5 py-2  list-group-item-action fs-6 nav-link">
+                Logout
             </a>
         </div>
 

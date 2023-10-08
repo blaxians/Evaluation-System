@@ -12,6 +12,7 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
+
 {{-- Sweet Alert --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 {{-- Sweet Alert Header --}}
@@ -43,11 +44,8 @@
             } else {
             dropdownContent.css("display", "block");
             }
-        });
 
         
-     
-
-
+        });
     });
 </script>

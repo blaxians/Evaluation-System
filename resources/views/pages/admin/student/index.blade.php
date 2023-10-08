@@ -9,27 +9,25 @@
         </div>
         <!-- title of the page end -->
 
-        <!-- table start -->
-        <div class="row my-5 p-2 border">
-            <div class="col overflow-x-scroll">
-                <table class="table bg-white rounded shadow-sm  table-hover" id="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="50"></th>
-                            <th scope="col">Student ID</th>
-                            <th scope="col">Last Name</th>
-                            <th scope="col">First Name</th>
-                            <th scope="col">Middle Name</th>
-                            <th scope="col">Status</th>
-                            <th scope="col" width="30px">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
 
-                    </tbody>
-                </table>
+        <!-- table start -->
+        <div class="row my-4 p-2">
+            <div class="col p-0">
+                <div class="card">
+                    <div class="card-body overflow-x-scroll" id="student_table">
+                        <div class="text-center">
+                            <div class="spinner-border text-secondary my-5"  role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- table end -->
+
     </div>
+@endsection
+@section('javascript')
+    @include('pages.admin.student.javascript.js')
 @endsection

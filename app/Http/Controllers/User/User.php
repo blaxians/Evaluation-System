@@ -96,7 +96,7 @@ class User extends Controller
                                 <div class="card shadow-sm h-100">
                                     <div class="card-body">
                                         <h5 class="card-title">' . $name . '</h5>
-                                        <p class="card-text">Instute of Engineering and Applied Technology</p>
+                                        <p class="card-text">'.$institute.'</p>
                                         <span class="badge '.$statusBadgeClass.'">'.$statusBadgeName.'</span> 
                                     </div>
                                     <div class="card-footer d-flex  justify-content-end"> 

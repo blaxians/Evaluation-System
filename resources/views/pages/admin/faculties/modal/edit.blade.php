@@ -19,11 +19,22 @@
                         <option value="Institute of Education">Institute of Education</option>
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
-                    <input type="text" class="form-control my-1" name="employee_id" placeholder="Employee ID" id="employee_id">
-                    <input type="text" class="form-control my-1" name="first_name" placeholder="First Name" required id="first_name">
-                    <input type="text" class="form-control my-1" name="middle_name" placeholder="Middle Name"required id="middle_name">
-                    <input type="text" class="form-control my-1" name="last_name" placeholder="Last Name" required id="last_name">
-
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="employee_id" name="employee_id" data-bs-placement="right">
+                        <label for="floatingInput">Employee id</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="first_name" name="first_name" data-bs-placement="right">
+                        <label for="floatingInput">First name</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="middle_name" name="middle_name" data-bs-placement="right">
+                        <label for="floatingInput">Middle name</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="last_name" name="last_name" data-bs-placement="right">
+                        <label for="floatingInput">Last name</label>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success" id="faculties_btn_update">Update Faculty</button>
