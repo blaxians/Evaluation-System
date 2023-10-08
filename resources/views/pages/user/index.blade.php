@@ -31,10 +31,10 @@
                     </div>
                   </div> --}}
                 <div id="alert_message">
-
+                    {{-- alert message here  --}}
                 </div>
                   
-                <div class="bg-white rounded shadow-sm px-4">
+                <div class="bg-white rounded shadow-sm px-4 mt-3">
                     <div class="pt-2 border-bottom">
                         <h2 class="text-success text-center">List of Faculties</h3>
                     </div>

@@ -109,7 +109,7 @@ class User extends Controller
                 return $carry && ($stats == 1);
             }, true);
             
-            $alert_message = '<div class="alert alert-success d-flex align-items-center my-3" role="alert">
+            $alert_message = '<div class="alert alert-success d-flex align-items-center mt-3" role="alert">
                 <i class="bi bi-check-circle-fill me-3 fs-4"></i>
                 <div class="fw-semibold">
                   You have successfully evaluated all faculties on your list!
@@ -154,15 +154,15 @@ class User extends Controller
         $new_year_sem = $year_sem->year . " " . $year_sem->semester;
         $faculties = Faculties::where('institute', $user->institute)->get();
 
-        if (count($faculties) === 0) {
+        if (count($faculties) == 0) {
             return response()->json(['error' => 'No data of Faculties']);
         } else {
-
-            $evaluation = new Evaluate();
             foreach ($faculties as  $value) {
+                $evaluation = new Evaluate();
                 $evaluation->user_id = $user->id;
                 $evaluation->faculties_id = $value->id;
                 $evaluation->year_sem = $new_year_sem;
+                $evaluation->status = 0;
                 $evaluation->save();
             }
 

@@ -2,31 +2,39 @@
 
 namespace App\Http\Controllers\Authentication;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    function login(Request $request)
+    public function login(Request $request)
     {
         if ($request->isMethod('get')) {
-
             return view('pages.login');
         }
-        // Get the request data
-        $validated = $request->validate([
+    
+        $validator = Validator::make($request->all(), [
             'username' => 'required',
             'password' => 'required'
         ]);
-
-        // Check user and password is valid
-        if (Auth::attempt($validated)) {
+    
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->messages()]);
+        }
+    
+        $credentials = [
+            'username' => $request->input('username'),
+            'password' => $request->input('password')
+        ];
+    
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route('loading');
         } else {
-            return redirect()->back()->with('invalid', 'Email or Password is invalid!');
+            return response()->json(['error2' => 'Username or Password is invalid']);
         }
     }
 

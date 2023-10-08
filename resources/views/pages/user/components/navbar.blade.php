@@ -11,9 +11,9 @@
                 Hello, <span class="fw-bold">Ian Blas</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
-                <li><a class="dropdown-item fs-6" href="#">Settings</a></li>
-                <li><a class="dropdown-item fs-6" href="#">Logout</a></li>
+                {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
+                <li><a class="dropdown-item fs-6" href="#">Settings</a></li> --}}
+                <li><a class="dropdown-item fs-6" href="{{ route('logout') }}">Logout</a></li>
             </ul>
         </li>
     </ul>
@@ -24,9 +24,9 @@
                 <i class="bi bi-person-fill text-dark fs-4 align-self-baseline"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
-                <li><a class="dropdown-item fs-6" href="#">Settings</a></li>
-                <li><a class="dropdown-item fs-6" href="#">Logout</a></li>
+                {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
+                <li><a class="dropdown-item fs-6" href="#">Settings</a></li> --}}
+                <li><a class="dropdown-item fs-6" href="{{ route('logout') }}">Logout</a></li>
             </ul>
         </li>
     </ul>

@@ -58,6 +58,9 @@
         </div>
     </div>
     @include('layout.scripts')
+    <script>
+        
+    </script>
 </body>
 
 </html>
