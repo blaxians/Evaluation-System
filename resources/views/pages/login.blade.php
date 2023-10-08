@@ -13,30 +13,35 @@
 <body style="background-image:url({{ asset('assets/img/main/bg-image.png') }});">
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh"
         id="main-container">
-        <div class="row main-card mx-4" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-            <div class="col-md-7 p-5 row-logo d-flex flex-column justify-content-center align-items-center"
+        <div class="row main-card mx-4">
+            <div class="col-md-6 p-5 row-logo d-flex flex-column justify-content-center align-items-center"
                 id="logo-wrapper">
                 <img src="{{ asset('assets/img/main/basc.png') }}" class="img-fluid rounded-circle" width="200"
                     id="logo-basc">
                 <p class="m-0 mt-auto fw-medium text-center text-light">Powered by M I S.</p>
             </div>
-            <div class="col-md-5 row-login bg-light d-flex px-0 bg-white justify-content-center">
+            <div class="col-md-6 row-login bg-light d-flex px-0 bg-white justify-content-center">
 
                 <div class="card border-0 bg-light mt-5 bg-transparent" id="card">
                     <div class="card-body p-0 px-4 pb-1">
                         <h5 class="card-title mb-4 text-nowrap fs-5 fw-semibold text-success">Login your account</h5>
-
-                        <form action="{{ route('login') }}" method="POST">
+                        @if(isset($message))
+                            <div class="alert alert-danger p-1 fs-6 text-nowrap">
+                                <i class="bi bi-exclamation-triangle-fill"></i> {{ $message }}
+                            </div>
+                        @endif
+                        
+                        <form action="{{ route('login') }}" method="POST" id="login_form">
                             @csrf
                             <div class="group mb-3">
-                                <input name="username" type="text" class="input" required>
+                                <input name="username" type="text" class="input">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label class="text-success">Username</label>
                             </div>
 
                             <div class="group">
-                                <input name="password" type="password" class="input" required>
+                                <input name="password" type="password" class="input">
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label class="text-success">Password</label>
@@ -58,9 +63,6 @@
         </div>
     </div>
     @include('layout.scripts')
-    <script>
-        
-    </script>
 </body>
 
 </html>

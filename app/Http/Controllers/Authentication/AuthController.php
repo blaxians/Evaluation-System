@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
+
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -15,16 +16,28 @@ class AuthController extends Controller
         if ($request->isMethod('get')) {
             return view('pages.login');
         }
-    
+        
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'password' => 'required'
         ]);
     
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->messages()]);
+            $usernameError = $validator->errors()->first('username');
+            $passwordError = $validator->errors()->first('password');
+        
+            if ($usernameError && $passwordError) {
+                $message = 'Both fields are required.';
+            }
+            else if ($usernameError) {
+                $message = $usernameError;
+            } else if ($passwordError) {
+                $message = $passwordError;
+            }
+        
+            return view('pages.login')->with('message', $message);
         }
-    
+        
         $credentials = [
             'username' => $request->input('username'),
             'password' => $request->input('password')
@@ -34,8 +47,17 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->route('loading');
         } else {
-            return response()->json(['error2' => 'Username or Password is invalid']);
+            $message = 'Invalid username or password';
+        
+            if (!User::where('username', $credentials['username'])->exists()) {
+                $message = 'Invalid username';
+            } elseif (!User::where('password', bcrypt($credentials['password']))->exists()) {
+                $message = 'Invalid password';
+            }
+        
+            return view('pages.login')->with('message', $message);
         }
+        
     }
 
     public function logout()
