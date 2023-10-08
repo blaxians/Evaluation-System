@@ -26,6 +26,10 @@
         </div>
         <!-- table end -->
 
+        {{-- modal start --}}
+        @include('pages.admin.student.modal.view')
+        {{-- modal end --}}
+
     </div>
 @endsection
 @section('javascript')

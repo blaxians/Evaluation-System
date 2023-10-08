@@ -105,7 +105,7 @@ Route::controller(Student::class)->group(function () {
     // View Add
     Route::get('/students', 'index')->name('index.student')->middleware(['auth', 'admin']);
     Route::get('/student/show', 'show')->name('show.student')->middleware(['auth', 'admin']);
-    Route::get('/student/view/{id}', 'post')->name('view.student')->middleware(['auth', 'admin']);
+    Route::get('/student/view', 'view')->name('view.student')->middleware(['auth', 'admin']);
 });
 
 

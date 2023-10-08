@@ -53,7 +53,8 @@ class Student extends Controller
                                         <td><span class="badge text-bg-success">Done</span>
                                         </td>
                                         <td>
-                                        <button class="btn btn-secondary">view</i></button>
+                                        <button class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="'.$stud->id.'">view</button>
                                         </td>
                                     </tr>';
                             } else {
@@ -64,7 +65,8 @@ class Student extends Controller
                                         <td><span class="badge text-bg-warning">Pending</span>
                                         </td>
                                         <td>
-                                        <button class="btn btn-secondary">view</button>
+                                        <button class="btn btn-secondary" data-bs-toggle="modal"
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="'.$stud->id.'">view</button>
                                         </td>
                                     </tr>';
                             }
@@ -79,14 +81,16 @@ class Student extends Controller
         }
     }
 
-    public function view(String $id)
+    public function view(Request $request)
     {
+        $id = $request->id;
+        $status = $request->status;
         $student = User::find($id);
         if ($student === null) {
             return response()->json(['error' => 'Student not found']);
         } else {
             $student->evaluations;
-            return response()->json($student);
+            return response()->json(['student'=>$student, 'status'=>$status]);
         }
     }
 }
