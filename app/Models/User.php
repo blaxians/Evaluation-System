@@ -14,9 +14,8 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
-    public function evaluations()
+    public function evaluate()
     {
         return $this->hasMany(Evaluate::class);
     }
-
 }

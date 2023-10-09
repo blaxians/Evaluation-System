@@ -26,7 +26,7 @@ Route::get('/redirect', function () {
             $evaluation = Evaluate::where('user_id', $user->id)->where('year_sem', $new_year_sem)->get();
 
             if (count($evaluation) === 0) {
-                
+
                 return redirect()->route('select.user');
             } else {
                 return redirect()->route('index.user');
@@ -113,14 +113,13 @@ Route::controller(Student::class)->group(function () {
 //User Routes
 Route::controller(User::class)->group(function () {
     // View Add
-    Route::get('/evaluation', 'index')->name('index.user')->middleware(['auth']);
-    Route::get('/evaluation/selection', 'select')->name('select.user')->middleware(['auth']);
-    Route::get('/evaluation/show', 'show')->name('show.user')->middleware(['auth']);
-    Route::post('/evaluation/show/student', 'post')->name('post.user')->middleware(['auth']);
-    Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth']);
-    Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth']);
-    Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth']);
-    Route::post('/evaluation/faculties', 'evaluations')->name('evaluate.user')->middleware(['auth']);
-    Route::get('/evaluation/faculties/{id}', 'viewEvaluate' )->name('evaluate.viewEvaluate')->middleware(['auth']);
+    Route::get('/evaluation', 'index')->name('index.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/selection', 'select')->name('select.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/show', 'show')->name('show.user')->middleware(['auth', 'user']);
+    Route::post('/evaluation/show/student', 'post')->name('post.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/show/dean', 'post2')->name('post2.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/view', 'view')->name('view.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth', 'user']);
+    Route::post('/evaluation/faculties', 'evaluations')->name('evaluate.user')->middleware(['auth', 'user']);
+    Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('evaluate.viewEvaluate')->middleware(['auth', 'user']);
 });
-

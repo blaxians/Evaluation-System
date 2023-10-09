@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Student;
 
+
 use App\Models\User;
+use App\Models\YearSem;
 use App\Models\Evaluate;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Termwind\Components\Span;
+use App\Http\Controllers\Controller;
+use App\Models\Faculties;
 
 class Student extends Controller
 {
@@ -17,8 +20,11 @@ class Student extends Controller
 
     public function show()
     {
+        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
         $student = User::where('role', 'student')->get();
-        if(count($student) > 0){
+
+        if (count($student) > 0) {
             $table = '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                         <thead>
                             <tr>
@@ -30,52 +36,51 @@ class Student extends Controller
                             </tr>
                         </thead>
                         <tbody>';
-                        
-                        foreach($student as $key => $stud){
-                            $status_array = [];
-                            $student_status = Evaluate::where('user_id', $stud->id)->get();
-                            foreach($student_status as $stud_stat){
-                                $status_array[] = $stud_stat->status;
-                            }
-                            if (empty($status_array)) {
-                                $result = false;
-                            } else {
-                                $result = array_reduce($status_array, function ($carry, $stats) {
-                                    return $carry && ($stats == 1);
-                                }, true);
-                            }
-                        
-                            if($result){
-                                $table .= '<tr>
-                                        <td>'.intval($key+1).'</td>
-                                        <td>'.$stud->name.'</td>
-                                        <td>'.$stud->username.'</td>
+
+            foreach ($student as $key => $stud) {
+                $status_array = [];
+                $student_status = Evaluate::where('user_id', $stud->id)->where('year_sem', $new_year_sem)->get();
+                foreach ($student_status as $stud_stat) {
+                    $status_array[] = $stud_stat->status;
+                }
+                if (empty($status_array)) {
+                    $result = false;
+                } else {
+                    $result = array_reduce($status_array, function ($carry, $stats) {
+                        return $carry && ($stats == 1);
+                    }, true);
+                }
+
+                if ($result) {
+                    $table .= '<tr>
+                                        <td>' . intval($key + 1) . '</td>
+                                        <td>' . $stud->name . '</td>
+                                        <td>' . $stud->username . '</td>
                                         <td><span class="badge text-bg-success">Done</span>
                                         </td>
                                         <td>
                                         <button class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="'.$stud->id.'">view</button>
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="' . $stud->id . '">view</button>
                                         </td>
                                     </tr>';
-                            } else {
-                                $table .= '<tr>
-                                        <td>'.intval($key+1).'</td>
-                                        <td>'.$stud->name.'</td>
-                                        <td>'.$stud->username.'</td>
+                } else {
+                    $table .= '<tr>
+                                        <td>' . intval($key + 1) . '</td>
+                                        <td>' . $stud->name . '</td>
+                                        <td>' . $stud->username . '</td>
                                         <td><span class="badge text-bg-warning">Pending</span>
                                         </td>
                                         <td>
                                         <button class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="'.$stud->id.'">view</button>
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">view</button>
                                         </td>
                                     </tr>';
-                            }
-                            
-                        }
-                        $table .= '</tbody>
+                }
+            }
+            $table .= '</tbody>
                     </table>';
 
-                    echo $table;
+            echo $table;
         } else {
             echo '<div class="h1 text-center text-secondary my-5">There is no record in database.</div>';
         }
@@ -86,11 +91,19 @@ class Student extends Controller
         $id = $request->id;
         $status = $request->status;
         $student = User::find($id);
+        $faculties =  $student->evaluate;
+
+        foreach ($faculties as  $value) {
+            $details = Faculties::find($value->faculties_id);
+            $value->name = $details->last_name . ' ' . $details->first_name . ' ' . $details->middle_name;
+            $value->institute = $details->institute;
+        }
+
         if ($student === null) {
             return response()->json(['error' => 'Student not found']);
         } else {
             $student->evaluations;
-            return response()->json(['student'=>$student, 'status'=>$status]);
+            return response()->json(['student' => $student, 'status' => $status, 'faculties' => $faculties]);
         }
     }
 }
