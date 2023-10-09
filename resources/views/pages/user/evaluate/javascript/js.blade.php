@@ -3,6 +3,7 @@
         ToggleCard();
         showQuestions();
         submitAnswer();
+        checkBox();
        
     })
     //toggle card appearance
@@ -157,6 +158,17 @@
         })
 
     });
+}
+
+//event for checkbox 
+function checkBox(){
+    $(document).on('click', '.form-check-label', function(){
+        const radioInput = $(this).prev();
+            if (radioInput.length) {
+                radioInput.prop('checked', true);
+            }
+    })
+        
 }
 
 

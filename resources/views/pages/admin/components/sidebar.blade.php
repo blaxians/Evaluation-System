@@ -31,7 +31,9 @@
         {{ Request::segment(1) === 'students' ? 'active' : '' }}">
             <i class="fas fa-users me-2"></i>Students
         </a>
-        <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
+        <a href="{{ route('index.report') }}" 
+        class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link
+        {{ Request::segment(1) === 'report' ? 'active':'' }}">
             <i class="fas fa-file-invoice me-2"></i>Evaluation Report
         </a>
         <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">

@@ -234,24 +234,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
@@ -266,24 +266,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question2->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question2->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
@@ -297,24 +297,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question3->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question3->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
@@ -328,24 +328,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question4->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question4->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
@@ -359,24 +359,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question5->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question5->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
@@ -390,24 +390,24 @@ class User extends Controller
                         <div class="card-body d-flex justify-content-evenly">
                         
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_5" value="5" required>
-                                <label class="form-check-label" for="radio_5">5</label>
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" value="5" required>
+                                <label class="form-check-label" >5</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_4" value="4" required>
-                                <label class="form-check-label" for="radio_4">4</label>
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" value="4" required>
+                                <label class="form-check-label" >4</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_3" value="3" required>
-                                <label class="form-check-label" for="radio_3">3</label>
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" value="3" required>
+                                <label class="form-check-label" >3</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_2" value="2" required>
-                                <label class="form-check-label" for="radio_2">2</label>
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" value="2" required>
+                                <label class="form-check-label" >2</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="'.$question6->id.'" id="radio_1" value="1" required>
-                                <label class="form-check-label" for="radio_1">1</label>
+                                <input class="form-check-input" type="radio" name="'.$question6->id.'" value="1" required>
+                                <label class="form-check-label" >1</label>
                             </div>
                         </div>
                     </div>';
