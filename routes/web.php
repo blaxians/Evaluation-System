@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Dashboard\Dashboard;
 use App\Http\Controllers\Admin\Faculties\Faculties;
 use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
+use App\Http\Controllers\Admin\Report\Report;
 use App\Models\Evaluate;
 
 // Redirect the user if auth
@@ -108,6 +109,13 @@ Route::controller(Student::class)->group(function () {
     Route::get('/student/view', 'view')->name('view.student')->middleware(['auth', 'admin']);
 });
 
+// Admin Report
+Route::controller(Report::class)->group(function () {
+    //view list of faculties
+    Route::get('/report/faculties/{id}', 'show')->name('show')->middleware(['auth', 'admin']);
+    Route::get('/report/faculties/view/student/{id}', 'viewFromStudent')->name('viewFromStudent')->middleware(['auth', 'admin']);
+    Route::get('/report/faculties/view/dean/{id}', 'viewFromDean')->name('viewFromDean')->middleware(['auth', 'admin']);
+});
 
 
 //User Routes

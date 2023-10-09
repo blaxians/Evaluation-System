@@ -11,8 +11,8 @@ class Faculties extends Model
 
     protected $guarded = [];
 
-    public function evaluations()
+    public function evaluate()
     {
-        return $this->hasMany(Evaluation::class);
+        return $this->hasMany(Evaluate::class);
     }
 }
