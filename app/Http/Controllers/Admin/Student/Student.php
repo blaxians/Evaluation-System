@@ -59,8 +59,8 @@ class Student extends Controller
                                         <td><span class="badge text-bg-success">Done</span>
                                         </td>
                                         <td>
-                                        <button class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="' . $stud->id . '">view</button>
+                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="' . $stud->id . '"><i class="bi bi-eye-fill"></i></button>
                                         </td>
                                     </tr>';
                 } else {
@@ -71,8 +71,9 @@ class Student extends Controller
                                         <td><span class="badge text-bg-warning">Pending</span>
                                         </td>
                                         <td>
-                                        <button class="btn btn-secondary" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">view</button>
+                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">
+                                        <i class="bi bi-eye-fill"></i></button>
                                         </td>
                                     </tr>';
                 }
@@ -92,7 +93,7 @@ class Student extends Controller
         $status = $request->status;
         $student = User::find($id);
         $faculties =  $student->evaluate;
-
+        
         foreach ($faculties as  $value) {
             $details = Faculties::find($value->faculties_id);
             $value->name = $details->last_name . ' ' . $details->first_name . ' ' . $details->middle_name;
@@ -102,8 +103,39 @@ class Student extends Controller
         if ($student === null) {
             return response()->json(['error' => 'Student not found']);
         } else {
-            $student->evaluations;
-            return response()->json(['student' => $student, 'status' => $status, 'faculties' => $faculties]);
+            
+            $faculty_table = '<table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Faculty Name</th>
+                                        <th>Institute</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+            foreach($faculties as $facult){ 
+                if($facult->status == 1){
+                    $span = '<span class="badge text-bg-success">Done</span>';
+                } else {
+                    $span = '<span class="badge text-bg-warning">Pending</span>';
+                }
+                $faculty_table .= '<tr>
+                                    <td>'.$facult->name.'</td>
+                                    <td>'.$facult->institute.'</td>
+                                    <td>'.$span.'</td>
+                                </tr>';
+            }
+            $faculty_table .= '</tbody>
+            </table>';
+            
+            $student->evaluations; 
+            return response()->json(['student' => $student,
+                                    'status' => $status,
+                                    'faculties' => $faculties,
+                                    'faculty_table'=>$faculty_table]);
         }
     }
 }
+
+        
+    

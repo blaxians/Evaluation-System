@@ -33,9 +33,11 @@
                     status:view_status
                 },
                 success: function(res){
+
                     $('#view_student_name').text(res.student['name']);
                     $('#view_student_name1').text(res.student['name']);
                     $('#view_student_username').text(res.student['username']);
+                    $('#table_faculty_view').html(res.faculty_table);
                     if(res.status == 'Done'){
                         $('#view_student_status').text(res.status);
                         $('#view_student_status').removeClass('text-bg-warning');

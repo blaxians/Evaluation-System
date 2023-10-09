@@ -33,6 +33,7 @@
         {{-- modals start --}}
         @include('pages.admin.dean.modal.add')
         @include('pages.admin.dean.modal.edit')
+        @include('pages.admin.dean.modal.view')
         {{-- modals end --}}
     </div>
 @endsection

@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form action="#" method="post" class="px-5" id="deans_form">
                     @csrf
-                    <select class="form-select " aria-label="Default select example" name="institute">
+                    <select class="form-select " aria-label="Default select example" name="institute" id="dean_institute">
                         <option value="College of Agriculture">College of Agriculture</option>
                         <option value="Institute of Arts and Sciences">Institute of Arts and Sciences</option>
                         <option value="Institute of Engineering and Applied Technology">Institute of Engineering and
@@ -18,8 +18,8 @@
                         <option value="Institute of Education">Institute of Education</option>
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
-                    <input type="text" class="form-control my-1" name="name" placeholder="Name" required>
-                    <input type="text" maxlength="25" class="form-control my-1" name="username" id="dean_username" placeholder="Username" required>
+                    <input type="text" class="form-control my-1" id="dean_name" name="name" placeholder="Name" required>
+                    <input type="text" maxlength="25" class="form-control my-1" id="dean_username" name="username" id="dean_username" placeholder="Username" required>
                     <p class="">Note: <span id="onchange_username"
                         class="text-success fw-semibold">username</span> is the default password</>
                 

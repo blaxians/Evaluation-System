@@ -12,10 +12,14 @@
                 <p class="m-0 p-0 fw-semibold">Status: <span class="badge" id="view_student_status"></span></p>
             </div>
           </div>
+          <div class="my-3">
+            <div id="table_faculty_view">
+              {{-- faculty table here --}}
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-success">Understood</button>
         </div>
       </div>
     </div>

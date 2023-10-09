@@ -41,8 +41,8 @@ class Faculties extends Controller
                                             <td>'.$facultie->first_name.'</td>
                                             <td>'.$facultie->middle_name.'</td>
                                             <td>'.$facultie->institute.'</td></td>
-                                            <td>
-                                                <button class="btn btn-secondary btn-sm" id="faculties_btn_edit" data-id="'.$facultie->id.'">
+                                            <td class="d-flex">
+                                                <button class="btn btn-secondary btn-sm me-1" id="faculties_btn_edit" data-id="'.$facultie->id.'">
                                                 <i class="bi bi-pencil-square"></i></button>
                                             </td>
                                             

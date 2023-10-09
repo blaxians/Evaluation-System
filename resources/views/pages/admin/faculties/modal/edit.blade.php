@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form action="#" method="post" class="px-5" id="faculties_edit_form">
                     @csrf
-                    <input type="hidden" name="id" id="faculties_id">
+                    <input type="hidden" name="id" id="faculties_id1">
                     <select class="form-select  " aria-label="Default select example" name="institute" id="faculties_institute">
                         <option value="College of Agriculture">College of Agriculture</option>
                         <option value="Institute of Arts and Sciences">Institute of Arts and Sciences</option>
@@ -20,19 +20,19 @@
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" id="employee_id" name="employee_id" data-bs-placement="right">
+                        <input type="text" class="form-control" id="employee_id1" name="employee_id" data-bs-placement="right">
                         <label for="floatingInput">Employee id</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" id="first_name" name="first_name" data-bs-placement="right">
+                        <input type="text" class="form-control" id="first_name1" name="first_name" data-bs-placement="right">
                         <label for="floatingInput">First name</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" id="middle_name" name="middle_name" data-bs-placement="right">
+                        <input type="text" class="form-control" id="middle_name1" name="middle_name" data-bs-placement="right">
                         <label for="floatingInput">Middle name</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" id="last_name" name="last_name" data-bs-placement="right">
+                        <input type="text" class="form-control" id="last_name1" name="last_name" data-bs-placement="right">
                         <label for="floatingInput">Last name</label>
                     </div>
                     <div class="modal-footer">

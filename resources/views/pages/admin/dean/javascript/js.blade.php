@@ -7,6 +7,7 @@
         eventEditDean();
         confirmPassword();
         eventAddDean();
+        viewDeanData();
     })
 
     //add dean
@@ -31,10 +32,36 @@
                         $('#add_dean').modal('hide');
                         $('#deans_form').trigger('reset');
                         showDean();
+                    } else {
+                        $('#dean_btn_submit').text('Add Dean');
+                        const {institute, name, username} = res;
+                        if(institute){
+                            Swal.fire(
+                                'Error!',
+                                `${institute[0]}`,
+                                'error'
+                            )
+                            $('#dean_institute').addClass('is-invalid');
+                        } else if(name){
+                            Swal.fire(
+                                'Error!',
+                                `${institute[0]}`,
+                                'error'
+                            )
+                            $('#dean_name').addClass('is-invalid');
+                        } else if(username){
+                            Swal.fire(
+                                'Error!',
+                                `${institute[0]}`,
+                                'error'
+                            )
+                            $('#dean_username').addClass('is-invalid');
+                        }
                     }
                 }
             })
         })
+
     }
 
     //add dean event 
@@ -48,9 +75,12 @@
             }
         })
 
-        $(document).on('hidden.bs.modal', '#add_dean', function(){
+        $(document).on('hidden.bs.modal', '#add_dean', () => {
             $('#deans_form').trigger('reset');
             $('#onchange_username').text('username');
+            $('#dean_institute').removeClass('is-invalid');
+            $('#dean_name').removeClass('is-invalid');
+            $('#dean_username').removeClass('is-invalid');
         })
     }
 
@@ -79,12 +109,34 @@
                 data: {id:id,
                 _token: "{{ csrf_token() }}"},
                 success: function(res){
-                    const {id, name, username} = res;
+                    const {id, name, username} = res.dean;
                     $('#dean_id').val(id);
                     $('#username').val(username);
                     $('#name').val(name);
                 }
-                
+            })
+        })
+    }
+
+    //view dean data
+    function viewDeanData(){
+        $(document).on('click', '#view_dean_btn', function(){
+            let id = $(this).attr('data-id');
+            $('#view_dean_modal').modal('show');
+            $.ajax({
+                url: "{{ route('view.dean') }}",
+                method: 'get',
+                data:{
+                    _token: "{{ csrf_token() }}",
+                    id:id
+                },
+                success: function(res){
+                    $('#view_dean_name').text(res.dean['name']);
+                    $('#view_dean_username').text(res.dean['username']);
+                    $('#view_dean_name1').text(res.dean['name']);
+                    $('#view_dean_name1').text(res.dean['name']);
+                    $('#table_dean_view').html(res.dean_table);
+                }
             })
         })
     }

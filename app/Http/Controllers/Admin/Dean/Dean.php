@@ -61,7 +61,10 @@ class Dean extends Controller
                                             <td>' . $dean->name . '</td>
                                             <td>' . $dean->institute . '</td>
                                             <td>' . $status . '</td>
-                                            <td><button class="btn btn-secondary btn-sm" id="edit_dean_btn" data-id="' . $dean->id . '">Edit</button></td>
+                                            <td class="d-flex"><button class="btn btn-secondary btn-sm me-1" id="edit_dean_btn" data-id="' . $dean->id . '">
+                                            <i class="bi bi-pencil-square"></i></button>
+                                            <button class="btn btn-success btn-sm" id="view_dean_btn" data-id="' . $dean->id . '">
+                                            <i class="bi bi-eye-fill"></i></button></td>
                           </tr>';
             }
             $table .= '</tbody>
@@ -76,6 +79,7 @@ class Dean extends Controller
     {
         $id = $request->id;
         $dean = User::find($id);
+      
 
         $id = $request->id;
         $status = $request->status;
@@ -88,14 +92,51 @@ class Dean extends Controller
             $value->institute = $details->institute;
         }
 
+
         if ($dean === null) {
             return response()->json(['error' => 'Dean not found']);
         } else {
             $dean->evaluations;
-            return response()->json($dean);
+            $dean_table = '<table class="table table-bordered">
+                        <thead>
+                            <th>Name</th>
+                            <th>Institute</th>
+                            <th>Status</th>
+                        </thead>
+                        <tbody>';
+            if(count($faculties) > 0){
+                
+                foreach($faculties as $faculty){
+
+                    if($faculty->status == 1){
+                        $dean_status = '<span class="badge text-bg-success">Done</span>';
+                    } else {
+                        $dean_status = '<span class="badge text-bg-warning">Pending</span>';
+                    }
+                    $dean_table .= '<tr>
+                                    <td>'.$faculty->name.'</td>
+                                    <td>'.$faculty->institute.'</td>
+                                    <td>'.$dean_status.'</td>
+                                </tr>';
+                }
+                $dean_table .= '</tbody>
+                </table>';
+            } else {
+                $dean_table .= '<tr>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                </tr>
+                            </tbody>
+                        </table>';
+}
+            
+            return response()->json(['dean'=>$dean, 'faculties'=>$faculties, 'dean_table'=>$dean_table]);
         }
     }
 
+        
+    
 
     public function post(Request $request)
     {

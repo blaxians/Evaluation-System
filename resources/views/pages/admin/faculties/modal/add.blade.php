@@ -18,11 +18,11 @@
                         <option value="Institute of Education">Institute of Education</option>
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
-                    <input type="text" class="form-control my-1" name="employee_id" placeholder="Employee ID">
-                    <input type="text" class="form-control my-1" name="first_name" placeholder="First Name" required>
-                    <input type="text" class="form-control my-1" name="middle_name" placeholder="Middle Name"
+                    <input type="text" class="form-control my-1" data-bs-placement="right" name="employee_id" id="employee_id" placeholder="Employee ID">
+                    <input type="text" class="form-control my-1" data-bs-placement="right" name="first_name" id="first_name" placeholder="First Name" required>
+                    <input type="text" class="form-control my-1" data-bs-placement="right" name="middle_name" id="middle_name" placeholder="Middle Name"
                         required>
-                    <input type="text" class="form-control my-1" name="last_name" placeholder="Last Name" required>
+                    <input type="text" class="form-control my-1" data-bs-placement="right" name="last_name" id="last_name" placeholder="Last Name" required>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

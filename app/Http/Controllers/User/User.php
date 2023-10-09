@@ -172,8 +172,13 @@ class User extends Controller
 
     // Route the page to evaluate
     public function viewEvaluate(String $id)
+
     {
-        return view('pages.user.evaluate.index',compact('id'));
+
+     $evaluate = Evaluate::find($id);
+     $faculties = $evaluate->faculties;
+  
+        return view('pages.user.evaluate.index',compact('faculties','id'));
     }
 
     //palabasin lahat ng question

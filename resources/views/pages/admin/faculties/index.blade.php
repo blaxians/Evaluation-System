@@ -34,6 +34,7 @@
     {{-- modals start--}}
     @include('pages.admin.faculties.modal.add')
     @include('pages.admin.faculties.modal.edit')
+    
     {{-- modals end--}}
 @endsection
 

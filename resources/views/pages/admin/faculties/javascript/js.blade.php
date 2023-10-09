@@ -4,6 +4,7 @@
         showFaculties();
         viewFaculties();
         updateFaculties();
+
     })
 
     //add faculties
@@ -22,6 +23,7 @@
                 contentType: false,
                 success: function(res){
                     if(res == 'success'){
+                        
                         Swal.fire('Added!', 
                         'Faculty added successfully.',
                         'success');
@@ -29,9 +31,60 @@
                         $('#faculties_form').trigger('reset');
                         $('#add_faculties').modal('hide');
                         showFaculties();
+                    } else {
+                        $('#faculties_btn_submit').text('Add Faculty');
+                        const {employee_id, first_name, middle_name, last_name} = res;
+                        // console.log(employee_id[0]);
+                        if(employee_id){
+
+                            $('#employee_id').tooltip('dispose');
+                            $('#employee_id').addClass('is-invalid');
+                            $('#employee_id').attr('data-bs-title', employee_id[0]);
+                            $('#employee_id').focus();
+                            $('#employee_id').tooltip('show');
+                            
+                        } else if(first_name) {
+
+                            $('#first_name').tooltip('dispose');
+                            $('#first_name').addClass('is-invalid');
+                            $('#first_name').attr('data-bs-title', first_name[0]);
+                            $('#first_name').focus();
+                            $('#first_name').tooltip('show');
+                            
+                        } else if(middle_name) {
+
+                            $('#middle_name').tooltip('dispose');
+                            $('#middle_name').addClass('is-invalid');
+                            $('#middle_name').attr('data-bs-title', middle_name[0]);
+                            $('#middle_name').focus();
+                            $('#middle_name').tooltip('show');
+                        } else if(last_name) {
+
+                            $('#last_name').tooltip('dispose');
+                            $('#last_name').addClass('is-invalid');
+                            $('#last_name').attr('data-bs-title', last_name[0]);
+                            $('#last_name').focus();
+                            $('#last_name').tooltip('show');
+                            }
+
                     }
                 }
             })
+        })
+
+        $(document).on('hidden.bs.modal', '#add_faculties', () => {
+            $('#faculties_btn_submit').text('Add Faculty');
+            $('#faculties_form').trigger('reset');
+
+            $('#employee_id').tooltip('dispose');
+            $('#employee_id').removeClass('is-invalid');
+            $('#first_name').tooltip('dispose');
+            $('#first_name').removeClass('is-invalid');
+            $('#middle_name').tooltip('dispose');
+            $('#middle_name').removeClass('is-invalid');
+            $('#last_name').tooltip('dispose');
+            $('#last_name').removeClass('is-invalid');
+
         })
     }
 
@@ -64,16 +117,18 @@
                     if (optionExists) {
                         $select.val(institute);
                     }
-                    $('#faculties_id').val(id);
-                    $('#employee_id').val(employee_id);
-                    $('#first_name').val(first_name);
-                    $('#middle_name').val(middle_name);
-                    $('#last_name').val(last_name);
+                    $('#faculties_id1').val(id);
+                    $('#employee_id1').val(employee_id);
+                    $('#first_name1').val(first_name);
+                    $('#middle_name1').val(middle_name);
+                    $('#last_name1').val(last_name);
 
                 }
             })
         })
     }
+
+
 
     //update faculties
     function updateFaculties(){
