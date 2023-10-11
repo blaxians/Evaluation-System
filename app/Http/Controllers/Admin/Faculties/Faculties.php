@@ -29,7 +29,7 @@ class Faculties extends Controller
                                 <th scope="col">First Name</th>
                                 <th scope="col">Middle Name</th>
                                 <th scope="col">Institute</th>
-                                <th scope="col" width="30px">Action</th>
+                                <th scope="col" width="30px">Edit</th>
                             </tr>
                         </thead>
                         <tbody>';

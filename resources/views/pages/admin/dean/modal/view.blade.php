@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="view_dean_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-body">
           <h2 class="modal-title fw-semibold text-center my-3" id="view_dean_name"></h3>

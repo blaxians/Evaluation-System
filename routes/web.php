@@ -113,9 +113,10 @@ Route::controller(Student::class)->group(function () {
 Route::controller(Report::class)->group(function () {
     //view list of faculties
     Route::get('/report', 'index')->name('index.report')->middleware(['auth', 'admin']);
-    Route::get('/report/faculties/{id}', 'show')->name('show')->middleware(['auth', 'admin']);
-    Route::get('/report/faculties/view/student/{id}', 'viewFromStudent')->name('viewFromStudent')->middleware(['auth', 'admin']);
-    Route::get('/report/faculties/view/dean/{id}', 'viewFromDean')->name('viewFromDean')->middleware(['auth', 'admin']);
+    Route::get('/report/card', 'card')->name('card')->middleware(['auth', 'admin']);
+    Route::get('/report/faculties', 'show')->name('show.report')->middleware(['auth', 'admin']);
+    Route::get('/report/faculties/view/student', 'viewFromStudent')->name('viewFromStudent')->middleware(['auth', 'admin']);
+    Route::get('/report/faculties/view/dean', 'viewFromDean')->name('viewFromDean')->middleware(['auth', 'admin']);
 });
 
 

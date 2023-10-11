@@ -61,10 +61,10 @@ class Dean extends Controller
                                             <td>' . $dean->name . '</td>
                                             <td>' . $dean->institute . '</td>
                                             <td>' . $status . '</td>
-                                            <td class="d-flex"><button class="btn btn-secondary btn-sm me-1" id="edit_dean_btn" data-id="' . $dean->id . '">
+                                            <td class="d-flex"><button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" class="btn btn-secondary btn-sm me-1" id="edit_dean_btn" data-id="' . $dean->id . '">
                                             <i class="bi bi-pencil-square"></i></button>
-                                            <button class="btn btn-success btn-sm" id="view_dean_btn" data-id="' . $dean->id . '">
-                                            <i class="bi bi-eye-fill"></i></button></td>
+                                            <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" class="btn btn-success btn-sm" id="view_dean_btn" data-id="' . $dean->id . '">
+                                            <i class="bi bi-eye-fill" ></i></button></td>
                           </tr>';
             }
             $table .= '</tbody>

@@ -19,14 +19,131 @@ class Report extends Controller
     {
         return view('pages.admin.report.index');
     }
-    public function show($id)
+
+    public function card(){
+        $cards = '<div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="my-3 text-center border-bottom pb-2">
+                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                </div>
+                                <div class="my-3 text-center">
+                                    <h6 class="fw-semibold">College of Agriculture</h6>
+                                    <button class="btn btn-success btn-sm" id="btn_ca_show">show</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="my-3 text-center border-bottom pb-2">
+                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                </div>
+                                <div class="my-3 text-center">
+                                    <h6 class="fw-semibold">Institute of Arts and Sciences</h6>
+                                    <button class="btn btn-success btn-sm" id="btn_ias_view">show</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="my-3 text-center border-bottom pb-2">
+                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                </div>
+                                <div class="my-3 text-center">
+                                    <h6 class="fw-semibold">Institute of Engineering and Applied Technology</h6>
+                                    <button class="btn btn-success btn-sm" id="btn_ieat_view">show</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="my-3 text-center border-bottom pb-2">
+                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                </div>
+                                <div class="my-3 text-center">
+                                    <h6 class="fw-semibold">Institute of Education</h6>
+                                    <button class="btn btn-success btn-sm" id="btn_ied_view">show</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="my-3 text-center border-bottom pb-2">
+                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                </div>
+                                <div class="my-3 text-center">
+                                    <h6 class="fw-semibold">Institute of Management</h6>
+                                    <button class="btn btn-success btn-sm" id="btn_im_view">show</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+
+    return response()->json($cards);
+    }
+
+    public function show(Request $request)
     {
+        $insti = $request->insti;
         $year_sem = YearSem::orderBy('id', 'DESC')->first();
         $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
 
-        $faculties = Faculties::where('institute', $id)->get();
+        $faculties = Faculties::where('institute', $insti)->get();
+        $faculties_table_view = '<div class="row">
+                                <div class="col">
+                                <div class="py-3">
+                                <button class="btn btn-warning btn-sm"
+                                id="btn_back_view"><i class="bi bi-caret-left-fill me-2"></i>Back</button></div>
+                                <table class="table table-bordered table-hover" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Employee Id</th>
+                                        <th>Name</th>
+                                        <th>Institute</th>
+                                        <th>Report</th>
+                                    </tr>
+                                </thead>
+                                <tbody>';
+        foreach($faculties as $key => $value){
 
-        //  gayahin mo lang ung show ng student para sa table
+            $emp_id = $value->employee_id;
+            $fullname = $value->first_name.' '.$value->middle_name.' '.$value->last_name;
+            $institute = $value->institute;
+
+            $faculties_table_view .= '<tr>
+                                        <td>'.intval($key+1).'</td>
+                                        <td>'.$emp_id.'</td>
+                                        <td>'.$fullname.'</td>
+                                        <td>'.$institute.'</td>
+                                        <td class="d-flex">
+                                            <button class="btn btn-success btn-sm me-2" id="btn_view_student_score" 
+                                            data-id="'.$value->id.'">Student</button>
+                                            <button class="btn btn-secondary btn-sm" id="btn_view_dean_score" 
+                                            data-id="'.$value->id.'">Dean</button>
+                                        </td>
+                                    </tr>';
+        }
+        $faculties_table_view .= '</tbody>
+        </table></div>
+        </div>';
+        
+            
+
+        return response()->json($faculties_table_view);
+        
+    
 
     }
 
@@ -180,8 +297,47 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             }
         }
+        $faculty_name = $faculties->first_name.' '.$faculties->middle_name.' '.$faculties->last_name;
+        $faculties_score = '<table class="table table-borderred table-hover">
+                    <thead class="table-success">
+                        <tr class="text-center">
+                            <th>Areas of Evaluation</th>
+                            <th>Total Score</th>
+                            <th>Percentage</th>
+                            <th>Formula/Equation</th>
+                            <th>Equivalent</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
 
-        return response()->json(['faculties' => $faculties, 'computation' => $computation]);
+        if (count($computation) > 0) {
+            foreach ($computation as $key => $value) {
+                $criteria = $key;
+                $total_score = $value[0];
+                $percentage = $value[1];
+                $equation = $value[2];
+                $equivalents = $value[3];
+
+                $faculties_score .= '<tr class="text-center">
+                                    <td>' . $criteria . '</td>
+                                    <td>' . $total_score . '</td>
+                                    <td>' . $percentage . '%</td>
+                                    <td>' . $equation . '</td>
+                                    <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                </tr>';
+            }
+        } else {
+            $faculties_score .= '<tr class="text-center">
+                                <td colspan="5">No data in database</td>
+                            </tr>';
+        }
+
+        $faculties_score .= '</tbody>
+                        </table>';
+
+        
+        
+        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score]);
     }
     // eto link para sa evaluation ng dean
     public function viewFromDean(Request $request)
@@ -335,7 +491,44 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             }
         }
+        $faculty_name = $faculties->first_name.' '.$faculties->middle_name.' '.$faculties->last_name;
+        $faculties_score = '<table class="table table-borderred table-hover">
+                    <thead class="table-success">
+                        <tr class="text-center">
+                            <th>Areas of Evaluation</th>
+                            <th>Total Score</th>
+                            <th>Percentage</th>
+                            <th>Formula/Equation</th>
+                            <th>Equivalent</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
 
-        return response()->json(['faculties' => $faculties, 'computation' => $computation]);
+        if (count($computation) > 0) {
+            foreach ($computation as $key => $value) {
+                $criteria = $key;
+                $total_score = $value[0];
+                $percentage = $value[1];
+                $equation = $value[2];
+                $equivalents = $value[3];
+
+                $faculties_score .= '<tr class="text-center">
+                                    <td>' . $criteria . '</td>
+                                    <td>' . $total_score . '</td>
+                                    <td>' . $percentage . '%</td>
+                                    <td>' . $equation . '</td>
+                                    <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                </tr>';
+            }
+        } else {
+            $faculties_score .= '<tr class="text-center">
+                                <td colspan="5">No data in database</td>
+                            </tr>';
+        }
+
+        $faculties_score .= '</tbody>
+                        </table>';
+
+        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score]);
     }
 }

@@ -32,7 +32,7 @@ class Student extends Controller
                                 <th scope="col">Name</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Status</th>
-                                <th scope="col" width="30px">Action</th>
+                                <th scope="col" width="30px">View</th>
                             </tr>
                         </thead>
                         <tbody>';
@@ -92,49 +92,60 @@ class Student extends Controller
         $id = $request->id;
         $status = $request->status;
         $student = User::find($id);
-        $faculties =  $student->evaluate;
-        
-        foreach ($faculties as  $value) {
-            $details = Faculties::find($value->faculties_id);
-            $value->name = $details->last_name . ' ' . $details->first_name . ' ' . $details->middle_name;
-            $value->institute = $details->institute;
-        }
 
         if ($student === null) {
             return response()->json(['error' => 'Student not found']);
-        } else {
-            
-            $faculty_table = '<table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Faculty Name</th>
-                                        <th>Institute</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-            foreach($faculties as $facult){ 
-                if($facult->status == 1){
-                    $span = '<span class="badge text-bg-success">Done</span>';
-                } else {
-                    $span = '<span class="badge text-bg-warning">Pending</span>';
-                }
+        }
+
+        $faculties = $student->evaluate;
+
+        $faculty_table = '<table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Faculty Name</th>
+                                    <th>Institute</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+
+        if (count($faculties) > 0) {
+            foreach ($faculties as $value) {
+                $details = Faculties::find($value->faculties_id);
+                $value->name = $details->last_name . ' ' . $details->first_name . ' ' . $details->middle_name;
+                $value->institute = $details->institute;
+
+                $span = ($value->status == 1) ? '<span class="badge text-bg-success">Done</span>' : '<span class="badge text-bg-warning">Pending</span>';
+
+                $faculty_name = empty($value->name) ? 'No Data' : $value->name;
+                $faculty_insti = empty($value->institute) ? 'No Data' : $value->institute;
+                $faculty_span = empty($span) ? 'No Data' : $span;
+
                 $faculty_table .= '<tr>
-                                    <td>'.$facult->name.'</td>
-                                    <td>'.$facult->institute.'</td>
-                                    <td>'.$span.'</td>
+                                    <td>' . $faculty_name . '</td>
+                                    <td>' . $faculty_insti . '</td>
+                                    <td>' . $faculty_span . '</td>
                                 </tr>';
             }
-            $faculty_table .= '</tbody>
-            </table>';
-            
-            $student->evaluations; 
-            return response()->json(['student' => $student,
-                                    'status' => $status,
-                                    'faculties' => $faculties,
-                                    'faculty_table'=>$faculty_table]);
+        } else {
+            $faculty_table .= '<tr>
+                                <td colspan="3" class="text-center ">No Data</td>
+                            </tr>';
         }
+
+        $faculty_table .= '</tbody>
+                    </table>';
+
+        $student->evaluations;
+
+        return response()->json([
+            'student' => $student,
+            'status' => $status,
+            'faculties' => $faculties,
+            'faculty_table' => $faculty_table,
+        ]);
     }
+
 }
 
         
