@@ -18,8 +18,16 @@
                         <option value="Institute of Education">Institute of Education</option>
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
-                    <input type="text" class="form-control my-1" id="dean_name" name="name" placeholder="Name" required>
-                    <input type="text" maxlength="25" class="form-control my-1" id="dean_username" name="username" id="dean_username" placeholder="Username" required>
+
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="dean_name" name="name" placeholder="Name" required>
+                        <label for="dean_name">Name</label>
+                    </div>
+                    <div class="form-floating my-2">
+                        <input type="text" maxlength="25" class="form-control" id="dean_username" name="username" id="dean_username" placeholder="Username" required>
+                        <label for="dean_username">Username</label>
+                    </div>
+                    
                     <p class="">Note: <span id="onchange_username"
                         class="text-success fw-semibold">username</span> is the default password</>
                 

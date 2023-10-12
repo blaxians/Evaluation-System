@@ -40,45 +40,26 @@
 
         <!-- widgets start -->
         <div class="row g-4 mt-1" id="widget">
-            <div class="col-md-3">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="col-md-6">
+                <div class="p-3 bg-white shadow-sm d-flex justify-content-evenly align-items-center rounded h-100">
                     <i class="fas fa-chalkboard-teacher fs-1 second-text border rounded-circle secondary-bg p-3"></i>
                     <div>
-                        <h3 class="fs-2 fw-bold primary-text">720</h3>
-                        <p class="primary-text">Faculties</p>
+                        <h3 class="fs-1 fw-bold primary-text">720</h3>
+                        <p class="primary-text fs-5">Total Faculties</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
+            <div class="col-md-6">
+                <div class="p-3 bg-white shadow-sm d-flex justify-content-evenly align-items-center rounded h-100">
                     <i class="fas fa-users fs-1 second-text border rounded-circle secondary-bg p-3"></i>
                     <div>
-                        <h3 class="fs-2 fw-bold primary-text">4920</h3>
-                        <p class="primary-text">Students</p>
+                        <h3 class="fs-1 fw-bold primary-text">4920</h3>
+                        <p class="primary-text fs-5">Total Students</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                    <i class="fas fa-book-open fs-1 second-text border rounded-circle secondary-bg p-3"></i>
-                    <div>
-                        <h3 class="fs-2 fw-bold primary-text">3899</h3>
-                        <p class="primary-text">Classes</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
-                    <i class="fas fa-user fs-1 second-text border rounded-circle secondary-bg p-3"></i>
-                    <div>
-                        <h3 class="fs-2 fw-bold primary-text">3467</h3>
-                        <p class="primary-text">Users</p>
-                    </div>
-                </div>
-            </div>
         </div>
         <!-- widgets end -->
 

@@ -11,23 +11,25 @@
                 <form action="#" method="post" class="px-5" id="deans_form_update">
                     @csrf
                     <input type="hidden" name="id" id="dean_id">
-                    <div class="my-2">
-                        <label for="username">Username:</label>
+                    <div class="form-floating my-2">
                         <input type="text" class="form-control" id="username" disabled>
+                        <label for="username" disabled>Username</label>
                     </div>
-                    <div class="my-2">
-                        <label for="name">Name:</label>
+                    
+                    <div class="form-floating my-2">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                        <label for="name">Name</label>
                     </div>
-                    <div class="my-2">
-                        <label for="name">Password:</label>
+
+                    <div class="form-floating my-2">
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" required
                         autocomplete="off">
+                        <label for="password">Password</label>
                     </div>
-                    <div class="my-2">
-                        <label for="confirmed">Confirm Password:</label>
-                        <input type="password" class="form-control" name="confirmed" id="confirmed" placeholder="Confirm Password"
-                        autocomplete="off" data-bs-placement="right">
+                    
+                    <div class="form-floating my-2">
+                        <input type="password" class="form-control" name="confirmed" id="confirmed" placeholder="Confirm Password" autocomplete="off" data-bs-placement="right">
+                        <label for="confirmed">Confirm Password</label>
                     </div>
 
                       <div class="alert d-flex d-none align-items-center" role="alert" id="password_note_container">
