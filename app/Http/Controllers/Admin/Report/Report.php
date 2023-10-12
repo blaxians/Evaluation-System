@@ -11,7 +11,6 @@ use App\Models\Faculties;
 use App\Models\Evaluation;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 
 class Report extends Controller
