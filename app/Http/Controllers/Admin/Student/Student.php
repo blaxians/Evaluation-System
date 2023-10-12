@@ -145,8 +145,4 @@ class Student extends Controller
             'faculty_table' => $faculty_table,
         ]);
     }
-
 }
-
-        
-    

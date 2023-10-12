@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Evaluation | {{ ucwords(Request::segment(1)) }}</title>
     @include('layout.links')
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
 </head>
@@ -23,7 +23,7 @@
     </div>
 
     @include('layout.scripts')
-        @include('pages.admin.components.sweet_alert_msg')
+    @include('pages.admin.components.sweet_alert_msg')
     @yield('javascript')
 
 </body>
