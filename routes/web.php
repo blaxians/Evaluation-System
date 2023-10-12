@@ -58,6 +58,7 @@ Route::get('/loading', function () {
 Route::controller(AuthController::class)->group(function () {
     Route::any('/', 'login')->name('login')->middleware('guest');
     Route::any('/logout', 'logout')->name('logout')->middleware('auth');
+    Route::any('/change-password', 'changePassword')->name('changePassword')->middleware('auth');
 });
 
 // Admin Dashboard
