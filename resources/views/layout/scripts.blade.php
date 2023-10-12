@@ -12,6 +12,8 @@
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
+{{-- chart js --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 {{-- Sweet Alert --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>

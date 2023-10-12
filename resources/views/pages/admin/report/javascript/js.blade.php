@@ -13,6 +13,7 @@
             method: 'get',
             success: function(res){
                 $('#institute_card_report').html(res);
+                $('#evaluation_report_title').text('Evaluation Report');
             }
         })
     }
@@ -29,6 +30,7 @@
                     insti: insti_view
                 },
                 success: function(res){
+                    $('#evaluation_report_title').text(insti_view);
                     $('#institute_card_report').html(res);
                     $('#table').DataTable();
                 }
@@ -44,6 +46,7 @@
                     insti: insti_view
                 },
                 success: function(res){
+                    $('#evaluation_report_title').text(insti_view);
                     $('#institute_card_report').html(res);
                     $('#table').DataTable();
                 }
@@ -59,6 +62,7 @@
                     insti: insti_view
                 },
                 success: function(res){
+                    $('#evaluation_report_title').text(insti_view);
                     $('#institute_card_report').html(res);
                     $('#table').DataTable();
                 }
@@ -74,6 +78,7 @@
                     insti: insti_view
                 },
                 success: function(res){
+                    $('#evaluation_report_title').text(insti_view);
                     $('#institute_card_report').html(res);
                     $('#table').DataTable();
                 }
@@ -89,6 +94,7 @@
                     insti: insti_view
                 },
                 success: function(res){
+                    $('#evaluation_report_title').text(insti_view);
                     $('#institute_card_report').html(res);
                     $('#table').DataTable();
                 }
@@ -113,6 +119,11 @@
                     id:id
                 },
                 success: function(res){
+                    if(res.btn_gen == '0'){
+                        $('#btn_generate_report').prop('disabled', true);
+                    } else {
+                        $('#btn_generate_report').prop('disabled', false);
+                    }
                     $('#view_faculty_score_table').html(res.faculties);
                     $('#naem_faculty').text(res.name);
                     $('#title_evaluation_generate').text('Evaluation from Student');
@@ -133,6 +144,11 @@
                     id:id
                 },
                 success: function(res){
+                    if(res.btn_gen == '0'){
+                        $('#btn_generate_report').prop('disabled', true);
+                    } else {
+                        $('#btn_generate_report').prop('disabled', false);
+                    }
                     $('#view_faculty_score_table').html(res.faculties);
                     $('#naem_faculty').text(res.name);
                     $('#title_evaluation_generate').text('Evaluation from Dean');

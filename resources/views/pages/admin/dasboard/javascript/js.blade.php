@@ -3,10 +3,143 @@
         showSetYear();
         addYear();
         viewSemester();
+        chart();
+        bargraph();
 
         
         
     })
+    //charts function
+
+    function getDeansData() {
+        //data ng downut
+            var deansDoneCount = 20;
+            var deansNotDoneCount = 5;
+
+            return {
+                labels: ["Done", "Pending"],
+                datasets: [
+                    {
+                        data: [deansDoneCount, deansNotDoneCount],
+                        backgroundColor: ["#36A2EB", "#FFCE56"], //kulay nung downut
+                    },
+                ],
+            };
+        }
+
+    function getStudentsData() {
+        //data ng downut
+        var studentsDoneCount = 35;
+        var studentsNotDoneCount = 10;
+
+        return {
+            labels: ["Done", "Pending"],
+            datasets: [
+                {
+                    data: [studentsDoneCount, studentsNotDoneCount],
+                    backgroundColor: ["#1BC500", "#FF5733"], //kulay nung downut
+                },
+            ],
+        };
+    }
+
+    Chart.plugins.register({
+        afterDraw: function(chart) {
+            if (chart.config.type === 'doughnut') {
+            var ctx = chart.chart.ctx;
+            var width = chart.chart.width;
+            var height = chart.chart.height;
+            var total = 0;
+            
+            chart.data.datasets[0].data.forEach(function (value) {
+                total += value;
+            });
+
+            var donePercentage = ((chart.data.datasets[0].data[0] / total) * 100).toFixed(2) + '%';
+
+            //format nung text percentage
+            ctx.restore();
+            ctx.font = "18px Arial";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle = "#000";
+            
+            //alignment nung text percentage
+            var text = donePercentage;
+            var textX = Math.round((width - ctx.measureText(text).width) / 2);
+            var textY = height / 1.8;
+            
+            ctx.fillText(text, textX, textY);
+            ctx.save();
+            }
+        }
+        });
+
+    function chart() {
+        var deansData = getDeansData();
+
+        new Chart($('#deansCanvas'), {
+            type: 'doughnut',
+            data: deansData,
+            options: {
+            cutoutPercentage: 55, //kapal nung downut
+            }
+        });
+
+        var studentsData = getStudentsData();
+
+        new Chart($('#studentsCanvas'), {
+            type: 'doughnut',
+            data: studentsData,
+            options: {
+            cutoutPercentage: 55, //yung kapal nung downut
+            }
+        });
+    }
+
+    //bargraph
+    function bargraph(){
+        var facultyData = {
+        labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
+            datasets: [{
+                label: 'Number of Faculty',
+                data: [25, 30, 15, 20, 18], 
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)'
+                    ],
+                borderWidth: 1
+            }]
+        };
+
+        var ctx = document.getElementById('facultyChart').getContext('2d');
+        var facultyChart = new Chart(ctx, {
+            type: 'bar',
+            data: facultyData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+    }
+
+
+
+
+    
+
     
     function addYear(){
         $(document).on('click', '#btn_update_year', function(e){

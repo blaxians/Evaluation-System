@@ -311,6 +311,7 @@ class Report extends Controller
                     <tbody>';
 
         if (count($computation) > 0) {
+            $gen_button_active = '1';
             foreach ($computation as $key => $value) {
                 $criteria = $key;
                 $total_score = $value[0];
@@ -327,6 +328,7 @@ class Report extends Controller
                                 </tr>';
             }
         } else {
+            $gen_button_active = '0';
             $faculties_score .= '<tr class="text-center">
                                 <td colspan="5">No data in database</td>
                             </tr>';
@@ -337,7 +339,7 @@ class Report extends Controller
 
         
         
-        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score]);
+        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score, 'btn_gen'=>$gen_button_active]);
     }
     // eto link para sa evaluation ng dean
     public function viewFromDean(Request $request)
@@ -505,6 +507,7 @@ class Report extends Controller
                     <tbody>';
 
         if (count($computation) > 0) {
+            $gen_button_active = '1';
             foreach ($computation as $key => $value) {
                 $criteria = $key;
                 $total_score = $value[0];
@@ -520,7 +523,9 @@ class Report extends Controller
                                     <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
                                 </tr>';
             }
+            
         } else {
+            $gen_button_active = '0';
             $faculties_score .= '<tr class="text-center">
                                 <td colspan="5">No data in database</td>
                             </tr>';
@@ -529,6 +534,9 @@ class Report extends Controller
         $faculties_score .= '</tbody>
                         </table>';
 
-        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score]);
+        
+        return response()->json(['name'=>$faculty_name, 'faculties' => $faculties_score, 
+    'btn_gen'=>$gen_button_active]);
+        
     }
 }
