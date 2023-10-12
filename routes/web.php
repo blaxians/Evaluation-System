@@ -67,6 +67,7 @@ Route::controller(Dashboard::class)->group(function () {
     Route::any('/dashboard/show', 'show')->name('show.dashboard')->middleware(['auth', 'admin']);
     Route::any('/dashboard/post', 'post')->name('post.dashboard')->middleware(['auth', 'admin']);
     Route::any('/dashboard/edit', 'edit')->name('edit.dashboard')->middleware(['auth', 'admin']);
+    Route::any('/dashboard/stats', 'statistic')->name('statistic')->middleware(['auth', 'admin']);
 });
 
 // Admin Questionnaire
