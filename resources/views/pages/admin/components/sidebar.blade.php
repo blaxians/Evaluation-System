@@ -26,17 +26,18 @@
         {{ Request::segment(1) === 'dean' ? 'active' : '' }}">
             <i class="fa-solid fa-user-tie me-2"></i>Dean's
         </a>
-        <a href="{{ route('index.student') }}" 
-        class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link 
+        <a href="{{ route('index.student') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link 
         {{ Request::segment(1) === 'students' ? 'active' : '' }}">
             <i class="fas fa-users me-2"></i>Students
         </a>
-        <a href="{{ route('index.report') }}" 
-        class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link
-        {{ Request::segment(1) === 'report' ? 'active':'' }}">
+        <a href="{{ route('index.report') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link
+        {{ Request::segment(1) === 'report' ? 'active' : '' }}">
             <i class="fas fa-file-invoice me-2"></i>Evaluation Report
         </a>
-        <a href="#" class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
+        <a href="{{ route('import.student') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action third-text fw-bold nav-link">
             <i class="fas fa-user-friends me-2"></i>Users
         </a>
 

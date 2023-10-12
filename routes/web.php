@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Dean\Dean;
 use App\Http\Controllers\Admin\Student\Student;
 use App\Http\Controllers\Admin\Dashboard\Dashboard;
 use App\Http\Controllers\Admin\Faculties\Faculties;
+use App\Http\Controllers\Admin\Import\Import;
 use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Admin\Report\Report;
@@ -117,6 +118,12 @@ Route::controller(Report::class)->group(function () {
     Route::get('/report/faculties', 'show')->name('show.report')->middleware(['auth', 'admin']);
     Route::get('/report/faculties/view/student', 'viewFromStudent')->name('viewFromStudent')->middleware(['auth', 'admin']);
     Route::get('/report/faculties/view/dean', 'viewFromDean')->name('viewFromDean')->middleware(['auth', 'admin']);
+});
+
+//Admin Import
+Route::controller(Import::class)->group(function () {
+    Route::get('/import/student', 'index')->name('import.student')->middleware(['auth', 'admin']);
+    Route::post('/import/student/post', 'import')->name('import.post')->middleware(['auth', 'admin']);
 });
 
 
