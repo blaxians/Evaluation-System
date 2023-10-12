@@ -172,38 +172,35 @@ class Report extends Controller
             }
         }
 
-        $q1 = 0;
-        $q2 = 0;
-        $q3 = 0;
-        $q4 = 0;
-        $q5 = 0;
-        $q6 = 0;
 
+        $hps = [0, 0, 0, 0, 0, 0];
         $question = Question::all();
         foreach ($question as $value) {
             if ($value->criteria === "Teacher's Personality") {
-                $q1++;
+                $hps[0]++;
             } else if ($value->criteria === "Classroom Management") {
-                $q2++;
+                $hps[1]++;
             } else if ($value->criteria === "Knowledge of the Subject Matter") {
-                $q3++;
+                $hps[2]++;
             } else if ($value->criteria === "Teaching Skills") {
-                $q4++;
+                $hps[3]++;
             } else if ($value->criteria === "Skills in Evaluating the Students") {
-                $q5++;
+                $hps[4]++;
             } else if ($value->criteria === "Attitude towards the Subject and the Students") {
-                $q6++;
+                $hps[5]++;
             }
         }
 
-
+        foreach ($hps as $key => $value) {
+            $hps[$key] = $value * 5;
+        }
 
 
         $computation = [];
         foreach ($score as $key => $value) {
             if ($key === "Teacher's Personality") {
                 $percent = 10;
-                $formula = intVal($value) / $q1 * $percent;
+                $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -219,7 +216,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Classroom Management") {
                 $percent = 10;
-                $formula = intVal($value) / $q2 * $percent;
+                $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -235,7 +232,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Knowledge of the Subject Matter") {
                 $percent = 20;
-                $formula = intVal($value) / $q3 * $percent;
+                $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -251,7 +248,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Teaching Skills") {
                 $percent = 20;
-                $formula = intVal($value) / $q4 * $percent;
+                $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -267,7 +264,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Skills in Evaluating the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q5 * $percent;
+                $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -283,7 +280,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Attitude towards the Subject and the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q6 * $percent;
+                $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -299,6 +296,27 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             }
         }
+
+        $average = 0;
+        foreach ($computation as $key => $value) {
+            $average += $value[2];
+        }
+
+        $equivalent = '';
+        if ($average >= 100 && $average <= 90) {
+            $equivalent = 'Outstanding';
+        } else if ($average >= 89 && $average <= 85) {
+            $equivalent = 'Very Satisfactory';
+        } else if ($average >= 84 && $average <= 80) {
+            $equivalent = 'Satisfactory';
+        } else if ($average >= 79 && $average <= 75) {
+            $equivalent = 'Fairly Satisfactory';
+        } else {
+            $equivalent = 'Needs Improvement';
+        }
+
+        // eto ung total and ung equivalent
+        $final_average = ['total' => $average, 'equivalent' => $equivalent];
 
 
         $faculty_name = $faculties->first_name . ' ' . $faculties->middle_name . ' ' . $faculties->last_name;
@@ -374,35 +392,35 @@ class Report extends Controller
         }
 
 
-        $q1 = 0;
-        $q2 = 0;
-        $q3 = 0;
-        $q4 = 0;
-        $q5 = 0;
-        $q6 = 0;
 
+        $hps = [0, 0, 0, 0, 0, 0];
         $question = Question::all();
         foreach ($question as $value) {
             if ($value->criteria === "Teacher's Personality") {
-                $q1++;
-            } else if ($value->criteria  === "Classroom Management") {
-                $q2++;
-            } else if ($value->criteria  === "Knowledge of the Subject Matter") {
-                $q3++;
-            } else if ($value->criteria  === "Teaching Skills") {
-                $q4++;
-            } else if ($value->criteria  === "Skills in Evaluating the Students") {
-                $q5++;
-            } else if ($value->criteria  === "Attitude towards the Subject and the Students") {
-                $q6++;
+                $hps[0]++;
+            } else if ($value->criteria === "Classroom Management") {
+                $hps[1]++;
+            } else if ($value->criteria === "Knowledge of the Subject Matter") {
+                $hps[2]++;
+            } else if ($value->criteria === "Teaching Skills") {
+                $hps[3]++;
+            } else if ($value->criteria === "Skills in Evaluating the Students") {
+                $hps[4]++;
+            } else if ($value->criteria === "Attitude towards the Subject and the Students") {
+                $hps[5]++;
             }
         }
+
+        foreach ($hps as $key => $value) {
+            $hps[$key] = $value * 5;
+        }
+
 
         $computation = [];
         foreach ($score as $key => $value) {
             if ($key === "Teacher's Personality") {
                 $percent = 10;
-                $formula = intVal($value) / $q1 * $percent;
+                $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -418,7 +436,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Classroom Management") {
                 $percent = 10;
-                $formula = intVal($value) / $q2 * $percent;
+                $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -434,7 +452,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Knowledge of the Subject Matter") {
                 $percent = 20;
-                $formula = intVal($value) / $q3 * $percent;
+                $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -450,7 +468,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Teaching Skills") {
                 $percent = 20;
-                $formula = intVal($value) / $q4 * $percent;
+                $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -466,7 +484,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Skills in Evaluating the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q5 * $percent;
+                $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -482,7 +500,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Attitude towards the Subject and the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q6 * $percent;
+                $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -498,6 +516,29 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             }
         }
+
+        $average = 0;
+        foreach ($computation as $key => $value) {
+            $average += $value[2];
+        }
+
+        $equivalent = '';
+        if ($average >= 100 && $average <= 90) {
+            $equivalent = 'Outstanding';
+        } else if ($average >= 89 && $average <= 85) {
+            $equivalent = 'Very Satisfactory';
+        } else if ($average >= 84 && $average <= 80) {
+            $equivalent = 'Satisfactory';
+        } else if ($average >= 79 && $average <= 75) {
+            $equivalent = 'Fairly Satisfactory';
+        } else {
+            $equivalent = 'Needs Improvement';
+        }
+
+        // eto ung total and ung equivalent
+        $final_average = ['total' => $average, 'equivalent' => $equivalent];
+
+
         $faculty_name = $faculties->first_name . ' ' . $faculties->middle_name . ' ' . $faculties->last_name;
         $faculties_score = '<table class="table table-borderred table-hover">
                     <thead class="table-success">
@@ -593,35 +634,35 @@ class Report extends Controller
             }
         }
 
-        $q1 = 0;
-        $q2 = 0;
-        $q3 = 0;
-        $q4 = 0;
-        $q5 = 0;
-        $q6 = 0;
 
+        $hps = [0, 0, 0, 0, 0, 0];
         $question = Question::all();
         foreach ($question as $value) {
             if ($value->criteria === "Teacher's Personality") {
-                $q1++;
+                $hps[0]++;
             } else if ($value->criteria === "Classroom Management") {
-                $q2++;
+                $hps[1]++;
             } else if ($value->criteria === "Knowledge of the Subject Matter") {
-                $q3++;
+                $hps[2]++;
             } else if ($value->criteria === "Teaching Skills") {
-                $q4++;
+                $hps[3]++;
             } else if ($value->criteria === "Skills in Evaluating the Students") {
-                $q5++;
+                $hps[4]++;
             } else if ($value->criteria === "Attitude towards the Subject and the Students") {
-                $q6++;
+                $hps[5]++;
             }
         }
+
+        foreach ($hps as $key => $value) {
+            $hps[$key] = $value * 5;
+        }
+
 
         $computation = [];
         foreach ($score as $key => $value) {
             if ($key === "Teacher's Personality") {
                 $percent = 10;
-                $formula = intVal($value) / $q1 * $percent;
+                $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -637,7 +678,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Classroom Management") {
                 $percent = 10;
-                $formula = intVal($value) / $q2 * $percent;
+                $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -653,7 +694,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Knowledge of the Subject Matter") {
                 $percent = 20;
-                $formula = intVal($value) / $q3 * $percent;
+                $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -669,7 +710,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Teaching Skills") {
                 $percent = 20;
-                $formula = intVal($value) / $q4 * $percent;
+                $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -685,7 +726,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Skills in Evaluating the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q5 * $percent;
+                $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -701,7 +742,7 @@ class Report extends Controller
                 $computation[$key] = [$value, $percent, $formula, $equivalent];
             } else if ($key === "Attitude towards the Subject and the Students") {
                 $percent = 20;
-                $formula = intVal($value) / $q6 * $percent;
+                $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
                 if ($formula >= 100 && $formula <= 90) {
                     $equivalent = 'Outstanding';
@@ -718,11 +759,34 @@ class Report extends Controller
             }
         }
 
+        $average = 0;
+        foreach ($computation as $key => $value) {
+            $average += $value[2];
+        }
+
+        $equivalent = '';
+        if ($average >= 100 && $average <= 90) {
+            $equivalent = 'Outstanding';
+        } else if ($average >= 89 && $average <= 85) {
+            $equivalent = 'Very Satisfactory';
+        } else if ($average >= 84 && $average <= 80) {
+            $equivalent = 'Satisfactory';
+        } else if ($average >= 79 && $average <= 75) {
+            $equivalent = 'Fairly Satisfactory';
+        } else {
+            $equivalent = 'Needs Improvement';
+        }
+
+        // eto ung total and ung equivalent
+        $final_average = ['total' => $average, 'equivalent' => $equivalent];
+
+
         // Type if student or dean ung ni click na view
         $type = $data[1];
-        $pdf = Pdf::loadView('pages.admin.report.pdf', compact('faculties', 'computation', 'type'));
+        $pdf = Pdf::loadView('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average'));
         // download PDF file with download method
         $pdf->setPaper('A4', 'Portrait');
-        return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
+        return $pdf->stream();
+        // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
     }
 }
