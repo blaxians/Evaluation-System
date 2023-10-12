@@ -22,6 +22,7 @@
                     {
                         data: [deansDoneCount, deansNotDoneCount],
                         backgroundColor: ["#36A2EB", "#FFCE56"], //kulay nung downut
+                         
                     },
                 ],
             };
@@ -38,6 +39,7 @@
                 {
                     data: [studentsDoneCount, studentsNotDoneCount],
                     backgroundColor: ["#1BC500", "#FF5733"], //kulay nung downut
+                     
                 },
             ],
         };

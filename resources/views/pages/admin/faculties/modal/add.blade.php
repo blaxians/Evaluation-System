@@ -18,11 +18,27 @@
                         <option value="Institute of Education">Institute of Education</option>
                         <option value="Institute of Management">Institute of Management</option>
                     </select>
-                    <input type="text" class="form-control my-1" data-bs-placement="right" name="employee_id" id="employee_id" placeholder="Employee ID">
-                    <input type="text" class="form-control my-1" data-bs-placement="right" name="first_name" id="first_name" placeholder="First Name" required>
-                    <input type="text" class="form-control my-1" data-bs-placement="right" name="middle_name" id="middle_name" placeholder="Middle Name"
-                        required>
-                    <input type="text" class="form-control my-1" data-bs-placement="right" name="last_name" id="last_name" placeholder="Last Name" required>
+                    
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" data-bs-placement="right" name="employee_id" id="employee_id" placeholder="Employee ID" required>
+                        <label for="employee_id">Employee ID</label>
+                    </div>
+                    
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control my-1" data-bs-placement="right" name="first_name" id="first_name" placeholder="First Name" required>
+                        <label for="first_name">First Name</label>
+                    </div>
+                    
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control my-1" data-bs-placement="right" name="middle_name" id="middle_name" placeholder="Middle Name" required>
+                        <label for="middle_name">Middle Name</label>
+                    </div>
+                    
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control my-1" data-bs-placement="right" name="last_name" id="last_name" placeholder="Last Name" required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+                    
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
