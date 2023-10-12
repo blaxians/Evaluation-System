@@ -32,7 +32,7 @@ class Import extends Controller
                     User::create([
                         'name' => $value[0],
                         'username' => $value[1],
-                        'password' => Hash::make($value[0]),
+                        'password' => Hash::make($value[1]),
                         'role' => 'student'
                     ]);
                     $uploaded_count++;
