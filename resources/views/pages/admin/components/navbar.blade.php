@@ -1,3 +1,4 @@
+ 
  <!-- navigation bar start -->
  <nav class="navbar navbar-expand-lg navbar-light p-3 border-bottom">
      <div class="d-flex align-items-center flex-shrink-1">
@@ -12,11 +13,16 @@
                  Hello, <span class="fw-bold">Ian Blas</span>
              </a>
              <ul class="dropdown-menu dropdown-menu-end">
-                 {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
-                <li><a class="dropdown-item fs-6" href="#">Settings</a></li> --}}
+                 {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li> --}}
                  <li><a class="dropdown-item fs-6" href="{{ route('logout') }}">Logout</a></li>
+                 <li><a class="dropdown-item fs-6" role="button" data-bs-toggle="modal"
+                     data-bs-target="#change_password">Change Password</a></li>
              </ul>
          </li>
      </ul>
  </nav>
+
+ @include('pages.admin.components.modal.change_pass')
+ @include('pages.admin.components.javascript.js')
+
  <!-- navigation bar end -->

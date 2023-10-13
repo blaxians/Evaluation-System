@@ -43,8 +43,8 @@
             <div class="col-md-6">
                 <div class="p-3 bg-white shadow-sm d-flex justify-content-evenly align-items-center rounded h-100">
                     <i class="fas fa-chalkboard-teacher fs-1 second-text border rounded-circle secondary-bg p-3"></i>
-                    <div>
-                        <h3 class="fs-1 fw-bold primary-text">720</h3>
+                    <div class="d-flex flex-column align-items-center">
+                        <h3 class="fs-1 fw-bold primary-text" id="dashboard_total_faculties"><i class="bi bi-dash-lg"></i></h3>
                         <p class="primary-text fs-5">Total Faculties</p>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
             <div class="col-md-6">
                 <div class="p-3 bg-white shadow-sm d-flex justify-content-evenly align-items-center rounded h-100">
                     <i class="fas fa-users fs-1 second-text border rounded-circle secondary-bg p-3"></i>
-                    <div>
-                        <h3 class="fs-1 fw-bold primary-text">4920</h3>
+                    <div class="d-flex flex-column align-items-center">
+                        <h3 class="fs-1 fw-bold primary-text" id="dashboard_total_students"><i class="bi bi-dash-lg"></i></h3>
                         <p class="primary-text fs-5">Total Students</p>
                     </div>
                 </div>

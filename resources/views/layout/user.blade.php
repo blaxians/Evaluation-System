@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Evaluation | {{ ucwords(Request::segment(1)) }}</title>
     @include('layout.links')
+    <link rel="icon" href="storage/img/main/basc.png" type="image/png">
     <link rel="stylesheet" href="{{ asset('assets/css/user.css') }}">
 </head>
 

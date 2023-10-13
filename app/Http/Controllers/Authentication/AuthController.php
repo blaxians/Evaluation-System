@@ -59,6 +59,7 @@ class AuthController extends Controller
         }
     }
 
+    //change password
     public function changePassword(Request $request)
     {
 

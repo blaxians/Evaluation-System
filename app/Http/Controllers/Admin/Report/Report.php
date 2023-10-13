@@ -23,6 +23,7 @@ class Report extends Controller
 
     public function card()
     {
+        $path = storage_path('app/public/assets/storage/img/main/basc.png');
         $cards = '<div class="row g-3">
                     <div class="col-md-4">
                         <div class="card h-100">

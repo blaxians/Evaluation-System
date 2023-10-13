@@ -84,18 +84,20 @@ class Dashboard extends Controller
     }
 
 
+    //stats
+
     public function statistic()
     {
 
         $total_faculties = count(Faculties::all());
         $total_students = count(User::where('role', 'student')->get());
-
         $total_per_institute = [];
+
         $total_per_institute[0] = count(Faculties::where('institute', 'College of Agriculture')->get());
         $total_per_institute[1] = count(Faculties::where('institute', 'Institute of Arts and Science')->get());
         $total_per_institute[2] = count(Faculties::where('institute', 'Institute of Engineering and Applied Technology')->get());
         $total_per_institute[3] = count(Faculties::where('institute', 'Institute of Education')->get());
-        $total_per_institute[5] = count(Faculties::where('institute', 'Institute of Management')->get());
+        $total_per_institute[4] = count(Faculties::where('institute', 'Institute of Management')->get());
 
 
         $year_sem = YearSem::orderBy('id', 'DESC')->first();
@@ -107,6 +109,7 @@ class Dashboard extends Controller
         // [Done,Pending]
         $dean = [0, 0];
         $student = [0, 0];
+
         foreach ($user as $value) {
             if ($value->role == 'student') {
                 $evaluate = Evaluate::where('user_id', $value->id)->where('year_sem', $new_year_sem)->get();
@@ -146,5 +149,13 @@ class Dashboard extends Controller
                 }
             }
         }
+
+        return response()->json([
+            'total_faculty'=>$total_faculties,
+            'total_student'=>$total_students,
+            'total_institute'=>$total_per_institute,
+            'dean'=>$dean,
+            'student'=>$student,
+        ]);
     }
 }
