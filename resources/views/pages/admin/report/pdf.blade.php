@@ -24,6 +24,11 @@
     <div class="container-fluid border border-dark p-5">
 
     </div>
+    @dump($faculties)
+    @dump($type)
+    @dump($final_average)
+    @dump($new_year_sem)
+
 
 
 </body>
@@ -47,14 +52,27 @@
         width: 100%;
         }
 
-        table.custom-table th, table.custom-table td {
+        table.custom-table thead td {
             border: 1px solid #000; /* 1px solid black border */
-            padding: 8px;
+            padding: 2px;
             text-align: center;
+            vertical-align:top;
+            font-size:15px;
+            font-weight:600;
         }
+        table.custom-table tbody td {
+            border: 1px solid #000; /* 1px solid black border */
+            padding: 2px;
+            text-align: center;
+            vertical-align: middle;
+            font-size:15px;
+            font-weight:normal;
+           
+        }
+
       
         /* Styling for the overlay */
-        #loading-overlay {
+        /* #loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -74,7 +92,7 @@
             width: 50px;
             height: 50px;
             animation: spin 2s linear infinite;
-        }
+        } */
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -108,11 +126,17 @@
                 <p class="mt-2">20 July 2023</p>
                 <h2 class="text-center my-2 fw-bold text-uppercase">CERTIFICATION</h1>
             </div>
-    
+            @php 
+                $text_base = ($type == 'student') ?
+                 'This is to certify that the faculty listed below obtained the indicated average student evaluation
+                    in the specified term: ' : 'This is to certify that the faculty listed below obtained the indicated supervisor evaluation
+                    in the specified term: ';
+                $roles = ($type == 'student' ? 'average student' : 'supervisor')
+            @endphp
             <div class="row mt-4">
                 <p class="fw-bold p-1">To whom it may concern:</p>
-                <p class="m-0 p-1">This is to certify that the faculty listed below obtained the indicated supervisor evaluation
-                    in the specified term: 
+                <p class="m-0 p-1">
+                    {{ $text_base }}
                 </p>
             </div>
     
@@ -120,23 +144,23 @@
                 <table class="table custom-table">
                     <thead>
                         <tr class="text-center">
-                            <th>Faculty Name</th>
-                            <th>Percentage</th>
-                            <th>Equivalent</th>
-                            <th>Term</th>
+                            <td style="width: 250px;">Faculty Name</td>
+                            <td class="text-capitalize">{{ $roles }} Evaluation</td>
+                            <td>Equivalent</td>
+                            <td>Term</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="text-center">
-                            <td>Christine V. Grimaldo</td>
-                            <td>94%</td>
-                            <td>Outstanding</td>
-                            <td>1st Sem, SY 2022-2023</td>
+                            <td class="text-capitalize">{{ $faculties->first_name.' '.$faculties->middle_name.' '.$faculties->last_name }}</td>
+                            <td>{{ $final_average['total'] }}%</td>
+                            <td>{{ $final_average['equivalent'] }}</td>
+                            <td id="year_sem">{{ $new_year_sem }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-    
+            <p class="  text-capitalize" id="type_js">{{ $type }}</p>
             <div class="row mt-2">
                 <p class="m-0 p-1">This certificate is being issued for faculty reclassification purposes under DBM-CHED Joint 
                     Circular No.3, s.2023.
@@ -170,6 +194,7 @@
         $(document).ready(function() {
             generatePDF();
         });
+        
 
         function generatePDF() {
             const { jsPDF } = window.jspdf;
@@ -181,9 +206,12 @@
             html2canvas(element, { scale: scale }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF('p', 'mm', 'a4');
-                pdf.addImage(imgData, 'PNG', 0, 0, 210, 247); 
+                pdf.addImage(imgData, 'PNG', 0, 0, 210, 250); 
 
-                pdf.save('Evaluation_Certificate.pdf');
+                let file_name = $('#type_js').text();
+                var up_file_name = file_name[0].toUpperCase() + file_name.slice(1);
+                up_file_name = up_file_name + '-Evaluation [' + $('#year_sem').text() + ']';
+                pdf.save(up_file_name); 
                 $('#loading-overlay').hide();
                 window.location.href = "/report";
             });

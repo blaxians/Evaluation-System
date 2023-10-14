@@ -590,6 +590,15 @@ class Report extends Controller
     public function generatePdfStudent(Request $request)
     {
 
+        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $year = intval($year_sem->year);
+        if ($year_sem->semester == '1') {
+            $new_year_sem = '1st Sem, SY ' . $year . '-' . ($year + 1);
+        } else {
+            $new_year_sem = '2nd Sem, SY ' . $year . '-' . ($year + 1);
+        }
+
+        
         $id = $request->id;
         $data = explode(',', $id);
         $faculties = Faculties::find($data[0]);
@@ -761,7 +770,7 @@ class Report extends Controller
 
         $average = 0;
         foreach ($computation as $key => $value) {
-            $average += $value[2];
+            $average += $value[2]; //overall percentage
         }
 
         $equivalent = '';
@@ -788,7 +797,13 @@ class Report extends Controller
         // $pdf->setPaper('A4', 'Portrait');
         // return $pdf->stream();
         // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
-        return response()->json(['status'=>'success', 'faculties'=>$faculties, 'computation'=>$computation, 'type'=>$type, 'final_average'=>$final_average]);
+        // return response()->json(['status'=>'success',
+        // $faculties,
+        // $computation,
+        // $type,
+        //     $final_average,
+        //    $new_year_sem]);
+        return view('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average', 'new_year_sem'));
     }
 
     public function reportPdfStudent(){
