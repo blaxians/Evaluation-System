@@ -72,7 +72,7 @@
 
       
         /* Styling for the overlay */
-        /* #loading-overlay {
+        #loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -92,7 +92,7 @@
             width: 50px;
             height: 50px;
             animation: spin 2s linear infinite;
-        } */
+        }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
