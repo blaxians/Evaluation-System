@@ -23,13 +23,12 @@ class Report extends Controller
 
     public function card()
     {
-        $path = storage_path('app/public/assets/storage/img/main/basc.png');
         $cards = '<div class="row g-3">
                     <div class="col-md-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">College of Agriculture</h6>
@@ -42,7 +41,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Arts and Sciences</h6>
@@ -55,7 +54,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Engineering and Applied Technology</h6>
@@ -68,7 +67,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Education</h6>
@@ -81,7 +80,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="storage/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Management</h6>
@@ -784,10 +783,15 @@ class Report extends Controller
 
         // Type if student or dean ung ni click na view
         $type = $data[1];
-        $pdf = Pdf::loadView('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average'));
+        // $pdf = Pdf::loadView('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average'));
         // download PDF file with download method
-        $pdf->setPaper('A4', 'Portrait');
-        return $pdf->stream();
+        // $pdf->setPaper('A4', 'Portrait');
+        // return $pdf->stream();
         // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
+        return response()->json(['status'=>'success', 'faculties'=>$faculties, 'computation'=>$computation, 'type'=>$type, 'final_average'=>$final_average]);
+    }
+
+    public function reportPdfStudent(){
+        return view('pages.admin.report.pdf');
     }
 }

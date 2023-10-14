@@ -4,8 +4,33 @@
         showCardInstitute();
         viewFacultyScore();
         viewDeanScore();
+        generateReport();
 
     })
+    //generate report
+    function generateReport(){
+        $(document).on('submit', '#generate_report_form', function(e){
+            e.preventDefault();
+            const fd = new FormData(this);
+            $.ajax({
+                url: "{{ route('generatePdfStudent') }}",
+                method: 'post',
+                data: fd,
+                processData:false,
+                contentType: false,
+                cache: false,
+                success: function(res){
+                    console.log(res);
+                    if(res.status == 'success'){
+                        window.location.href = "{{ route('reportPdfStudent') }}";
+                    }
+
+                }
+            })
+        })
+    }
+
+   
     //show card institute
     function showCardInstitute() {
         $.ajax({

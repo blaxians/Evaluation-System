@@ -14,7 +14,7 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{ route('generatePdfStudent') }}" method="post">
+                <form action="#" method="post" id="generate_report_form">
                     @csrf
                     <input type="hidden" id="hidden_id" name="id">
                     <button class="btn btn-success" id="btn_generate_report">Generate Report</button>
