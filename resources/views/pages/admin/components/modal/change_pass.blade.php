@@ -13,12 +13,15 @@
                         <label for="password_old">Old Password</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" name="password_new" id="password_new" placeholder="New Password" required>
+                        <input type="password" class="form-control" name="password_new" id="password_new" placeholder="New Password" required>
                         <label for="password_new">New Password</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" name="password_confirm" id="password_confirm" placeholder="Confirm Password" required>
+                        <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="Confirm Password" required>
                         <label for="password_confirm">Confirm Password</label>
+                    </div>
+                    <div class="my-2">
+                        
                     </div>
                 </div>
                 <div class="modal-footer">

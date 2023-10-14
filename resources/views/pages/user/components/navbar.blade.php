@@ -14,6 +14,8 @@
                 {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
                 <li><a class="dropdown-item fs-6" href="#">Settings</a></li> --}}
                 <li><a class="dropdown-item fs-6" href="{{ route('logout') }}">Logout</a></li>
+                <li><a class="dropdown-item fs-6" role="button" data-bs-toggle="modal"
+                    data-bs-target="#change_password_user">Change Password</a></li>
             </ul>
         </li>
     </ul>
@@ -27,8 +29,14 @@
                 {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
                 <li><a class="dropdown-item fs-6" href="#">Settings</a></li> --}}
                 <li><a class="dropdown-item fs-6" href="{{ route('logout') }}">Logout</a></li>
+                <li><a class="dropdown-item fs-6" role="button" data-bs-toggle="modal"
+                    data-bs-target="#change_password_user">Change Password</a></li>
             </ul>
         </li>
     </ul>
 </nav>
+
+@include('pages.user.components.modal.change_pass')
+@include('pages.user.components.javascript.js')
+
 <!-- navigation bar end -->

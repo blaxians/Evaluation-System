@@ -1,39 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    
-    
-</head>
-
-<body>
-
-    {{ $type }}
-    {{ $faculties->last_name }}
-    @foreach ($computation as $key => $item)
-        <p>{{ $key }}</p>
-        <p>{{ $item[0] }}</p>
-        <p>{{ $item[1] }}</p>
-        <p>{{ $item[2] }}</p>
-        <p>{{ $item[3] }}</p>
-    @endforeach
-    <div class="container-fluid border border-dark p-5">
-
-    </div>
-    @dump($faculties)
-    @dump($type)
-    @dump($final_average)
-    @dump($new_year_sem)
-
-
-
-</body>
-
-</html> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +17,7 @@
         }
 
         table.custom-table thead td {
-            border: 1px solid #000; /* 1px solid black border */
+            border: 1px solid #000; 
             padding: 2px;
             text-align: center;
             vertical-align:top;
@@ -61,7 +25,7 @@
             font-weight:600;
         }
         table.custom-table tbody td {
-            border: 1px solid #000; /* 1px solid black border */
+            border: 1px solid #000; 
             padding: 2px;
             text-align: center;
             vertical-align: middle;
@@ -71,7 +35,6 @@
         }
 
       
-        /* Styling for the overlay */
         #loading-overlay {
             position: fixed;
             top: 0;
@@ -160,7 +123,7 @@
                     </tbody>
                 </table>
             </div>
-            <p class="  text-capitalize" id="type_js">{{ $type }}</p>
+            <p class="d-none" id="type_js">{{ $type }}</p>
             <div class="row mt-2">
                 <p class="m-0 p-1">This certificate is being issued for faculty reclassification purposes under DBM-CHED Joint 
                     Circular No.3, s.2023.
