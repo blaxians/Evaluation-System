@@ -6,13 +6,13 @@
         //total student and faculties
         totalStudenFaculties();
 
-        //dougnut chart
-        initializeCharts();
-        showTotalData();
+            //dougnut chart
+            initializeCharts();
+            showTotalData();
 
-        //bar chart
-        createInitialBarGraph();
-        loadDataAndInitializeChart();
+            //bar chart
+            createInitialBarGraph();
+            loadDataAndInitializeChart();
         
        
     })
@@ -95,7 +95,7 @@
             datasets: [
                 {
                     data: [deansDoneCount, deansNotDoneCount],
-                    backgroundColor: ["#36A2EB", "#FFCE56"],
+                    backgroundColor: ["#004225", "#AEC3AE"],
                 },
             ],
         };
@@ -107,7 +107,7 @@
             datasets: [
                 {
                     data: [studentsDoneCount, studentsNotDoneCount],
-                    backgroundColor: ["#1BC500", "#FF5733"],
+                    backgroundColor: ["#952323", "#EEE2DE"],
                 },
             ],
         };
@@ -236,18 +236,18 @@
                             label: 'Number of Faculty',
                             data: res.total_institute.slice(0, 5), // take first 5 values
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(255, 159, 64, 0.2)',
-                                'rgba(255, 205, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(54, 162, 235, 0.2)'
+                                'rgba(0, 255, 0, 0.2)',
+                                'rgb(54, 162, 235, 0.2)',
+                                'rgb(149, 35, 35, 0.2)',
+                                'rgba(83, 112, 252, 0.2)',
+                                'rgba(139, 80, 253, 0.2)'
                             ],
                             borderColor: [
-                                'rgb(255, 99, 132)',
-                                'rgb(255, 159, 64)',
-                                'rgb(255, 205, 86)',
-                                'rgb(75, 192, 192)',
-                                'rgb(54, 162, 235)'
+                                'rgb(0, 255, 0)',
+                                'rgb(54, 162, 235)',
+                                'rgb(149, 35, 35)',
+                                'rgb(83, 112, 252)',
+                                'rgb(139, 80, 253)'
                             ],
                             borderWidth: 1
                         }]

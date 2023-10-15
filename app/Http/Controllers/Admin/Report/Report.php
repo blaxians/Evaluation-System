@@ -32,7 +32,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">College of Agriculture</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ca_show">show</button>
+                                    <button class="btn btn-success btn-sm" id="btn_ca_show">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Arts and Sciences</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ias_view">show</button>
+                                    <button class="btn btn-success btn-sm" id="btn_ias_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Engineering and Applied Technology</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ieat_view">show</button>
+                                    <button class="btn btn-success btn-sm" id="btn_ieat_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Education</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ied_view">show</button>
+                                    <button class="btn btn-success btn-sm" id="btn_ied_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Management</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_im_view">show</button>
+                                    <button class="btn btn-success btn-sm" id="btn_im_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +95,7 @@ class Report extends Controller
         return response()->json($cards);
     }
 
-    public function show(Request $request)
+    public function Show(Request $request)
     {
         $insti = $request->insti;
         $year_sem = YearSem::orderBy('id', 'DESC')->first();

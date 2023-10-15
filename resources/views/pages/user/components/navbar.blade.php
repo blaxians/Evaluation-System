@@ -8,7 +8,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Hello, <span class="fw-bold">Ian Blas</span>
+                <i class="bi bi-person-fill fs-3"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 {{-- <li><a class="dropdown-item fs-6" href="#">Profile</a></li>
@@ -37,6 +37,6 @@
 </nav>
 
 @include('pages.user.components.modal.change_pass')
-@include('pages.user.components.javascript.js')
+
 
 <!-- navigation bar end -->

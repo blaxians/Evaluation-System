@@ -45,12 +45,11 @@
 /* left side bar wrapper */
 #sidebar-wrapper {
   min-height: 100vh;
-  margin-left: -15rem;
+  margin-left: -16rem;
   transition: margin 0.25s ease-out;
 }
 
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
 }
 
@@ -97,7 +96,7 @@
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+    margin-left: -17rem;
   }
 }
 
