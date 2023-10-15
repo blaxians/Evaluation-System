@@ -23,10 +23,10 @@ class Questionnaire extends Controller
            $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                         <thead>
                             <tr>
-                                <th scope="col" width="50">#</th>
+                                <th scope="col">#</th>
                                 <th scope="col">Question</th>
                                 <th scope="col">Criteria</th>
-                                <th scope="col" width="200px">Action</th>
+                                <th scope="col" style="text-align:center;">Edit / Delete</th>
                             </tr>
                         </thead>
                         <tbody>';
@@ -35,9 +35,11 @@ class Questionnaire extends Controller
                                             <td>'.intval($key+1).'</td>
                                             <td>'.$question->question.'</td>
                                             <td>'.$question->criteria.'</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-secondary" id="questionnaire_btn_edit" data-id="'.$question->id.'">Edit</button>
-                                                <button class="btn btn-sm btn-danger" id="question_btn_delete" data-id="'.$question->id.'">Remove</button>
+                                            <td style="text-align:center;">
+                                                <button class="btn btn-sm btn-secondary me-1" id="questionnaire_btn_edit" data-id="'.$question->id.'">
+                                                <i class="bi bi-pencil-square"></i></button>
+                                                <button class="btn btn-sm btn-danger" id="question_btn_delete" data-id="'.$question->id.'">
+                                                <i class="bi bi-trash"></i></button>
                                             </td>
                                         </tr>';
                             }

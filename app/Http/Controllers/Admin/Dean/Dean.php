@@ -28,11 +28,11 @@ class Dean extends Controller
             $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col" width="50"></th>
+                                    <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Institute</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col" width="30px">Action</th>
+                                    <th scope="col" style="text-align:center;">Status</th>
+                                    <th scope="col" style="text-align:center;">Edit / View</th>
                                 </tr>
                             </thead>
                             <tbody>';
@@ -60,11 +60,13 @@ class Dean extends Controller
                                             <td>' . intval($key + 1) . '</td>
                                             <td>' . $dean->name . '</td>
                                             <td>' . $dean->institute . '</td>
-                                            <td>' . $status . '</td>
-                                            <td class="d-flex"><button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" class="btn btn-secondary btn-sm me-1" id="edit_dean_btn" data-id="' . $dean->id . '">
+                                            <td style="text-align:center;">' . $status . '</td>
+                                            <td style="text-align:center;">
+                                            <button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" class="btn btn-secondary btn-sm me-1" id="edit_dean_btn" data-id="' . $dean->id . '">
                                             <i class="bi bi-pencil-square"></i></button>
                                             <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" class="btn btn-success btn-sm" id="view_dean_btn" data-id="' . $dean->id . '">
-                                            <i class="bi bi-eye-fill" ></i></button></td>
+                                            <i class="bi bi-eye-fill" ></i></button>
+                                            </td>
                           </tr>';
             }
             $table .= '</tbody>

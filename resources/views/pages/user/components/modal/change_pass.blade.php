@@ -13,17 +13,20 @@
                         <label for="password_old_user">Old Password</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" name="password_new" id="password_new_user" placeholder="New Password" required>
+                        <input type="password" class="form-control" name="password_new" id="password_new_user" placeholder="New Password" required>
                         <label for="password_new_user">New Password</label>
                     </div>
                     <div class="form-floating my-2">
-                        <input type="text" class="form-control" name="password_confirm" id="password_confirm_user" placeholder="Confirm Password" required>
+                        <input type="password" class="form-control" name="password_confirm" id="password_confirm_user" placeholder="Confirm Password" required>
                         <label for="password_confirm_user">Confirm Password</label>
                     </div>
-                    
+                    <div class="alert d-none" role="alert" id="confirm_alert_password">
+                       
+                      </div>
+                      
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button class="btn btn-success" type="submit" id="btn_change_password_user">Submit</button>
                 </div>
             </form>

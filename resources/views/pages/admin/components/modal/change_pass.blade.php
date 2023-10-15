@@ -20,13 +20,13 @@
                         <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="Confirm Password" required>
                         <label for="password_confirm">Confirm Password</label>
                     </div>
-                    <div class="my-2">
-                        
+                    <div class="alert d-none" role="alert" id="confirm_alert">
+                       
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn-success" type="submit" id="btn_change_password">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" id="btn_changed_pssword">Submit</button>
                 </div>
             </form>
         </div>

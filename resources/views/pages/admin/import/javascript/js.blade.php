@@ -1,35 +1,31 @@
 <script>
     $(document).ready(function() {
 
-        loading();
         uploadFile();
+        textNameButtonName();
 
     });
 
 
-    function loading(){
+    function textNameButtonName(){
             const fileInput = $('#importedFile');
             const fileLabel = $('label[for="importedFile"]');
             const fileName = $('#file-name');
 
-            fileInput.change(function() {
-                $('#loading-overlay').removeClass('d-none');
-                $('#spinner-upload').removeClass('d-none');
-
+            $(document).on('change', '#importedFile', function(){
                 if (fileInput[0].files.length > 0) {
-                    $('#uploadButton').prop('disabled', false);
-                    $('#loading-overlay').addClass('d-none');
-                    $('#spinner-upload').addClass('d-none');
-                    const selectedFile = fileInput[0].files[0];
-                    fileName.text('File Name: ' + selectedFile.name); 
+                $('#uploadButton').prop('disabled', false);
+                const selectedFile = fileInput[0].files[0];
+                fileName.text('File Name: ' + selectedFile.name); 
                 } else {
                     fileName.text('');
                 }
-            });
-
+                    
+            })
             if (!fileInput[0].files.length) {
-                   $('#uploadButton').prop('disabled', true);
-            } 
+                    $('#uploadButton').prop('disabled', true);
+                } 
+            
 
     }
 
@@ -37,6 +33,8 @@
         $(document).on('submit', '#upload_excel', function(e){
             e.preventDefault();
             const fd = new FormData(this);
+            $('#loading_overlay').removeClass('d-none');
+            $('#spinner_upload').removeClass('d-none');
             $.ajax({
                 url: "{{ route('import.post') }}",
                 method: 'post',
@@ -45,6 +43,8 @@
                 contentType: false,
                 cache: false,
                 success: function(res){
+                    $('#loading_overlay').addClass('d-none');
+                    $('#spinner_border').addClass('d-none');
                     if(res.message == 'success'){
                         if(res.count != '0'){
                             $('#file-name').text('');
@@ -60,6 +60,12 @@
                             'success'); 
                         }
                                                                                                                                                                     
+                    } else {
+                        $('#file-name').text('');
+                            Swal.fire(
+                            'Error!',
+                            `${res.error}`,
+                            'error'); 
                     }
                 }, 
                 error: function(err){

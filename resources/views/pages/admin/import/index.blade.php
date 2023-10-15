@@ -1,23 +1,20 @@
 @extends('layout.admin')
 @section('custom_css')
 <style>
-  
-   #loading-overlay {
-            position: absolute;
-            padding-bottom: 50px;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.7); 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-        }
+        
+        #loading_overlay {
+                    position: absolute;
+                    padding-bottom: 50px;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(255, 255, 255, 0.7); 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                }
 
-    
-        #loading-icon {
-            font-size: 2rem;}
 </style>
 @endsection
 @section('admin')
@@ -57,8 +54,8 @@
                                     <i class="fas fa-upload border p-3 rounded-1 text-dark" style="font-size: 120px"></i>
                                 </label>
                                 <p id="file-name" class="fs-5"></p>
-                                <div id="loading-overlay" class="d-none">
-                                    <div class="spinner-border d-none" role="status" id="spinner-upload">
+                                <div id="loading_overlay" class="d-none">
+                                    <div class="spinner-border d-none" role="status" id="spinner_upload">
                                         <span class="visually-hidden">Loading...</span>
                                       </div>
                                 </div>
