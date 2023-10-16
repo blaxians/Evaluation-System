@@ -1,24 +1,21 @@
 @extends('layout.admin')
 @section('custom_css')
-<style>
-        
+    <style>
         #loading_overlay {
-                    position: absolute;
-                    padding-bottom: 50px;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(255, 255, 255, 0.7); 
-                    display: flex; 
-                    justify-content: center; 
-                    align-items: center; 
-                }
-
-</style>
+            position: absolute;
+            padding-bottom: 50px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 @endsection
 @section('admin')
-
     {{-- <div class="container">
         <form action="{{ route('import.post') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -49,7 +46,8 @@
                         @csrf
                         <div class="card">
                             <div class="my-4 text-center">
-                                <input type="file" id="importedFile" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="importedFile" required style="display: none;">
+                                <input type="file" id="importedFile" accept=".csv" name="importedFile" required
+                                    style="display: none;">
                                 <label for="importedFile" style="cursor: pointer;">
                                     <i class="fas fa-upload border p-3 rounded-1 text-dark" style="font-size: 120px"></i>
                                 </label>
@@ -57,7 +55,7 @@
                                 <div id="loading_overlay" class="d-none">
                                     <div class="spinner-border d-none" role="status" id="spinner_upload">
                                         <span class="visually-hidden">Loading...</span>
-                                      </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="text-center">
@@ -66,7 +64,8 @@
                         </div>
                         <div class="row my-3">
                             <div class="px-5 d-flex justify-content-center">
-                                <button type="submit" id="uploadButton" class="form-control btn btn-success btn-md" style="width: 7rem">Upload</button>
+                                <button type="submit" id="uploadButton" class="form-control btn btn-success btn-md"
+                                    style="width: 7rem">Upload</button>
                             </div>
                         </div>
                     </form>
@@ -74,11 +73,9 @@
             </div>
         </div>
     </div>
-    
 @endsection
 @section('javascript')
     @include('pages.admin.import.javascript.js')
 @endsection
 
 {{-- design --}}
-

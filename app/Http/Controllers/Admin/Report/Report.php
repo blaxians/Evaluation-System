@@ -598,7 +598,7 @@ class Report extends Controller
             $new_year_sem = '2nd Sem, SY ' . $year . '-' . ($year + 1);
         }
 
-        
+
         $id = $request->id;
         $data = explode(',', $id);
         $faculties = Faculties::find($data[0]);
@@ -798,15 +798,12 @@ class Report extends Controller
         // return $pdf->stream();
         // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
         // return response()->json(['status'=>'success',
-        // $faculties,
-        // $computation,
-        // $type,
-        //     $final_average,
-        //    $new_year_sem]);
+
         return view('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average', 'new_year_sem'));
     }
 
-    public function reportPdfStudent(){
+    public function reportPdfStudent()
+    {
         return view('pages.admin.report.pdf');
     }
 }

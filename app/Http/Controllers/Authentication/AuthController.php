@@ -43,18 +43,61 @@ class AuthController extends Controller
             'password' => $request->input('password')
         ];
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->route('loading');
+        $user = User::where('username', $credentials['username'])->first();
+
+        if ($user != null) {
+            if ($user->role === 'student') {
+                if ($user->password === $credentials['password']) {
+                    $user->password = hash::make($user->password);
+                    $user->update();
+                    if (Auth::attempt($credentials)) {
+                        $request->session()->regenerate();
+                        return redirect()->route('loading');
+                    } else {
+                        $message = 'Invalid username or password';
+
+                        if (!User::where('username', $credentials['username'])->exists()) {
+                            $message = 'Invalid username';
+                        } elseif (!User::where('password', bcrypt($credentials['password']))->exists()) {
+                            $message = 'Invalid password';
+                        }
+
+                        return view('pages.login')->with('message', $message);
+                    }
+                } else {
+                    if (Auth::attempt($credentials)) {
+                        $request->session()->regenerate();
+                        return redirect()->route('loading');
+                    } else {
+                        $message = 'Invalid username or password';
+
+                        if (!User::where('username', $credentials['username'])->exists()) {
+                            $message = 'Invalid username';
+                        } elseif (!User::where('password', bcrypt($credentials['password']))->exists()) {
+                            $message = 'Invalid password';
+                        }
+
+                        return view('pages.login')->with('message', $message);
+                    }
+                }
+            } else {
+                if (Auth::attempt($credentials)) {
+                    $request->session()->regenerate();
+                    return redirect()->route('loading');
+                } else {
+                    $message = 'Invalid username or password';
+
+                    if (!User::where('username', $credentials['username'])->exists()) {
+                        $message = 'Invalid username';
+                    } elseif (!User::where('password', bcrypt($credentials['password']))->exists()) {
+                        $message = 'Invalid password';
+                    }
+
+                    return view('pages.login')->with('message', $message);
+                }
+            }
         } else {
             $message = 'Invalid username or password';
-
-            if (!User::where('username', $credentials['username'])->exists()) {
-                $message = 'Invalid username';
-            } elseif (!User::where('password', bcrypt($credentials['password']))->exists()) {
-                $message = 'Invalid password';
-            }
-
             return view('pages.login')->with('message', $message);
         }
     }
