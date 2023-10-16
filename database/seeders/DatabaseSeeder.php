@@ -7,7 +7,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\YearSem;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\LazyCollection;
 
 class DatabaseSeeder extends Seeder
 {

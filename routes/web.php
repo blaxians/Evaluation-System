@@ -128,6 +128,7 @@ Route::controller(Report::class)->group(function () {
 Route::controller(Import::class)->group(function () {
     Route::get('/import/student', 'index')->name('import.student')->middleware(['auth', 'admin']);
     Route::post('/import/student/post', 'import')->name('import.post')->middleware(['auth', 'admin']);
+    Route::get('/import/student/post/data', 'insertStudent')->name('insertStudent.post')->middleware(['auth', 'admin']);
 });
 
 
