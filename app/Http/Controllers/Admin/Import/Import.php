@@ -29,13 +29,22 @@ class Import extends Controller
     {
 
         if ($request->hasFile('importedFile')) {
-            unlink(public_path('storage/student_file.csv'));
-            $excel = $request->file('importedFile');
-            $name = 'student_file.csv';
-            Storage::disk('public')->putFileAs($excel, $name);
+            try {
+                unlink(public_path('storage/student_file.csv'));
+                $excel = $request->file('importedFile');
+                $name = 'student_file.csv';
+                Storage::disk('public')->putFileAs($excel, $name);
 
-            // papuntahin mo ditt sa route name na insertStudent.post
-            return response()->json('success');
+                // papuntahin mo ditt sa route name na insertStudent.post
+                return response()->json('success');
+            } catch (\Throwable $th) {
+                $excel = $request->file('importedFile');
+                $name = 'student_file.csv';
+                Storage::disk('public')->putFileAs($excel, $name);
+
+                // papuntahin mo ditt sa route name na insertStudent.post
+                return response()->json('success');
+            }
         } else {
             return response()->json(['error' => 'Invalid input']);
         }
