@@ -30,6 +30,7 @@
     $(document).ready(function() {
         checkConfirmPassword();
         changePasswordUser();
+
         checkConfirmPasswordAdmin();
         changePasswordAdmin();
 
@@ -106,19 +107,19 @@
                         const {password_confirm, password_new, password_old} = res.error;
                         
                         if (password_confirm){
-                            Swal.fire('passconfirm',
+                            Swal.fire('Error!',
                             `${password_confirm[0]}`,
                             'error'
                             )
                         } 
                         else if (password_new){
-                            Swal.fire('passnew',
+                            Swal.fire('Error!',
                             `${password_new[0]}`,
                             'error'
                             )
                         } else if(res.error){
                             
-                            Swal.fire('error',
+                            Swal.fire('Error!',
                             `Old ${res.error}`,
                             'error'
                             )
@@ -153,7 +154,7 @@
                 if (newPass.length > 0 && confirmPass.length > 0) {
                     updateAlert(confirmAlert, 'Passwords match! You can proceed.', 'alert-success');
                 } else {
-                    confirmAlert.addClass('d-none'); // Hide the message when both fields are empty
+                    confirmAlert.addClass('d-none'); 
                 }
             }
             });
@@ -192,19 +193,19 @@
                         const {password_confirm, password_new, password_old} = res.error;
                         
                         if (password_confirm){
-                            Swal.fire('passconfirm',
+                            Swal.fire('Error!',
                             `${password_confirm[0]}`,
                             'error'
                             )
                         } 
                         else if (password_new){
-                            Swal.fire('passnew',
+                            Swal.fire('Error!',
                             `${password_new[0]}`,
                             'error'
                             )
                         } else if(res.error){
                             
-                            Swal.fire('error',
+                            Swal.fire('Error!',
                             `Old ${res.error}`,
                             'error'
                             )
