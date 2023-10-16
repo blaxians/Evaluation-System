@@ -21,74 +21,30 @@ class Student extends Controller
 
     public function show()
     {
-        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $year_sem = YearSem::latest()->first();
         $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
-        $student = User::where('role', 'student')->get();
 
-        if (count($student) > 0) {
-            $table = '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
-                        <thead>
-                            <tr>
-                                <th scope="col"></th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Status</th>
-                                <th scope="col" style="text-align:center; ">View / Change Password</th>
-                            </tr>
-                        </thead>
-                        <tbody>';
+        $students = User::where('role', 'student')->get();
+        $studentIds = $students->pluck('id');
+        $studentEvaluations = Evaluate::whereIn('user_id', $studentIds)
+            ->where('year_sem', $new_year_sem)
+            ->get();
 
-            foreach ($student as $key => $stud) {
-                $status_array = [];
-                $student_status = Evaluate::where('user_id', $stud->id)->where('year_sem', $new_year_sem)->get();
-                foreach ($student_status as $stud_stat) {
-                    $status_array[] = $stud_stat->status;
-                }
-                if (empty($status_array)) {
-                    $result = false;
-                } else {
-                    $result = array_reduce($status_array, function ($carry, $stats) {
-                        return $carry && ($stats == 1);
-                    }, true);
-                }
+        $data = [];
+        foreach ($students as $key => $student) {
+            $studentStatus = $studentEvaluations->where('user_id', $student->id)->pluck('status');
+            $result = $studentStatus->isEmpty() ? false : $studentStatus->every(fn ($status) => $status == 1);
 
-                if ($result) {
-                    $table .= '<tr>
-                                        <td>' . intval($key + 1) . '</td>
-                                        <td>' . $stud->name . '</td>
-                                        <td>' . $stud->username . '</td>
-                                        <td><span class="badge text-bg-success">Done</span>
-                                        </td>
-                                        <td>
-                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Done" data-id="' . $stud->id . '"><i class="bi bi-eye-fill"></i></button>
-                                        </td>
-                                    </tr>';
-                } else {
-                    $table .= '<tr>
-                                        <td>' . intval($key + 1) . '</td>
-                                        <td>' . $stud->name . '</td>
-                                        <td>' . $stud->username . '</td>
-                                        <td><span class="badge text-bg-warning">Pending</span>
-                                        </td>
-                                        <td style="text-align:center;">
-                                            <button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal"
-                                            data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">
-                                            <i class="bi bi-eye-fill"></i></button>
-
-                                            <button class="btn btn-success btn-sm" id="btn_changepass_button" data-id="' . $stud->id . '">
-                                            <i class="bi bi-unlock-fill"></i></button>
-                                        </td>
-                                    </tr>';
-                }
-            }
-            $table .= '</tbody>
-                    </table>';
-
-            echo $table;
-        } else {
-            echo '<div class="h1 text-center text-secondary my-5">There is no record in database.</div>';
+            $data[] = [
+                'id' => $student->id, 
+                'name' => $student->name,
+                'username' => $student->username,
+                'status' => $result ? 'Done' : 'Pending',
+                'actions' => !$result,
+            ];
         }
+
+        return response()->json(['data' => $data]);
     }
 
     public function view(Request $request)

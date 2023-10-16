@@ -3,171 +3,11 @@
         showSetYear();
         addYear();
         viewSemester();
-        //total student and faculties
-        totalStudenFaculties();
-
-            //dougnut chart
-            initializeCharts();
-            showTotalData();
-
-            //bar chart
-            createInitialBarGraph();
-            loadDataAndInitializeChart();
+        createInitialBarGraph();
+        initializeCharts();
         
-       
+
     })
-
-
-    //kunin yung data ng dean at student
-    function showTotalData() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-                chart(res.dean[0], res.dean[1], res.student[0], res.student[1]);
-            },
-            error: function (error) {
-                console.log("Error:", error);
-            }
-        });
-    }
-
-    ///default data bago mag loading yung sa ajax
-    function initializeCharts() {
-        var deansData = getDeansData(0, 10); 
-        var studentsData = getStudentsData(0, 10); 
-
-        createOrUpdateChart('deansCanvas', deansData, 55);
-        createOrUpdateChart('studentsCanvas', studentsData, 55);
-    }
-
-    //kunin yung data mula sa db
-    function showTotalData() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-            
-                if (res.dean && res.student) {
-                    chart(res.dean[0], res.dean[1], res.student[0], res.student[1]);
-                }
-            },
-            error: function (error) {
-                console.log("Error:", error);
-            }
-        });
-    }
-
-    //function ng chart
-    function chart(deansDoneCount, deansNotDoneCount, studentsDoneCount, studentsNotDoneCount) {
-        var deansData = getDeansData(deansDoneCount, deansNotDoneCount);
-        var studentsData = getStudentsData(studentsDoneCount, studentsNotDoneCount);
-
-        createOrUpdateChart('deansCanvas', deansData, 55);
-        createOrUpdateChart('studentsCanvas', studentsData, 55);
-    }
-
-    //update canvas
-    function createOrUpdateChart(canvasId, chartData, cutoutPercentage) {
-        var canvas = $('#' + canvasId);
-        var existingChart = canvas.data('chart');
-
-        if (existingChart) {
-            existingChart.data = chartData;
-            existingChart.update();
-        } else {
-            var newChart = new Chart(canvas, {
-                type: 'doughnut',
-                data: chartData,
-                options: {
-                    cutoutPercentage: cutoutPercentage,
-                }
-            });
-
-            canvas.data('chart', newChart);
-        }
-    }
-
-    //set ng data ng daen
-    function getDeansData(deansDoneCount, deansNotDoneCount) {
-        return {
-            labels: ["Done", "Pending"],
-            datasets: [
-                {
-                    data: [deansDoneCount, deansNotDoneCount],
-                    backgroundColor: ["#004225", "#AEC3AE"],
-                },
-            ],
-        };
-    }
-    //function set ng data ng student
-    function getStudentsData(studentsDoneCount, studentsNotDoneCount) {
-        return {
-            labels: ["Done", "Pending"],
-            datasets: [
-                {
-                    data: [studentsDoneCount, studentsNotDoneCount],
-                    backgroundColor: ["#952323", "#EEE2DE"],
-                },
-            ],
-        };
-    }
-
-    //yung text sa gitna ng downut chart
-    Chart.plugins.register({
-        afterDraw: function(chart) {
-            if (chart.config.type === 'doughnut') {
-            var ctx = chart.chart.ctx;
-            var width = chart.chart.width;
-            var height = chart.chart.height;
-            var total = 0;
-            
-            chart.data.datasets[0].data.forEach(function (value) {
-                total += value;
-            });
-
-            var donePercentage = ((chart.data.datasets[0].data[0] / total) * 100).toFixed(2) + '%';
-
-            //format nung text percentage
-            ctx.restore();
-            ctx.font = "18px Arial";
-            ctx.textBaseline = "middle";
-            ctx.fillStyle = "#000";
-            
-            //alignment nung text percentage
-            var text = donePercentage;
-            var textX = Math.round((width - ctx.measureText(text).width) / 2);
-            var textY = height / 1.8;
-            
-            ctx.fillText(text, textX, textY);
-            ctx.save();
-            }
-        }
-        });
-
-    // function chart() {
-    //     var deansData = getDeansData();
-
-    //     new Chart($('#deansCanvas'), {
-    //         type: 'doughnut',
-    //         data: deansData,
-    //         options: {
-    //         cutoutPercentage: 55, //kapal nung downut
-    //         }
-    //     });
-
-    //     var studentsData = getStudentsData();
-
-    //     new Chart($('#studentsCanvas'), {
-    //         type: 'doughnut',
-    //         data: studentsData,
-    //         options: {
-    //         cutoutPercentage: 55, //yung kapal nung downut
-    //         }
-    //     });
-    // }
-
-    //bargraph
     function createInitialBarGraph() {
         var staticData = {
             labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
@@ -195,7 +35,7 @@
         var ctx = document.getElementById('facultyChart').getContext('2d');
         var facultyChart = new Chart(ctx, {
             type: 'bar',
-            data: staticData, // static data nung barchart bago mag ajax
+            data: staticData, 
             options: {
                 scales: {
                     y: {
@@ -206,12 +46,117 @@
         });
     }
 
-    // update the chart data from ajax
+
+
+    function loadDataAndInitialize() {
+        chart(0, 0, 0, 0);
+
+        createInitialBarGraph();
+        $.ajax({
+            url: "{{ route('statistic') }}",
+            method: 'get',
+            success: function (res) {
+                if (res) {
+                    updateTotalCounts(res.total_student, res.total_faculty);
+
+                    updateDoughnutCharts(res.dean, res.student);
+
+                    updateBarChart(res.total_institute);
+                }
+            },
+            error: function (error) {
+                console.log("Error:", error);
+            }
+        });
+    }
+
+
+    function updateTotalCounts(totalStudent, totalFaculty) {
+        $('#dashboard_total_students').text(totalStudent);
+        $('#dashboard_total_faculties').text(totalFaculty);
+    }
+
+    // Update the doughnut charts
+    function updateDoughnutCharts(deanData, studentData) {
+        if (deanData && studentData) {
+            chart(deanData[0], deanData[1], studentData[0], studentData[1]);
+        }
+    }
+
+    function chart(deansDoneCount, deansNotDoneCount, studentsDoneCount, studentsNotDoneCount) {
+        var deansData = getChartData(deansDoneCount, deansNotDoneCount, "#004225", "#AEC3AE");
+        var studentsData = getChartData(studentsDoneCount, studentsNotDoneCount, "#952323", "#EEE2DE");
+
+        createOrUpdateChart('deansCanvas', deansData, 55);
+        createOrUpdateChart('studentsCanvas', studentsData, 55);
+    }
+
+    function createOrUpdateChart(canvasId, chartData, cutoutPercentage) {
+        var canvas = $('#' + canvasId);
+        var existingChart = canvas.data('chart');
+
+        if (existingChart) {
+            existingChart.data = chartData;
+            existingChart.update();
+        } else {
+            var newChart = new Chart(canvas, {
+                type: 'doughnut',
+                data: chartData,
+                options: {
+                    cutoutPercentage: cutoutPercentage,
+                }
+            });
+
+            canvas.data('chart', newChart);
+        }
+    }
+
+    function getChartData(doneCount, notDoneCount, doneColor, notDoneColor) {
+        return {
+            labels: ["Done", "Pending"],
+            datasets: [
+                {
+                    data: [doneCount, notDoneCount],
+                    backgroundColor: [doneColor, notDoneColor],
+                },
+            ],
+        };
+    }
+
+    function updateBarChart(data) {
+        if (data && data.length >= 5) {
+            var facultyData = {
+                labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
+                datasets: [{
+                    label: 'Number of Faculty',
+                    data: data.slice(0, 5),
+                    backgroundColor: [
+                        'rgba(0, 255, 0, 0.2)',
+                        'rgb(54, 162, 235, 0.2)',
+                        'rgb(149, 35, 35, 0.2)',
+                        'rgba(83, 112, 252, 0.2)',
+                        'rgba(139, 80, 253, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(0, 255, 0)',
+                        'rgb(54, 162, 235)',
+                        'rgb(149, 35, 35)',
+                        'rgb(83, 112, 252)',
+                        'rgb(139, 80, 253)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            updateBarGraphWithData(facultyData);
+        }
+    }
+
     function updateBarGraphWithData(data) {
         var ctx = document.getElementById('facultyChart').getContext('2d');
         var facultyChart = new Chart(ctx, {
             type: 'bar',
-            data: data, // yung tunay na data galing ajax
+            data: data,
             options: {
                 scales: {
                     y: {
@@ -222,63 +167,10 @@
         });
     }
 
-    // Function to load data from the server
-    function loadDataAndInitializeChart() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-
-                if (res.total_institute && res.total_institute.length >= 5) {
-                    var facultyData = {
-                        labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
-                        datasets: [{
-                            label: 'Number of Faculty',
-                            data: res.total_institute.slice(0, 5), // take first 5 values
-                            backgroundColor: [
-                                'rgba(0, 255, 0, 0.2)',
-                                'rgb(54, 162, 235, 0.2)',
-                                'rgb(149, 35, 35, 0.2)',
-                                'rgba(83, 112, 252, 0.2)',
-                                'rgba(139, 80, 253, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgb(0, 255, 0)',
-                                'rgb(54, 162, 235)',
-                                'rgb(149, 35, 35)',
-                                'rgb(83, 112, 252)',
-                                'rgb(139, 80, 253)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    };
-
-                    // Update the chart with real data
-                    updateBarGraphWithData(facultyData);
-                }
-            },
-            error: function (error) {
-                console.log("Error:", error);
-            }
-        });
+    function initializeCharts() {
+        loadDataAndInitialize();
     }
 
-
-    //total student and faculties
-    function totalStudenFaculties(){
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-                console.log(res.total_faculty, );
-                $('#dashboard_total_students').text(res.total_student);
-                $('#dashboard_total_faculties').text(res.total_faculty);
-            },
-            error: function (error) {
-                console.log("Error:", error);
-            }
-        });
-    }
 
     
     function addYear(){

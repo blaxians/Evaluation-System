@@ -1,4 +1,12 @@
 @extends('layout.admin')
+@section('custom_css')
+<style>
+    .center-align {
+        text-align: center;
+    }
+</style>
+
+@endsection
 @section('admin')
     <div class="container-fluid px-4">
         <!-- title of the page start -->
@@ -9,13 +17,25 @@
         </div>
         <!-- title of the page end -->
 
+   
 
         <!-- table start -->
         <div class="row my-4 p-2">
             <div class="col p-0">
                 <div class="card">
-                    <div class="card-body overflow-x-scroll" id="student_table">
-                        <div class="text-center">
+                    <div class="card-body overflow-x-scroll">
+                        <table id="student_table" class="table bg-white rounded shadow-sm table-hover d-none">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                    <th style="text-align:center;">View / Reset Password</th>
+                                </tr>
+                            </thead>
+                        </table>
+                        <div class="text-center" id="spinner_loader_stud">
                             <div class="spinner-border text-secondary my-5"  role="status">
                                 <span class="visually-hidden">Loading...</span>
                             </div>
@@ -35,3 +55,4 @@
 @section('javascript')
     @include('pages.admin.student.javascript.js')
 @endsection
+

@@ -45,24 +45,48 @@
         })
     }
 
-    //show student
-    function showStudent(){
+    function showStudent() {
         $.ajax({
             url: "{{ route('show.student') }}",
             method: 'get',
-            success: function(res){
-                $('#student_table').html(res);
-                $('#table').DataTable();
-            }
+            success: function(res) {
+                $('#spinner_loader_stud').toggleClass('d-none');
+                $('#student_table').toggleClass('d-none');
+                var table = $('#student_table').DataTable({
+                    data: res.data,
+                    columns: [
+                        { data: 'id' },  
+                        { data: 'name' },
+                        { data: 'username' },
+                        { data: 'status' },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                var buttons = '';
 
-        })
-    }
+                                if (row.actions) {
+                                    buttons += '<button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#view_student_modal" id="btn_view_button" data-status="' + row.status + '" data-id="' + row.id + '"><i class="bi bi-eye-fill"></i></button>';
+                                    buttons += '<button class="btn btn-success btn-sm" id="btn_changepass_button" data-id="' + row.id + '"><i class="bi bi-unlock-fill"></i></button>';
+                                }
+
+                                return buttons;
+                            }
+                        },
+                    ],
+                    columnDefs: [
+                        { targets: [4], className: 'center-align' } 
+                    ]
+                });
+            }
+        });
+        }
 
     //view student
     function viewStudent(){
         $(document).on('click', '#btn_view_button', function(){
-            let view_id = $(this).attr('data-id');
-            let view_status = $(this).attr('data-status');
+            let view_id = $(this).data('id'); 
+            console.log(view_id);
+            let view_status = $(this).data('status'); 
 
             $.ajax({
                 url: "{{ route('view.student') }}",
