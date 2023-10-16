@@ -110,6 +110,7 @@ Route::controller(Student::class)->group(function () {
     Route::get('/students', 'index')->name('index.student')->middleware(['auth', 'admin']);
     Route::get('/student/show', 'show')->name('show.student')->middleware(['auth', 'admin']);
     Route::get('/student/view', 'view')->name('view.student')->middleware(['auth', 'admin']);
+    Route::post('/student/reset/password', 'resetPassword')->name('resetPassword.student')->middleware(['auth', 'admin']);
 });
 
 // Admin Report

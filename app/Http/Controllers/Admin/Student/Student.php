@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Termwind\Components\Span;
 use App\Http\Controllers\Controller;
 use App\Models\Faculties;
+use Illuminate\Support\Facades\Hash;
 
 class Student extends Controller
 {
@@ -144,5 +145,18 @@ class Student extends Controller
             'faculties' => $faculties,
             'faculty_table' => $faculty_table,
         ]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $id = $request->id;
+        $student = User::find($id);
+        if ($student == null) {
+            return response()->json(['error' => 'Student not found']);
+        } else {
+            $student->password = Hash::make($student->username);
+            $student->update();
+            return response()->json('success');
+        }
     }
 }
