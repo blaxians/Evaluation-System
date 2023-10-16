@@ -2,8 +2,48 @@
     $(document).ready(function(){
         showStudent();
         viewStudent();
+        resetPassword();
 
     })
+
+    //reset password 
+    function resetPassword(){
+        $(document).on('click','#btn_changepass_button',function(){
+            let id = $(this).attr('data-id');
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Confirm!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: "{{ route('resetPassword.student') }}",
+                    method: 'post',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        id:id
+                    },
+                    success: function(res){
+                        if(res == 'success'){
+                            Swal.fire(
+                                'Success!',
+                                'Password has been reset.',
+                                'success'
+                                )
+                        }
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+                })
+            }
+            })
+        })
+    }
 
     //show student
     function showStudent(){

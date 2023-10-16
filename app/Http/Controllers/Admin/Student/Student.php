@@ -29,11 +29,11 @@ class Student extends Controller
             $table = '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                         <thead>
                             <tr>
-                                <th scope="col" width="50">#</th>
+                                <th scope="col"></th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Status</th>
-                                <th scope="col" width="30px">View</th>
+                                <th scope="col" style="text-align:center; ">View / Change Password</th>
                             </tr>
                         </thead>
                         <tbody>';
@@ -71,10 +71,13 @@ class Student extends Controller
                                         <td>' . $stud->username . '</td>
                                         <td><span class="badge text-bg-warning">Pending</span>
                                         </td>
-                                        <td>
-                                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">
-                                        <i class="bi bi-eye-fill"></i></button>
+                                        <td style="text-align:center;">
+                                            <button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal"
+                                            data-bs-target="#view_student_modal" id="btn_view_button" data-status="Pending" data-id="' . $stud->id . '">
+                                            <i class="bi bi-eye-fill"></i></button>
+
+                                            <button class="btn btn-success btn-sm" id="btn_changepass_button" data-id="' . $stud->id . '">
+                                            <i class="bi bi-unlock-fill"></i></button>
                                         </td>
                                     </tr>';
                 }
