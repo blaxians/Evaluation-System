@@ -86,7 +86,7 @@
             <hr class="border border-success border-2 m-0 opacity-75">
     
             <div class="row mt-2 ">
-                <p class="mt-2">20 July 2023</p>
+                <p class="mt-2" id="date_pdf"></p>
                 <h2 class="text-center my-2 fw-bold text-uppercase">CERTIFICATION</h1>
             </div>
             @php 
@@ -155,6 +155,14 @@
     <script>
 
         $(document).ready(function() {
+
+            //date function
+            var currentTime = new Date();
+            var options = { day: 'numeric', month: 'long', year: 'numeric' };
+            var formattedTime = currentTime.toLocaleDateString('en-PH', options);
+
+            $("#date_pdf").text(formattedTime);
+
             generatePDF();
         });
         
