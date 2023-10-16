@@ -31,11 +31,13 @@
 
     function uploadFile(){
         $(document).on('submit', '#upload_excel', function(e){
+
             e.preventDefault();
             const fd = new FormData(this);
             $('#loading_overlay').removeClass('d-none');
             $('#spinner_upload').removeClass('d-none');
             $.ajax({
+
                 url: "{{ route('import.post') }}",
                 method: 'post',
                 data: fd,
@@ -43,23 +45,30 @@
                 contentType: false,
                 cache: false,
                 success: function(res){
-                    $('#loading_overlay').addClass('d-none');
-                    $('#spinner_border').addClass('d-none');
-                    if(res.message == 'success'){
-                        if(res.count != '0'){
-                            $('#file-name').text('');
-                            Swal.fire(
-                            'Success!',
-                            `${res.count} Student record imported successfully.`,
-                            'success'); 
-                        } else {
-                            $('#file-name').text('');
-                            Swal.fire(
-                            'Success!',
-                            `Student record updated successfully.`,
-                            'success'); 
-                        }
-                                                                                                                                                                    
+
+                    if(res == "success"){
+
+                        $.ajax({
+                            url: "{{ route('insertStudent.post') }}",
+                            method: "get",
+                            success: function(res){
+                                console.log(res);
+                                if(res == 'success'){
+                                    $('#loading_overlay').addClass('d-none');
+                                    $('#spinner_border').addClass('d-none');
+                                    Swal.fire('Success!', 
+                                    'Students imported successfully.', 
+                                    'success')
+                                    $('#file-name').text('');
+                                    $('#upload_excel').trigger('reset');
+                                    $('#uploadButton').prop('disabled', true);
+
+                                }
+                            },
+                            error: function(err){
+                                console.log(err);
+                            }
+                        })
                     } else {
                         $('#file-name').text('');
                             Swal.fire(
@@ -73,6 +82,7 @@
                 }
             })
         })
+        
     }
 
 </script>
