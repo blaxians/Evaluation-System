@@ -41,7 +41,7 @@ class Student extends Controller
                 'username' => $student->username,
                 'status' => $result ? 'Done' : 'Pending',
                 'actions' => !$result,
-            ];
+            ];  
         }
 
         return response()->json(['data' => $data]);

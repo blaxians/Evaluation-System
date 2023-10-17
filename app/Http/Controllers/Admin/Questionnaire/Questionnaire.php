@@ -23,7 +23,7 @@ class Questionnaire extends Controller
            $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col"></th>
                                 <th scope="col">Question</th>
                                 <th scope="col">Criteria</th>
                                 <th scope="col" style="text-align:center;">Edit / Delete</th>

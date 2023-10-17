@@ -31,7 +31,7 @@
                                     <th>Name</th>
                                     <th>Username</th>
                                     <th>Status</th>
-                                    <th style="text-align:center;">View / Reset Password</th>
+                                    <th style="text-align:center;">View / Reset</th>
                                 </tr>
                             </thead>
                         </table>

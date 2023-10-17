@@ -28,7 +28,7 @@ class Dean extends Controller
             $table .= '<table class="table bg-white rounded shadow-sm  table-hover" id="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col"></th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Institute</th>
                                     <th scope="col" style="text-align:center;">Status</th>

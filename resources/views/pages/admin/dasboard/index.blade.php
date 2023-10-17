@@ -80,8 +80,8 @@
                            <div id="studentsChart">
                                <canvas id="studentsCanvas" style="width:296px; height:250px;"></canvas>
                                <div class="d-flex justify-content-center">
-                                <h6 class="fw-semibold fs-6 m-0">Student</h6>
-                           </div>
+                                    <h6 class="fw-semibold fs-6 m-0">Student</h6>
+                                </div>
                            </div>
                        </div>
                     </div>
@@ -92,6 +92,7 @@
                     <canvas id="facultyChart"></canvas>
                 </div>
             </div>
+
 
             
 

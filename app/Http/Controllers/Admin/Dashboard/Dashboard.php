@@ -87,65 +87,53 @@ class Dashboard extends Controller
     //stats
 
     public function statistic()
-    {
-        $total_faculties = Faculties::count();
-        $total_students = User::where('role', 'student')->count();
-    
-        $formatted_total_faculties = number_format($total_faculties);
-        $formatted_total_students = number_format($total_students);
-    
-        $institutes = [
-            'College of Agriculture',
-            'Institute of Arts and Science',
-            'Institute of Engineering and Applied Technology',
-            'Institute of Education',
-            'Institute of Management',
-        ];
-    
-        $total_per_institute = Faculties::whereIn('institute', $institutes)
-            ->selectRaw('institute, count(*) as count')
-            ->groupBy('institute')
-            ->pluck('count', 'institute');
-    
-        $year_sem = YearSem::latest()->first();
-        $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
-    
-        $users = User::where('role', '!=', 'admin')->get();
-    
-        $dean = $this->getStatusCounts($users, $new_year_sem, 'dean');
-        $student = $this->getStatusCounts($users, $new_year_sem, 'student');
-    
-        return response()->json([
-            'total_faculty' => $formatted_total_faculties, 
-            'total_student' => $formatted_total_students,
-            'total_institute' => $total_per_institute,
-            'dean' => $dean,
-            'student' => $student,
-        ]);
+{
+    // Step 1: Eager Loading for Relationships
+    $user = User::with('evaluate')->where('role', '!=', 'admin')->get();
+
+    $total_faculties = Faculties::count();
+    $total_students = User::where('role', 'student')->count();
+
+    $institutes = ['College of Agriculture', 'Institute of Arts and Science', 'Institute of Engineering and Applied Technology', 'Institute of Education', 'Institute of Management'];
+
+    $total_per_institute = [];
+
+    // Step 2: Indexing
+    // Ensure that the 'institute' column in the 'Faculties' table is properly indexed for efficient retrieval.
+    foreach ($institutes as $institute) {
+        $total_per_institute[] = Faculties::where('institute', $institute)->count();
     }
-    
-    private function getStatusCounts($users, $new_year_sem, $role)
-    {
-        $doneCount = 0;
-        $notDoneCount = 0;
-    
-        foreach ($users as $user) {
-            if ($user->role == $role) {
-                $evaluations = Evaluate::where('user_id', $user->id)
-                    ->where('year_sem', $new_year_sem)
-                    ->get();
-    
-                if ($evaluations->isEmpty() || $evaluations->contains('status', 0)) {
-                    $notDoneCount++;
-                } else {
-                    $doneCount++;
-                }
-            }
+
+    $year_sem = YearSem::orderBy('id', 'DESC')->first();
+    $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
+
+    $dean = [0, 0];
+    $student = [0, 0];
+
+    foreach ($user as $value) {
+        // Step 3: Caching
+        // Consider implementing caching for expensive queries like this.
+        $evaluate = $value->evaluate->where('year_sem', $new_year_sem);
+        $true = $evaluate->isNotEmpty() && $evaluate->every(function ($evaluate_value) {
+            return $evaluate_value->status != 0;
+        });
+
+        if ($value->role == 'student') {
+            $student[$true ? 0 : 1]++;
+        } else {
+            $dean[$true ? 0 : 1]++;
         }
-    
-        return [$doneCount, $notDoneCount];
     }
-    
+
+    return response()->json([
+        'total_faculty' => $total_faculties,
+        'total_student' => $total_students,
+        'total_institute' => $total_per_institute,
+        'dean' => $dean,
+        'student' => $student,
+    ]);
+}
+
 
 
 }

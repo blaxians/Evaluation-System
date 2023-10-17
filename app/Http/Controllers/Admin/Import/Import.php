@@ -30,24 +30,21 @@ class Import extends Controller
 
         if ($request->hasFile('importedFile')) {
             try {
-                unlink(public_path('storage/student_file.csv'));
                 $excel = $request->file('importedFile');
                 $name = 'student_file.csv';
-                Storage::disk('public')->putFileAs($excel, $name);
-
-                // papuntahin mo ditt sa route name na insertStudent.post
+                Storage::disk('public')->delete('student_file.csv'); // Delete the existing file if it exists
+                Storage::disk('public')->putFileAs('', $excel, $name); // Store the new file
+        
+                // Redirect or return a response to the desired route
                 return response()->json('success');
             } catch (\Throwable $th) {
-                $excel = $request->file('importedFile');
-                $name = 'student_file.csv';
-                Storage::disk('public')->putFileAs($excel, $name);
-
-                // papuntahin mo ditt sa route name na insertStudent.post
-                return response()->json('success');
+                // Handle any exceptions or errors here
+                return response()->json(['error' => 'An error occurred while processing the file']);
             }
         } else {
             return response()->json(['error' => 'Invalid input']);
         }
+        
     }
 
     public function insertStudent()

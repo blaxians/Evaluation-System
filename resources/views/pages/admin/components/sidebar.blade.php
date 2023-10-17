@@ -5,7 +5,7 @@
     background-position:20% 20%;">
        <div style="background-color:rgba(0,0,0,0.5);" class="p-4">
             <div class="d-flex justify-content-center">
-                <img src="assets/img/main/basc.png" alt="" class="img-fluid" width="100">
+                <img src="{{ asset('assets/img/main/basc.png') }}" class="img-fluid" width="100">
             </div>
             <div class="text-center text-white">
                 <p class="mb-0 mt-3" style="font-weight:600; font-size:13px;">Bulacan Agricultural State College</p>
