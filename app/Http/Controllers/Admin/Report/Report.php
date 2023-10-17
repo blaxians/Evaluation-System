@@ -202,13 +202,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -218,13 +218,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -234,13 +234,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -250,13 +250,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -266,13 +266,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -282,13 +282,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -303,13 +303,13 @@ class Report extends Controller
         }
 
         $equivalent = '';
-        if ($average >= 100 && $average <= 90) {
+        if ($average <= 100 && $average >= 90) {
             $equivalent = 'Outstanding';
-        } else if ($average >= 89 && $average <= 85) {
+        } else if ($average <= 89 && $average >= 85) {
             $equivalent = 'Very Satisfactory';
-        } else if ($average >= 84 && $average <= 80) {
+        } else if ($average <= 84 && $average >= 80) {
             $equivalent = 'Satisfactory';
-        } else if ($average >= 79 && $average <= 75) {
+        } else if ($average <= 79 && $average >= 75) {
             $equivalent = 'Fairly Satisfactory';
         } else {
             $equivalent = 'Needs Improvement';
@@ -422,13 +422,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -438,13 +438,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -454,13 +454,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -470,13 +470,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -486,13 +486,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -502,13 +502,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -523,15 +523,15 @@ class Report extends Controller
         }
 
         $equivalent = '';
-        if ($average >= 100 && $average <= 90) {
+        if ($average <= 100 && $average >= 90) {
             $equivalent = 'Outstanding';
-        } else if ($average >= 89 && $average <= 85) {
+        } else if ($average <= 89 && $average >= 85) {
             $equivalent = 'Very Satisfactory';
-        } else if ($average >= 84 && $average <= 80) {
+        } else if ($average <= 84 && $average >= 80) {
             $equivalent = 'Satisfactory';
-        } else if ($average >= 79 && $average <= 75) {
+        } else if ($average <= 79 && $average >= 75) {
             $equivalent = 'Fairly Satisfactory';
-        } else {
+        } else if ($average <= 75) {
             $equivalent = 'Needs Improvement';
         }
 
@@ -673,13 +673,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[0] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -689,13 +689,13 @@ class Report extends Controller
                 $percent = 10;
                 $formula = intVal($value) / $hps[1] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -705,13 +705,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[2] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -721,13 +721,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[3] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -737,13 +737,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[4] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -753,13 +753,13 @@ class Report extends Controller
                 $percent = 20;
                 $formula = intVal($value) / $hps[5] * $percent;
                 $equivalent = '';
-                if ($formula >= 100 && $formula <= 90) {
+                if ($formula <= 100 && $formula >= 90) {
                     $equivalent = 'Outstanding';
-                } else if ($formula >= 89 && $formula <= 85) {
+                } else if ($formula <= 89 && $formula >= 85) {
                     $equivalent = 'Very Satisfactory';
-                } else if ($formula >= 84 && $formula <= 80) {
+                } else if ($formula <= 84 && $formula >= 80) {
                     $equivalent = 'Satisfactory';
-                } else if ($formula >= 79 && $formula <= 75) {
+                } else if ($formula <= 79 && $formula >= 75) {
                     $equivalent = 'Fairly Satisfactory';
                 } else {
                     $equivalent = 'Needs Improvement';
@@ -773,18 +773,20 @@ class Report extends Controller
             $average += $value[2]; //overall percentage
         }
 
+
         $equivalent = '';
-        if ($average >= 100 && $average <= 90) {
+        if ($average <= 100 && $average >= 90) {
             $equivalent = 'Outstanding';
-        } else if ($average >= 89 && $average <= 85) {
+        } else if ($average <= 89 && $average >= 85) {
             $equivalent = 'Very Satisfactory';
-        } else if ($average >= 84 && $average <= 80) {
+        } else if ($average <= 84 && $average >= 80) {
             $equivalent = 'Satisfactory';
-        } else if ($average >= 79 && $average <= 75) {
+        } else if ($average <= 79 && $average >= 75) {
             $equivalent = 'Fairly Satisfactory';
-        } else {
+        } else if ($average <= 75) {
             $equivalent = 'Needs Improvement';
         }
+
 
         // eto ung total and ung equivalent
         $final_average = ['total' => $average, 'equivalent' => $equivalent];
