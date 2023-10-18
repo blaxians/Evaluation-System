@@ -32,7 +32,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">College of Agriculture</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ca_show">Show</button>
+                                    <button class="btn btn-success btn-sm w-25" id="btn_ca_show">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Arts and Sciences</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ias_view">Show</button>
+                                    <button class="btn btn-success btn-sm w-25" id="btn_ias_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Engineering and Applied Technology</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ieat_view">Show</button>
+                                    <button class="btn btn-success btn-sm w-25" id="btn_ieat_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Education</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_ied_view">Show</button>
+                                    <button class="btn btn-success btn-sm w-25" id="btn_ied_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ class Report extends Controller
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Management</h6>
-                                    <button class="btn btn-success btn-sm" id="btn_im_view">Show</button>
+                                    <button class="btn btn-success btn-sm w-25" id="btn_im_view">Show</button>
                                 </div>
                             </div>
                         </div>
@@ -354,10 +354,9 @@ class Report extends Controller
                                 <td>Total Averegare</td>
                                 <td></td>
                                 <td></td>
-                                <td>'.$final_average['total'].'</td>
-                                <td><span class="badge text-bg-secondary">'.$final_average['equivalent'].'</span></td>
+                                <td>' . $final_average['total'] . '%</td>
+                                <td><span class="badge text-bg-secondary">' . $final_average['equivalent'] . '</span></td>
                                 </tr>';
-            
         } else {
             $gen_button_active = '0';
             $faculties_score .= '<tr class="text-center">
@@ -371,8 +370,10 @@ class Report extends Controller
 
 
 
-        return response()->json(['name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active,
-    'final_average'=>$final_average]);
+        return response()->json([
+            'name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active,
+            'final_average' => $final_average
+        ]);
     }
     // eto link para sa evaluation ng dean
     public function viewFromDean(Request $request)
@@ -583,8 +584,8 @@ class Report extends Controller
                                 <td>Total Averegare</td>
                                 <td></td>
                                 <td></td>
-                                <td>'.$final_average['total'].'</td>
-                                <td><span class="badge text-bg-secondary">'.$final_average['equivalent'].'</span></td>
+                                <td>' . $final_average['total'] . '%</td>
+                                <td><span class="badge text-bg-secondary">' . $final_average['equivalent'] . '</span></td>
                                 </tr>';
         } else {
             $gen_button_active = '0';
@@ -601,7 +602,7 @@ class Report extends Controller
             'name' => $faculty_name, 'faculties' => $faculties_score,
             'faculties_detail' => $faculties,
             'btn_gen' => $gen_button_active,
-            'final_average'=>$final_average
+            'final_average' => $final_average
         ]);
     }
 
