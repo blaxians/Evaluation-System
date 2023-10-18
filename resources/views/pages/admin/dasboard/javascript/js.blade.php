@@ -6,7 +6,6 @@
         initializePage();  
     })
 
-    // Function to fetch and display dean and student data
     function showTotalData() {
         $.ajax({
             url: "{{ route('statistic') }}",
@@ -24,7 +23,6 @@
         });
     }
 
-    // Function to create or update doughnut chart
     function chart(deansDoneCount, deansNotDoneCount, studentsDoneCount, studentsNotDoneCount) {
         var deansData = getDeansData(deansDoneCount, deansNotDoneCount);
         var studentsData = getStudentsData(studentsDoneCount, studentsNotDoneCount);
@@ -33,7 +31,6 @@
         createOrUpdateChart('studentsCanvas', studentsData, 55);
     }
 
-    // Function to create or update a doughnut chart
     function createOrUpdateChart(canvasId, chartData, cutoutPercentage) {
         var canvas = $('#' + canvasId);
         var existingChart = canvas.data('chart');
@@ -54,7 +51,6 @@
         }
     }
 
-    // Function to get data for dean chart
     function getDeansData(deansDoneCount, deansNotDoneCount) {
         return {
             labels: ["Done", "Pending"],
@@ -67,7 +63,6 @@
         };
     }
 
-    // Function to get data for student chart
     function getStudentsData(studentsDoneCount, studentsNotDoneCount) {
         return {
             labels: ["Done", "Pending"],
@@ -80,7 +75,6 @@
         };
     }
 
-    // After-draw plugin for doughnut chart to display percentage
     Chart.plugins.register({
         afterDraw: function (chart) {
             if (chart.config.type === 'doughnut') {
@@ -94,13 +88,11 @@
 
                 var donePercentage = ((chart.data.datasets[0].data[0] / total) * 100).toFixed(2) + '%';
 
-                // Format the text percentage
                 ctx.restore();
                 ctx.font = "18px Arial";
                 ctx.textBaseline = "middle";
                 ctx.fillStyle = "#000";
 
-                // Alignment of the text percentage
                 var text = donePercentage;
                 var textX = Math.round((width - ctx.measureText(text).width) / 2);
                 var textY = height / 1.8;
@@ -111,7 +103,6 @@
         }
     });
 
-    // Function to load data for the faculty chart
     function loadDataAndInitializeChart() {
         $.ajax({
             url: "{{ route('statistic') }}",
@@ -141,7 +132,6 @@
                         }]
                     };
 
-                    // Update the chart with real data
                     updateBarGraphWithData(facultyData);
                 } else {
                     console.log("Data not available.");
@@ -153,7 +143,6 @@
         });
     }
 
-    // Function to update the faculty chart with data from AJAX
     function updateBarGraphWithData(data) {
         var ctx = document.getElementById('facultyChart').getContext('2d');
         var facultyChart = new Chart(ctx, {
@@ -169,14 +158,14 @@
         });
     }
 
-    // Function to display total students and faculties
     function totalStudentsFaculties() {
         $.ajax({
             url: "{{ route('statistic') }}",
             method: 'get',
             success: function (res) {
+                var numberFormat = res.total_faculty.toLocaleString();
                 $('#dashboard_total_students').text(res.total_student);
-                $('#dashboard_total_faculties').text(res.total_faculty);
+                $('#dashboard_total_faculties').text(numberFormat);
             },
             error: function (error) {
                 console.log("Error:", error);
@@ -184,7 +173,6 @@
         });
     }
 
-    // Initialize the page with data and charts
     function initializePage() {
         showTotalData();
         loadDataAndInitializeChart();

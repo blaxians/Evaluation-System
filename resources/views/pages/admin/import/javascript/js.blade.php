@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function() {
-        // Call the functions directly
+        
         uploadFile();
         textNameButtonName();
     });
@@ -9,8 +9,10 @@
         const fileInput = $('#importedFile');
         const fileLabel = $('label[for="importedFile"]');
         const fileName = $('#file-name');
-
-        // Use 'change' event handler directly
+        if(fileName.length){
+            $('#uploadButton').prop('disabled', true);
+        }
+                
         fileInput.on('change', function() {
             const selectedFile = fileInput[0].files[0];
             if (selectedFile) {
@@ -21,6 +23,8 @@
                 $('#uploadButton').prop('disabled', true);
             }
         });
+
+        
     }
 
     function uploadFile() {

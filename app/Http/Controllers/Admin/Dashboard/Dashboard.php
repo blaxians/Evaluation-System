@@ -88,7 +88,6 @@ class Dashboard extends Controller
 
     public function statistic()
 {
-    // Step 1: Eager Loading for Relationships
     $user = User::with('evaluate')->where('role', '!=', 'admin')->get();
 
     $total_faculties = Faculties::count();
@@ -98,8 +97,6 @@ class Dashboard extends Controller
 
     $total_per_institute = [];
 
-    // Step 2: Indexing
-    // Ensure that the 'institute' column in the 'Faculties' table is properly indexed for efficient retrieval.
     foreach ($institutes as $institute) {
         $total_per_institute[] = Faculties::where('institute', $institute)->count();
     }
@@ -111,8 +108,6 @@ class Dashboard extends Controller
     $student = [0, 0];
 
     foreach ($user as $value) {
-        // Step 3: Caching
-        // Consider implementing caching for expensive queries like this.
         $evaluate = $value->evaluate->where('year_sem', $new_year_sem);
         $true = $evaluate->isNotEmpty() && $evaluate->every(function ($evaluate_value) {
             return $evaluate_value->status != 0;
@@ -125,9 +120,11 @@ class Dashboard extends Controller
         }
     }
 
+    $number_format_faculty = number_format($total_faculties);
+    $number_format_students = number_format($total_students);
     return response()->json([
-        'total_faculty' => $total_faculties,
-        'total_student' => $total_students,
+        'total_faculty' => $number_format_faculty,
+        'total_student' => $number_format_students,
         'total_institute' => $total_per_institute,
         'dean' => $dean,
         'student' => $student,
