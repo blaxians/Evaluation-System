@@ -87,50 +87,47 @@ class Dashboard extends Controller
     //stats
 
     public function statistic()
-{
-    $user = User::with('evaluate')->where('role', '!=', 'admin')->get();
+    {
+        $user = User::with('evaluate')->where('role', '!=', 'admin')->get();
 
-    $total_faculties = Faculties::count();
-    $total_students = User::where('role', 'student')->count();
+        $total_faculties = Faculties::count();
+        $total_students = User::where('role', 'student')->count();
 
-    $institutes = ['College of Agriculture', 'Institute of Arts and Science', 'Institute of Engineering and Applied Technology', 'Institute of Education', 'Institute of Management'];
+        $institutes = ['College of Agriculture', 'Institute of Arts and Science', 'Institute of Engineering and Applied Technology', 'Institute of Education', 'Institute of Management'];
 
-    $total_per_institute = [];
+        $total_per_institute = [];
 
-    foreach ($institutes as $institute) {
-        $total_per_institute[] = Faculties::where('institute', $institute)->count();
-    }
-
-    $year_sem = YearSem::orderBy('id', 'DESC')->first();
-    $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
-
-    $dean = [0, 0];
-    $student = [0, 0];
-
-    foreach ($user as $value) {
-        $evaluate = $value->evaluate->where('year_sem', $new_year_sem);
-        $true = $evaluate->isNotEmpty() && $evaluate->every(function ($evaluate_value) {
-            return $evaluate_value->status != 0;
-        });
-
-        if ($value->role == 'student') {
-            $student[$true ? 0 : 1]++;
-        } else {
-            $dean[$true ? 0 : 1]++;
+        foreach ($institutes as $institute) {
+            $total_per_institute[] = Faculties::where('institute', $institute)->count();
         }
+
+        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
+
+        $dean = [0, 0];
+        $student = [0, 0];
+
+        foreach ($user as $value) {
+            $evaluate = $value->evaluate->where('year_sem', $new_year_sem);
+            $true = $evaluate->isNotEmpty() && $evaluate->every(function ($evaluate_value) {
+                return $evaluate_value->status != 0;
+            });
+
+            if ($value->role == 'student') {
+                $student[$true ? 0 : 1]++;
+            } else {
+                $dean[$true ? 0 : 1]++;
+            }
+        }
+
+        $number_format_faculty = number_format($total_faculties);
+        $number_format_students = number_format($total_students);
+        return response()->json([
+            'total_faculty' => $number_format_faculty,
+            'total_student' => $number_format_students,
+            'total_institute' => $total_per_institute,
+            'dean' => $dean,
+            'student' => $student,
+        ]);
     }
-
-    $number_format_faculty = number_format($total_faculties);
-    $number_format_students = number_format($total_students);
-    return response()->json([
-        'total_faculty' => $number_format_faculty,
-        'total_student' => $number_format_students,
-        'total_institute' => $total_per_institute,
-        'dean' => $dean,
-        'student' => $student,
-    ]);
-}
-
-
-
 }
