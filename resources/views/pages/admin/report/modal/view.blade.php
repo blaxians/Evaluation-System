@@ -10,6 +10,7 @@
                         id="naem_faculty"></span></div>
                 <div id="view_faculty_score_table">
                     {{-- table here --}}
+                    
                 </div>
             </div>
             <div class="modal-footer">

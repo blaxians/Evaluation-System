@@ -347,8 +347,17 @@ class Report extends Controller
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
                                     <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                    
                                 </tr>';
             }
+            $faculties_score .= '<tr class="text-center fw-bold">
+                                <td>Total Averegare</td>
+                                <td></td>
+                                <td></td>
+                                <td>'.$final_average['total'].'</td>
+                                <td><span class="badge text-bg-secondary">'.$final_average['equivalent'].'</span></td>
+                                </tr>';
+            
         } else {
             $gen_button_active = '0';
             $faculties_score .= '<tr class="text-center">
@@ -362,7 +371,8 @@ class Report extends Controller
 
 
 
-        return response()->json(['name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active]);
+        return response()->json(['name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active,
+    'final_average'=>$final_average]);
     }
     // eto link para sa evaluation ng dean
     public function viewFromDean(Request $request)
@@ -569,6 +579,13 @@ class Report extends Controller
                                     <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
                                 </tr>';
             }
+            $faculties_score .= '<tr class="text-center">
+                                <td>Total Averegare</td>
+                                <td></td>
+                                <td></td>
+                                <td>'.$final_average['total'].'</td>
+                                <td><span class="badge text-bg-secondary">'.$final_average['equivalent'].'</span></td>
+                                </tr>';
         } else {
             $gen_button_active = '0';
             $faculties_score .= '<tr class="text-center">
@@ -583,7 +600,8 @@ class Report extends Controller
         return response()->json([
             'name' => $faculty_name, 'faculties' => $faculties_score,
             'faculties_detail' => $faculties,
-            'btn_gen' => $gen_button_active
+            'btn_gen' => $gen_button_active,
+            'final_average'=>$final_average
         ]);
     }
 
