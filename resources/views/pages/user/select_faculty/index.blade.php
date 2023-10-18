@@ -18,7 +18,7 @@
                   </div>
                 <div class="card">
                     <div class="card-header d-flex justify-content-end justify-content-sm-between">
-                        <h2 class="card-title text-success d-none d-sm-block">Sellect professor</h2>
+                        <h2 class="card-title text-success d-none d-sm-block">Select professor</h2>
                         <button id="btn_prof_finalize" class="btn btn-success"
                         data-bs-toggle="modal" data-bs-target="#add_professor"><i class="bi bi-check-circle me-2"></i>Finalize</button>
                     </div>

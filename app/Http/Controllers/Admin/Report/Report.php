@@ -351,7 +351,7 @@ class Report extends Controller
                                 </tr>';
             }
             $faculties_score .= '<tr class="text-center fw-bold">
-                                <td>Total Averegare</td>
+                                <td>Total Average</td>
                                 <td></td>
                                 <td></td>
                                 <td>'.$final_average['total'].'</td>
@@ -580,7 +580,7 @@ class Report extends Controller
                                 </tr>';
             }
             $faculties_score .= '<tr class="text-center">
-                                <td>Total Averegare</td>
+                                <td>Total Average</td>
                                 <td></td>
                                 <td></td>
                                 <td>'.$final_average['total'].'</td>

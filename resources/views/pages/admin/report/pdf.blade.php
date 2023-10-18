@@ -139,7 +139,7 @@
                 <p class="m-0">Institute QCE Coordinator, Insitute of Arts and Sciences</p>
             </div>
             <div class="row mt-5 text-center">
-                <p class="mt-3">Review by:</p>
+                <p class="mt-3">Reviewed by:</p>
                 <p class="text-uppercase fw-bold mb-0 pb-0">robert a. capalad</p>
                 <p class="m-0">Head, QCE Evaluation Committee</p>
             </div>
