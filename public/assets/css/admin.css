@@ -143,4 +143,6 @@ a, .dropdown-btn {
 } 
 
 
-
+select, option.selected {
+  font-family: "bootstrap-icons";
+}

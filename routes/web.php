@@ -146,3 +146,7 @@ Route::controller(User::class)->group(function () {
     Route::post('/evaluation/faculties', 'evaluations')->name('evaluate.user')->middleware(['auth', 'user']);
     Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('evaluate.viewEvaluate')->middleware(['auth', 'user']);
 });
+
+Route::get('/sorting', function(){
+    return view('pages.admin.sorting.sorting');
+});
