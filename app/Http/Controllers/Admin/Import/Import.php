@@ -34,7 +34,7 @@ class Import extends Controller
                 $name = 'student_file.csv';
                 Storage::disk('public')->delete('student_file.csv'); // Delete the existing file if it exists
                 Storage::disk('public')->putFileAs('', $excel, $name); // Store the new file
-        
+
                 // Redirect or return a response to the desired route
                 return response()->json('success');
             } catch (\Throwable $th) {
@@ -44,14 +44,12 @@ class Import extends Controller
         } else {
             return response()->json(['error' => 'Invalid input']);
         }
-        
     }
 
     public function insertStudent()
     {
         DB::disableQueryLog();
         LazyCollection::make(function () {
-
             $handle = fopen(public_path('storage/student_file.csv'), 'r');
             while (($line = fgetcsv($handle, 4096)) != false) {
                 $dataString = implode(', ', $line);
@@ -63,21 +61,46 @@ class Import extends Controller
             ->skip(1)
             ->chunk(1000)
             ->each(function (LazyCollection $chunk) {
-                $records = $chunk->map(function ($row) {
-                    $user = User::where('username', $row[0])->first();
-                    if ($user == null) {
-                        return [
-                            'name' => $row[1] . " " . $row[2] . " " . $row[3],
-                            'username' => $row[0],
-                            'password' => $row[0],
-                            'role' => 'student'
-                        ];
+                $new_student = $chunk->map(function ($row) {
+                    foreach ($row as $key => $value) {
+                        if ($value == " ") {
+                            unset($row[$key]);
+                        }
                     }
+                    $new_row =  array_values($row);
+
+                    return [
+                        'name' => strtolower(trim($new_row[1])) . " " . strtolower(trim($new_row[2])) . " " . strtolower(trim($new_row[3])),
+                        'username' => trim($new_row[0]),
+                        'password' => trim($new_row[0]),
+                        'role' => 'student',
+                        'campus' => trim($new_row[4]),
+                        'institute' => trim($new_row[5]),
+                        'program_name' => trim($new_row[6]),
+                        'section_name' => trim($new_row[7]),
+                        'year_level' => trim($new_row[8]),
+                        'sex' => trim($new_row[9]),
+                    ];
                 })->ToArray();
-                $filteredArray = array_filter($records, function ($value) {
+
+                $filteredArray = array_filter($new_student, function ($value) {
                     return !is_null($value);
                 });
-                DB::table('users')->insert($filteredArray);
+
+                foreach ($filteredArray as $value) {
+                    $student = User::where('username', $value['username'])->first();
+                    if ($student == null) {
+                        User::create($value);
+                    } else {
+                        $student->name = $value['name'];
+                        $student->campus = $value['campus'];
+                        $student->institute = $value['institute'];
+                        $student->program_name = $value['program_name'];
+                        $student->section_name = $value['section_name'];
+                        $student->year_level = $value['year_level'];
+                        $student->update();
+                    }
+                }
             });
 
         // return ka uli sa import route
