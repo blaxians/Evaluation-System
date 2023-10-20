@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\Import\Import;
 use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Admin\Report\Report;
+use App\Http\Controllers\Admin\Sorting\Sorting;
 use App\Models\Evaluate;
 
 // Redirect the user if auth
@@ -132,6 +133,15 @@ Route::controller(Import::class)->group(function () {
     Route::get('/import/student/post/data', 'insertStudent')->name('insertStudent.post')->middleware(['auth', 'admin']);
 });
 
+//Admin Sorting
+Route::controller(Sorting::class)->group(function () {
+    Route::get('/campus', 'campus')->name('get.campus')->middleware(['auth', 'admin']);
+    Route::get('/institute/{campus}', 'institute')->name('get.institute')->middleware(['auth', 'admin']);
+    Route::get('/courses/{institute}', 'courses')->name('get.courses')->middleware(['auth', 'admin']);
+    Route::get('/year_level/{course}', 'year_level')->name('get.year_level')->middleware(['auth', 'admin']);
+    Route::get('/section/{courseyear}', 'section')->name('get.section')->middleware(['auth', 'admin']);
+    Route::get('/search/{search}', 'search')->name('get.search')->middleware(['auth', 'admin']);
+});
 
 //User Routes
 Route::controller(User::class)->group(function () {

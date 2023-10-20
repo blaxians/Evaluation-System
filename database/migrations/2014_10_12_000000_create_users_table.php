@@ -17,7 +17,12 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('role');
+            $table->string('campus')->nullable();
             $table->string('institute')->nullable();
+            $table->string('program_name')->nullable();
+            $table->string('section_name')->nullable();
+            $table->string('year_level')->nullable();
+            $table->string('sex')->nullable();
             $table->timestamps();
         });
     }
