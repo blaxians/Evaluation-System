@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Evaluation | {{ ucwords(Request::segment(1)) }}</title>
     @include('layout.links')
-    <link rel="icon" href="assets/img/main/basc.png" type="image/png">
+    <link rel="icon" href="{{ asset('assets/img/main/basc.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
     @yield('custom_css')
 </head>
@@ -15,7 +15,7 @@
 <body>
     <div class="d-flex" id="wrapper">
         @include('pages.admin.components.sidebar')
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class="container-fluid">
             @include('pages.admin.components.navbar')
 
             {{-- main content --}}

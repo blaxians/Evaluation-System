@@ -23,16 +23,16 @@
                         <div>
                             <ul class="nav nav-tabs fw-semibold">
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize active" role="button" id="campus_select_main">Main</a>
+                                  <a class="nav-link text-capitalize active" role="button" id="campus_select_main"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_btvc">Btvc</a>
+                                  <a class="nav-link text-capitalize" role="button" id="campus_select_btvc"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_drt">Drt</a>
+                                  <a class="nav-link text-capitalize" role="button" id="campus_select_drt"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_balagtas">Balagtas</a>
+                                  <a class="nav-link text-capitalize" role="button" id="campus_select_ffhnas"></a>
                                 </li>
                             </ul>
                         </div>
@@ -79,58 +79,41 @@
                             <div class="col mt-3">
                                 <div class="card">
                                     <div class="car-body p-3">
-                                        <table class="table table-bordered table-hover">
+                                        <table id="student_table_sorting" class="table bg-white rounded shadow-sm table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Student ID</th>
                                                     <th>Name</th>
-                                                    <th>Couse</th>
-                                                    <th>Year</th>
+                                                    <th>Username</th>
+                                                    {{-- <th>Institute</th> --}}
+                                                    <th>Program Name</th>
+                                                    {{-- <th>Section Name</th> --}}
+                                                    <th>Year Level</th>
+                                                    <th>Sex</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>100023</td>
-                                                    <td>Ian Jhon Blas</td>
-                                                    <td>BSIT</td>
-                                                    <td>4</td>
-                                                    <td>Done</td>
-                                                    <td>Edit | Delete</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>100023</td>
-                                                    <td>Ian Jhon Blas</td>
-                                                    <td>BSIT</td>
-                                                    <td>4</td>
-                                                    <td>Done</td>
-                                                    <td>Edit | Delete</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>100023</td>
-                                                    <td>Ian Jhon Blas</td>
-                                                    <td>BSIT</td>
-                                                    <td>4</td>
-                                                    <td>Done</td>
-                                                    <td>Edit | Delete</td>
-                                                </tr>
+                                                {{-- student data here  --}}
                                             </tbody>
                                         </table>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {{-- student table --}}
-
-
                     </div>
                 </div>
             </div>
         </div>
+        {{-- scroll to top --}}
+        <div id="scroll-to-top-button_sorting" class="bg-success text-white py-2 px-3 rounded-circle">
+            <i class="fas fa-arrow-up fw-bold fs-3"></i>
+        </div>
 
-
-
+        {{-- modal --}}
+        @include('pages.admin.sorting.modal.view')
     </div>
     @section('javascript')
         @include('pages.admin.sorting.javascript.js')

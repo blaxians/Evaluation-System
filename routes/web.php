@@ -135,12 +135,15 @@ Route::controller(Import::class)->group(function () {
 
 //Admin Sorting
 Route::controller(Sorting::class)->group(function () {
-    Route::get('/campus', 'campus')->name('get.campus')->middleware(['auth', 'admin']);
-    Route::get('/institute/{campus}', 'institute')->name('get.institute')->middleware(['auth', 'admin']);
-    Route::get('/courses/{institute}', 'courses')->name('get.courses')->middleware(['auth', 'admin']);
-    Route::get('/year_level/{course}', 'year_level')->name('get.year_level')->middleware(['auth', 'admin']);
-    Route::get('/section/{courseyear}', 'section')->name('get.section')->middleware(['auth', 'admin']);
-    Route::get('/search/{search}', 'search')->name('get.search')->middleware(['auth', 'admin']);
+    Route::get('/sorting', 'index')->name('index.sorting')->middleware(['auth', 'admin']);
+    Route::get('/sorting/campus', 'campus')->name('get.campus')->middleware(['auth', 'admin']);
+    Route::get('/sorting/institute', 'institute')->name('get.institute')->middleware(['auth', 'admin']);
+    Route::get('/sorting/courses', 'courses')->name('get.courses')->middleware(['auth', 'admin']);
+    Route::get('/sorting/year_level', 'year_level')->name('get.year_level')->middleware(['auth', 'admin']);
+    Route::get('/sorting/section', 'section')->name('get.section')->middleware(['auth', 'admin']);
+    Route::get('/sorting/search', 'search')->name('get.search')->middleware(['auth', 'admin']);
+    Route::get('/sorting/view/student', 'view')->name('get.view')->middleware(['auth', 'admin']);
+    Route::post('/sorting/resetpassword', 'resetPassword')->name('sorting.resetPassword')->middleware(['auth', 'admin']);
 });
 
 //User Routes
@@ -155,8 +158,4 @@ Route::controller(User::class)->group(function () {
     Route::get('/evaluation/questions', 'questions')->name('questions.user')->middleware(['auth', 'user']);
     Route::post('/evaluation/faculties', 'evaluations')->name('evaluate.user')->middleware(['auth', 'user']);
     Route::get('/evaluation/faculties/{id}', 'viewEvaluate')->name('evaluate.viewEvaluate')->middleware(['auth', 'user']);
-});
-
-Route::get('/sorting', function(){
-    return view('pages.admin.sorting.sorting');
 });

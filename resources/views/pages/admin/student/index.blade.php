@@ -46,6 +46,11 @@
         </div>
         <!-- table end -->
 
+        <div id="scroll-to-top-button" class="bg-success text-white py-2 px-3 rounded-circle">
+            <i class="fas fa-arrow-up fw-bold fs-3"></i>
+        </div>
+          
+
         {{-- modal start --}}
         @include('pages.admin.student.modal.view')
         {{-- modal end --}}

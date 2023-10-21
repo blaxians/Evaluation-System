@@ -146,3 +146,21 @@ a, .dropdown-btn {
 select, option.selected {
   font-family: "bootstrap-icons";
 }
+
+#scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  display: none;
+  border: none;
+  cursor: pointer;
+}
+#scroll-to-top-button_sorting {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  display: none;
+  border: none;
+  cursor: pointer;
+}
+

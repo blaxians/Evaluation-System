@@ -3,8 +3,24 @@
         showStudent();
         viewStudent();
         resetPassword();
+        scrollUp();
 
     })
+
+    function scrollUp(){
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+            $('#scroll-to-top-button').fadeIn();
+            } else {
+            $('#scroll-to-top-button').fadeOut();
+            }
+        });
+
+        $('#scroll-to-top-button').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 100);
+            return false;
+        });
+    }
 
     //reset password 
     function resetPassword(){
@@ -46,50 +62,50 @@
     }
 
     function showStudent() {
-    $.ajax({
-        url: "{{ route('show.student') }}",
-        method: 'get',
-        success: function(res) {
-            $('#spinner_loader_stud').toggleClass('d-none');
-            $('#student_table').toggleClass('d-none');
-            var table = $('#student_table').DataTable({
-                data: res.data,
-                columns: [
-                    { data: 'id' },
-                    { data: 'name' },
-                    { data: 'username' },
-                    {
-                        data: 'status',
-                        render: function(data, type, row) {
-                            if (type === 'display') {
-                                var statusText = row.status;
-                                var statusClass = statusText === 'Done' ? 'text-success fw-semibold' : 'text-danger fw-semibold';
-                                return '<span class="' + statusClass + '">' + statusText + '</span>';
+        $.ajax({
+            url: "{{ route('show.student') }}",
+            method: 'get',
+            success: function(res) {
+                $('#spinner_loader_stud').toggleClass('d-none');
+                $('#student_table').toggleClass('d-none');
+                var table = $('#student_table').DataTable({
+                    data: res.data,
+                    columns: [
+                        { data: 'id' },
+                        { data: 'name' },
+                        { data: 'username' },
+                        {
+                            data: 'status',
+                            render: function(data, type, row) {
+                                if (type === 'display') {
+                                    var statusText = row.status;
+                                    var statusClass = statusText === 'Done' ? 'text-success fw-semibold' : 'text-danger fw-semibold';
+                                    return '<span class="' + statusClass + '">' + statusText + '</span>';
+                                }
+                                return data;
                             }
-                            return data;
-                        }
-                    },
-                    {
-                        data: null,
-                        render: function(data, type, row) {
-                            var buttons = '';
+                        },
+                        {
+                            data: null,
+                            render: function(data, type, row) {
+                                var buttons = '';
 
-                            if (row.status === 'Done' || row.actions) {
-                                buttons += '<button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#view_student_modal" id="btn_view_button" data-status="' + row.status + '" data-id="' + row.id + '"><i class="bi bi-eye-fill"></i></button>';
-                                buttons += '<button class="btn btn-success btn-sm" id="btn_changepass_button" data-id="' + row.id + '"><i class="bi bi-unlock-fill"></i></button>';
+                                if (row.status === 'Done' || row.actions) {
+                                    buttons += '<button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal" data-bs-target="#view_student_modal" id="btn_view_button" data-status="' + row.status + '" data-id="' + row.id + '"><i class="bi bi-eye-fill"></i></button>';
+                                    buttons += '<button class="btn btn-success btn-sm" id="btn_changepass_button" data-id="' + row.id + '"><i class="bi bi-unlock-fill"></i></button>';
+                                }
+
+                                return buttons;
                             }
-
-                            return buttons;
-                        }
-                    },
-                ],
-                columnDefs: [
-                    { targets: [4], className: 'center-align' }
-                ]
-            });
-        }
-    });
-}
+                        },
+                    ],
+                    columnDefs: [
+                        { targets: [4], className: 'center-align' }
+                    ]
+                });
+            }
+        });
+    }
 
 
 

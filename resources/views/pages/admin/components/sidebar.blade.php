@@ -37,7 +37,12 @@
         <a href="{{ route('index.student') }}"
             class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link 
         {{ Request::segment(1) === 'students' ? 'text-success' : '' }}">
-            <i class="fas fa-users me-2"></i>Students
+            <i class="fas fa-users me-2"></i>All Students
+        </a>
+        <a href="{{ route('index.sorting') }}"
+            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link 
+        {{ Request::segment(1) === 'sorting' ? 'text-success' : '' }}">
+        <i class="fa-solid fa-sort me-2"></i>Filter Students
         </a>
         <a href="{{ route('index.report') }}"
             class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link
