@@ -28,7 +28,7 @@
             let id = $(this).attr('data-id');
             Swal.fire({
             title: 'Are you sure?',
-            text: "You wan to reset the password?",
+            text: "You want to reset the password?",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

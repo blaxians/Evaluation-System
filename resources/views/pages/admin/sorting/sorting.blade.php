@@ -20,10 +20,10 @@
                         </div>
 
                         {{-- campus selection --}}
-                        <div>
+                        <div id="sorting_campuses">
                             <ul class="nav nav-tabs fw-semibold">
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize active" role="button" id="campus_select_main"></a>
+                                  <a class="nav-link text-capitalize" role="button" id="campus_select_main"></a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link text-capitalize" role="button" id="campus_select_btvc"></a>
@@ -45,7 +45,7 @@
                         {{-- student sorting title --}}
 
                         {{-- student sorting --}}
-                        <div class="row g-2 d-flex">
+                        <div class="row g-2 d-flex" id="sorting_filter_student">
                             <div class="col">
                                 <select class="form-select form-select-sm text-primary fw-semibold" id="institute_select">
                                     <option class="d-none" id="option_reset_institute" selected value="">&#xF876; Institute</option>
