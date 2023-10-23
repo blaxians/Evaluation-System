@@ -47,22 +47,26 @@
                         {{-- student sorting --}}
                         <div class="row g-2 d-flex" id="sorting_filter_student">
                             <div class="col">
-                                <select class="form-select form-select-sm text-primary fw-semibold" id="institute_select">
+                                <select class="form-select form-select-sm text-primary fw-semibold" id="institute_select"
+                                data-id="institute">
                                     <option class="d-none" id="option_reset_institute" selected value="">&#xF876; Institute</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="course_select">
+                                <select class="form-select form-select-sm d text-primary fw-semibold" id="course_select"
+                                data-id="course">
                                     <option class="d-none option_reset" id="option_reset_course" selected value="">&#xF6FD; Course</option>
                                   </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="year_select">
+                                <select class="form-select form-select-sm d text-primary fw-semibold" id="year_select"
+                                data-id="year">
                                     <option class="d-none option_reset" id="option_reset_year" selected value="">&#xF17A; Year Level</option>
                                   </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="section_select">
+                                <select class="form-select form-select-sm d text-primary fw-semibold" id="section_select"
+                                data-id="section">
                                     <option class="d-none option_reset" id="option_reset_section" selected value="">&#xF571; Section</option>
                                   </select>
                             </div>
@@ -83,7 +87,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Username</th>
+                                                    <th>Student ID</th>
                                                     {{-- <th>Institute</th> --}}
                                                     <th>Program Name</th>
                                                     {{-- <th>Section Name</th> --}}
