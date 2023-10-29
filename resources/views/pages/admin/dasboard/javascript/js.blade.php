@@ -51,6 +51,7 @@
         }
     }
 
+    //dougnut get deans data
     function getDeansData(deansDoneCount, deansNotDoneCount) {
         return {
             labels: ["Done", "Pending"],
@@ -63,6 +64,7 @@
         };
     }
 
+    //doughnut get student data
     function getStudentsData(studentsDoneCount, studentsNotDoneCount) {
         return {
             labels: ["Done", "Pending"],
@@ -108,6 +110,7 @@
             url: "{{ route('statistic') }}",
             method: 'get',
             success: function (res) {
+                console.log(res.total_institute)
                 if (res.total_institute && res.total_institute.length >= 5) {
                     var facultyData = {
                         labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
@@ -143,6 +146,7 @@
         });
     }
 
+    //bar chart
     function updateBarGraphWithData(data) {
         var ctx = document.getElementById('facultyChart').getContext('2d');
         var facultyChart = new Chart(ctx, {
@@ -151,13 +155,14 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true,
+                        min: 0
                     }
                 }
             }
         });
     }
 
+    //bar chart total faculties
     function totalStudentsFaculties() {
         $.ajax({
             url: "{{ route('statistic') }}",
@@ -173,15 +178,14 @@
         });
     }
 
+    //intitialize
     function initializePage() {
         showTotalData();
         loadDataAndInitializeChart();
         totalStudentsFaculties();
     }
 
-
-
-    
+    //add year
     function addYear(){
         $(document).on('click', '#btn_update_year', function(e){
             e.preventDefault();
@@ -213,9 +217,6 @@
         })
     }
 
-
-    
-    
     //show on set year
     function showSetYear(){
         $.ajax({

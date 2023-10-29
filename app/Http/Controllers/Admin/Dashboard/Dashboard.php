@@ -93,7 +93,7 @@ class Dashboard extends Controller
         $total_faculties = Faculties::count();
         $total_students = User::where('role', 'student')->count();
 
-        $institutes = ['College of Agriculture', 'Institute of Arts and Science', 'Institute of Engineering and Applied Technology', 'Institute of Education', 'Institute of Management'];
+        $institutes = ['College of Agriculture', 'Institute of Arts and Sciences', 'Institute of Engineering and Applied Technology', 'Institute of Education', 'Institute of Management'];
 
         $total_per_institute = [];
 

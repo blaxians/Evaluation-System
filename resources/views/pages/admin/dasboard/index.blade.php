@@ -69,20 +69,24 @@
                 <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center">
                     <div class="row g-4">
                        <div class="col-sm-6">
+
                            <div id="deansChart">
                                <canvas id="deansCanvas" style="width:296px; height:250px;"></canvas>
                                <div class="d-flex justify-content-center">
                                     <h6 class="fw-semibold fs-6 m-0">Dean</h5>
                                </div>
                            </div>
+
                        </div>
                        <div class="col-sm-6">
+
                            <div id="studentsChart">
                                <canvas id="studentsCanvas" style="width:296px; height:250px;"></canvas>
                                <div class="d-flex justify-content-center">
                                     <h6 class="fw-semibold fs-6 m-0">Student</h6>
                                 </div>
                            </div>
+                           
                        </div>
                     </div>
                </div>
