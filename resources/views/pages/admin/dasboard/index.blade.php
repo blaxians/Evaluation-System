@@ -63,7 +63,8 @@
         </div>
         <!-- widgets end -->
 
-        <div class="row mt-1 g-4 d-flex g-3">
+        {{-- statistics charts start  --}}
+        <div class="row mt-1 g-4 d-flex">
 
             <div class="col-lg-6">
                 <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center">
@@ -96,11 +97,49 @@
                     <canvas id="facultyChart"></canvas>
                 </div>
             </div>
-
-
-            
-
         </div>
+        
+
+        <div class="row mt-1 g-4 px-2">
+            <div class="col bg-white rounded shadow-sm h-100 d-flex flex-column p-4 mb-4" style="height:300px;">
+                <h3 class="py-2 fw-semibold">Top Rated Faculties</h3>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col" width="200">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1
+                            <i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i>
+                            <i class="bi bi-trophy-fill text-warning fs-4"></i>
+                            <i class="bi bi-trophy-fill text-warning fs-4"></i></th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2<i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i>
+                            <i class="bi bi-trophy-fill text-warning fs-4"></i></th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3<i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i></th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        {{-- statistics charts end  --}}
+
 
         {{-- modals start --}}
        
