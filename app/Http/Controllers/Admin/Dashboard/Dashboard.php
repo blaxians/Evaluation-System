@@ -19,7 +19,7 @@ class Dashboard extends Controller
         return view('pages.admin.dasboard.index');
     }
 
-    public function show()
+    public function shxow()
     {
         $year_sem = YearSem::orderBy('id', 'DESC')->first();
         return response()->json($year_sem);

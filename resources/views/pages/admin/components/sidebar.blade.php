@@ -15,47 +15,61 @@
 
     <div class="list-group list-group-flush my-3">
         <a href="{{ route('index.dashboard') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action fw-bold text-secondary nav-link
-        {{ request()->is('dashboard') ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action fw-bold text-secondary nav-link
+        {{ request()->is('dashboard') ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'dashboard' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+        </div>
         </a>
         <a href="{{ route('index.questionnaire') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link 
-        {{ request()->is('questionnaire') ? 'text-success' : '' }}">
-            <i class="fas fa-list me-2"></i>Questionnaire
+            class="list-group-item list-group-item-action p-0 text-secondary fw-bold nav-link 
+        {{ request()->is('questionnaire') ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'questionnaire' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2"><i class="fas fa-list me-2"></i>Questionnaire</div>
         </a>
         <a href="{{ route('index.faculties') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link
-        {{ Request::segment(1) === 'faculties' ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
+        {{ Request::segment(1) === 'faculties' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'faculties' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fas fa-chalkboard-teacher me-2"></i>Faculties
+        </div>
         </a>
         <a href="{{ route('index.dean') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link
-        {{ Request::segment(1) === 'dean' ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
+        {{ Request::segment(1) === 'dean' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'dean' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fa-solid fa-user-tie me-2"></i>Dean's
+        </div>
         </a>
         <a href="{{ route('index.student') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link 
-        {{ Request::segment(1) === 'students' ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
+        {{ Request::segment(1) === 'students' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'students' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fas fa-users me-2"></i>All Students
+        </div>
         </a>
         <a href="{{ route('index.sorting') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link 
-        {{ Request::segment(1) === 'sorting' ? 'text-success' : '' }}">
-        <i class="fa-solid fa-sort me-2"></i>Filter Students
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
+        {{ Request::segment(1) === 'sorting' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'sorting' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
+            <i class="fa-solid fa-sort me-2"></i>Filter Students
+        </div>
         </a>
         <a href="{{ route('index.report') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link
-        {{ Request::segment(1) === 'report' ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
+        {{ Request::segment(1) === 'report' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'report' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fas fa-file-invoice me-2"></i>Evaluation Report
+        </div>
         </a>
         <a href="{{ route('import.student') }}"
-            class="list-group-item py-3 ps-5 list-group-item-action text-secondary fw-bold nav-link
-        {{ Request::segment(1) === 'import' ? 'text-success' : '' }}">
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
+        {{ Request::segment(1) === 'import' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'import' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fas fa-user-friends me-2"></i>Import Student
+        </div>
         </a>
 
-        <button class="dropdown-btn mt-2 py-3 ps-5 text-secondary fw-bold fs-6 text-dark d-md-none">
+        <button class="dropdown-btn mt-2 p-0 text-secondary fw-bold fs-6 text-dark d-md-none">
             <i class="fa fa-caret-down"></i> Account Options
         </button>
         <div class="dropdown-container ms-2">

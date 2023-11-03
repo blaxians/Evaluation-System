@@ -124,10 +124,8 @@ class Dean extends Controller
                 $dean_table .= '</tbody>
                 </table>';
             } else {
-                $dean_table .= '<tr>
-                                    <td>no data</td>
-                                    <td>no data</td>
-                                    <td>no data</td>
+                $dean_table .= '<tr class="text-center">
+                                    <td colspan="3">no data</td>
                                 </tr>
                             </tbody>
                         </table>';

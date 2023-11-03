@@ -66,6 +66,7 @@
             url: "{{ route('show.student') }}",
             method: 'get',
             success: function(res) {
+               
                 $('#spinner_loader_stud').toggleClass('d-none');
                 $('#student_table').toggleClass('d-none');
                 var table = $('#student_table').DataTable({
