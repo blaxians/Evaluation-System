@@ -66,9 +66,10 @@
         {{-- statistics charts start  --}}
         <div class="row mt-1 g-4 d-flex">
 
+            {{-- dean and student done pending  --}}
             <div class="col-lg-6">
-                <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center">
-                    <div class="row g-4">
+                <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center align-items-center">
+                    <div class="row g-4 d-none" id="student_dean_dougnut">
                        <div class="col-sm-6">
 
                            <div id="deansChart">
@@ -90,16 +91,26 @@
                            
                        </div>
                     </div>
+                    <div class="spinner-border text-secondary fw-semibold my-5" role="status" id="dougnut_chart_load">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
                </div>
             </div>
+            {{-- dean and student done pending end  --}}
+
+            {{-- faculty bar chart  --}}
             <div class="col-lg-6">
-                <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center">
-                    <canvas id="facultyChart"></canvas>
+                <div class="p-2 bg-white rounded shadow-sm h-100 d-flex justify-content-center align-items-center">
+                    <canvas id="facultyChart" class="d-none"></canvas>
+                    <div class="spinner-border text-secondary fw-semibold" role="status" id="barchart_faculty_load">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
                 </div>
             </div>
+            {{-- faculty bar chart end  --}}
         </div>
         
-
+        {{-- top rated faculty  --}}
         <div class="row mt-1 g-4 px-2">
             <div class="col bg-white rounded shadow-sm h-100 d-flex flex-column p-4 mb-4" style="height:300px;">
                 <h3 class="py-2 fw-semibold">Top Rated Faculties</h3>
@@ -137,6 +148,7 @@
                     </tbody>
                   </table>
             </div>
+            {{-- top rated faculty  --}}
         </div>
         {{-- statistics charts end  --}}
 

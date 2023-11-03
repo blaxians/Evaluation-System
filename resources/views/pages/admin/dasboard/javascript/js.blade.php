@@ -3,27 +3,27 @@
         showSetYear();
         addYear();
         viewSemester();
-        initializePage();  
+        initializePage(); 
     })
 
-    function showTotalData() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-                if (res.dean && res.student) {
-                    chart(res.dean[0], res.dean[1], res.student[0], res.student[1]);
-                } else {
-                    console.log("Data not available.");
-                }
-            },
-            error: function (error) {
-                console.log("Error:", error);
+    async function showTotalData() {
+        try {
+            const response = await fetch("{{ route('statistic') }}");
+            const data = await response.json();
+
+            if (data.dean && data.student) {
+                chart(data.dean[0], data.dean[1], data.student[0], data.student[1]);
+            } else {
+                console.log("Data not available.");
             }
-        });
+        } catch (error) {
+            console.log("Error:", error);
+        }
     }
 
     function chart(deansDoneCount, deansNotDoneCount, studentsDoneCount, studentsNotDoneCount) {
+        $('#student_dean_dougnut').removeClass('d-none');
+        $('#dougnut_chart_load').addClass('d-none');
         var deansData = getDeansData(deansDoneCount, deansNotDoneCount);
         var studentsData = getStudentsData(studentsDoneCount, studentsNotDoneCount);
 
@@ -105,45 +105,43 @@
         }
     });
 
-    function loadDataAndInitializeChart() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-                console.log(res.total_institute)
-                if (res.total_institute && res.total_institute.length >= 5) {
-                    var facultyData = {
-                        labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
-                        datasets: [{
-                            label: 'Number of Faculty',
-                            data: res.total_institute.slice(0, 5),
-                            backgroundColor: [
-                                'rgba(0, 255, 0, 0.2)',
-                                'rgb(54, 162, 235, 0.2)',
-                                'rgb(149, 35, 35, 0.2)',
-                                'rgba(83, 112, 252, 0.2)',
-                                'rgba(139, 80, 253, 0.2)'
-                            ],
-                            borderColor: [
-                                'rgb(0, 255, 0)',
-                                'rgb(54, 162, 235)',
-                                'rgb(149, 35, 35)',
-                                'rgb(83, 112, 252)',
-                                'rgb(139, 80, 253)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    };
-
-                    updateBarGraphWithData(facultyData);
-                } else {
-                    console.log("Data not available.");
-                }
-            },
-            error: function (error) {
-                console.log("Error:", error);
+    async function loadDataAndInitializeChart() {
+        try {
+            const response = await fetch("{{ route('statistic') }}");
+            const res = await response.json();
+            
+            if (res.total_institute && res.total_institute.length >= 5) {
+                var facultyData = {
+                    labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
+                    datasets: [{
+                        label: 'Number of Faculty',
+                        data: res.total_institute.slice(0, 5),
+                        backgroundColor: [
+                            'rgba(0, 255, 0, 0.2)',
+                            'rgb(54, 162, 235, 0.2)',
+                            'rgb(149, 35, 35, 0.2)',
+                            'rgba(83, 112, 252, 0.2)',
+                            'rgba(139, 80, 253, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(0, 255, 0)',
+                            'rgb(54, 162, 235)',
+                            'rgb(149, 35, 35)',
+                            'rgb(83, 112, 252)',
+                            'rgb(139, 80, 253)'
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+                $('#barchart_faculty_load').addClass('d-none');
+                $('#facultyChart').removeClass('d-none');
+                updateBarGraphWithData(facultyData);
+            } else {
+                console.log("Data not available.");
             }
-        });
+        } catch (error) {
+            console.log("Error:", error);
+        }
     }
 
     //bar chart
@@ -163,20 +161,34 @@
     }
 
     //bar chart total faculties
-    function totalStudentsFaculties() {
-        $.ajax({
-            url: "{{ route('statistic') }}",
-            method: 'get',
-            success: function (res) {
-                var numberFormat = res.total_faculty.toLocaleString();
-                $('#dashboard_total_students').text(res.total_student);
-                $('#dashboard_total_faculties').text(numberFormat);
-            },
-            error: function (error) {
-                console.log("Error:", error);
+    // function totalStudentsFaculties() {
+    //     $.ajax({
+    //         url: "{{ route('statistic') }}",
+    //         method: 'get',
+    //         success: function (res) {
+    //             var numberFormat = res.total_faculty.toLocaleString();
+    //             $('#dashboard_total_students').text(res.total_student);
+    //             $('#dashboard_total_faculties').text(numberFormat);
+    //         },
+    //         error: function (error) {
+    //             console.log("Error:", error);
+    //         }
+    //     });
+    // }
+
+    // total faculties async
+    async function totalStudentsFaculties() {
+        try {
+            const response = await fetch("{{ route('statistic') }}");
+            const data = await response.json();
+
+            var numberFormat = data.total_faculty.toLocaleString();
+            $('#dashboard_total_students').text(data.total_student);
+            $('#dashboard_total_faculties').text(numberFormat);
+        } catch (error) {
+            console.log("Error:", error);
             }
-        });
-    }
+        }
 
     //intitialize
     function initializePage() {
@@ -218,28 +230,33 @@
     }
 
     //show on set year
-    function showSetYear(){
-        $.ajax({
-            url: "{{ route('show.dashboard') }}",
-            method: 'get',
-            success: function(res){
-                if(Object.keys(res).length > 0){
-                    $('#academic_year').text(res.year);
-                    currentYear = res.year;
-                    if(res.semester == 1){
-                        $('#semester').text(`${res.semester}st semester`);
-                    } else {
-                        $('#semester').text(`${res.semester}nd semester`);
-                    }
-                } else {
-                    $('#academic_year').text('---');
-                    $('#semester').text('---');
-                }
-                
-                
-            }
-        })
+    async function showSetYear() {
+        try {
+            const response = await fetch("{{ route('show.dashboard') }}", {
+                method: 'get',
+            });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const res = await response.json();
+
+            if (Object.keys(res).length > 0) {
+                $('#academic_year').text(res.year);
+                currentYear = res.year;
+                if (res.semester == 1) {
+                    $('#semester').text(`${res.semester}st semester`);
+                } else {
+                    $('#semester').text(`${res.semester}nd semester`);
+                }
+            } else {
+                $('#academic_year').text('---');
+                $('#semester').text('---');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
     }
 
     //view semester
@@ -267,7 +284,7 @@
                     } else {
                         $('#btn_update_sem').text('Update Sem');
                         Swal.fire('Error!',
-                        'Semester cant back set.',
+                        '',
                         'error')
                     }
                 }

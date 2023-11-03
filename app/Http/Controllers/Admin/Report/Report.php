@@ -372,9 +372,10 @@ class Report extends Controller
 
         return response()->json([
             'name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active,
-            'final_average' => $final_average
+            'final_average' => $final_average['total']
         ]);
     }
+    
     // eto link para sa evaluation ng dean
     public function viewFromDean(Request $request)
     {

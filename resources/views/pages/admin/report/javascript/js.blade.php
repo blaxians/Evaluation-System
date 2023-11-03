@@ -144,7 +144,6 @@
                     id: id
                 },
                 success: function(res) {
-
                     if (res.btn_gen == '0') {
                         $('#btn_generate_report').prop('disabled', true);
                     } else {
@@ -180,6 +179,8 @@
                     $('#naem_faculty').text(res.name);
                     $('#title_evaluation_generate').text('Evaluation from Dean');
                     $('#hidden_id').val(res.faculties_detail['id'] + ',dean');
+                }, error: function(err){
+                    console.log(err);
                 }
             })
         });

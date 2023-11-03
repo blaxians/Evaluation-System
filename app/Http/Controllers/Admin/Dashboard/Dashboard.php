@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Evaluate;
-use App\Models\Faculties;
-use App\Models\Question;
 use App\Models\User;
 use App\Models\YearSem;
+use App\Models\Evaluate;
+use App\Models\Question;
+use App\Models\Faculties;
+use App\Models\Evaluation;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class Dashboard extends Controller
