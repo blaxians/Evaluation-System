@@ -73,7 +73,7 @@ class Dashboard extends Controller
                 } else {
 
                     if ($year_sem->semester == 2 && $valid['semester'] == 1) {
-                        return response()->json(['error' => 'Semester is cant back set']);
+                        return response()->json(['error' => "Can't go back any further"]);
                     } else {
                         $year_sem->semester = $valid['semester'];
                         $year_sem->update();

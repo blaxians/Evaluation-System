@@ -104,7 +104,7 @@
                     <canvas id="facultyChart" class="d-none"></canvas>
                     <div class="spinner-border text-secondary fw-semibold" role="status" id="barchart_faculty_load">
                         <span class="visually-hidden">Loading...</span>
-                      </div>
+                    </div>
                 </div>
             </div>
             {{-- faculty bar chart end  --}}
@@ -112,41 +112,29 @@
         
         {{-- top rated faculty  --}}
         <div class="row mt-1 g-4 px-2">
-            <div class="col bg-white rounded shadow-sm h-100 d-flex flex-column p-4 mb-4" style="height:300px;">
-                <h3 class="py-2 fw-semibold">Top Rated Faculties</h3>
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col" width="200">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1
-                            <i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i>
-                            <i class="bi bi-trophy-fill text-warning fs-4"></i>
-                            <i class="bi bi-trophy-fill text-warning fs-4"></i></th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2<i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i>
-                            <i class="bi bi-trophy-fill text-warning fs-4"></i></th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3<i class="bi bi-trophy-fill ms-3 text-warning fs-4"></i></th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
+            <div class="col bg-white rounded shadow-sm h-100 d-flex flex-column p-4 mb-4">
+                <h3 class="py-2 fw-semibold m-0">Top Rated Faculties</h3>
+
+                <div class="text-center mt-3">
+                    <div class="spinner-border text-secondary fw-semibold" role="status" id="top_rated_faculty_load">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+
+                    <table class="table table-bordered table-striped table-hover d-none" id="top_rated_faculty">
+                        <thead>
+                          <tr>
+                            <th scope="col" width="150">Top</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Insitute</th>
+                            <th scope="col">Average</th>
+                            <th scope="col">Equivalent</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          
+                        </tbody>
+                    </table>
+                </div>
             </div>
             {{-- top rated faculty  --}}
         </div>

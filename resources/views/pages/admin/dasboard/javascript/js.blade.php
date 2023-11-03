@@ -4,21 +4,22 @@
         addYear();
         viewSemester();
         initializePage(); 
+        scrollUpDashboard();
     })
 
-    async function showTotalData() {
-        try {
-            const response = await fetch("{{ route('statistic') }}");
-            const data = await response.json();
-
-            if (data.dean && data.student) {
-                chart(data.dean[0], data.dean[1], data.student[0], data.student[1]);
+    function scrollUpDashboard(){
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+            $('#scroll-to-top-button').fadeIn();
             } else {
-                console.log("Data not available.");
+            $('#scroll-to-top-button').fadeOut();
             }
-        } catch (error) {
-            console.log("Error:", error);
-        }
+        });
+
+        $('#scroll-to-top-button').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 100);
+            return false;
+        });
     }
 
     function chart(deansDoneCount, deansNotDoneCount, studentsDoneCount, studentsNotDoneCount) {
@@ -109,7 +110,53 @@
         try {
             const response = await fetch("{{ route('statistic') }}");
             const res = await response.json();
-            
+
+            var numberFormat = res.total_faculty.toLocaleString();
+            $('#dashboard_total_students').text(res.total_student);
+            $('#dashboard_total_faculties').text(numberFormat);
+
+            if (res.dean && res.student) {
+                chart(res.dean[0], res.dean[1], res.student[0], res.student[1]);
+            } else {
+                console.log("Data not available.");
+            }
+
+            if(res.top_10){
+                $('#top_rated_faculty').removeClass('d-none');
+                $('#top_rated_faculty_load').addClass('d-none');
+                $.each(res.top_10, (index, data) => {
+                    const {name, institute, average, equivalent} = data;
+                    $('<tr class="text-capitalize text-start">').append(
+                        $(`<td id='top_rated_${index+1}'>`).text(`${index+1} .`),
+                        $('<td>').text(name),
+                        $('<td>').text(institute),
+                        $('<td class="text-center">').text(average),
+                        $('<td class="text-center">').text(equivalent)
+                    ).appendTo('#top_rated_faculty');
+                })
+
+                const rated_faculty = $('#top_rated_faculty tbody tr').children();
+                const td_array_id = [];
+                $.each(rated_faculty, (index, data) => {
+                    if(data.id){
+                        td_array_id.push(data.id)
+                    }
+                })
+                final_top_rated_id = td_array_id.splice(0, 3);
+                $.each(final_top_rated_id, (index, data) => {
+                    let trophyCount = 3 - index;
+                    let trophyHtml = '';
+                    
+                    while(trophyCount > 0){ 
+                        trophyHtml += '<i class="bi bi-trophy-fill ms-2 text-warning fs-4"></i>';
+                        trophyCount --
+                    }
+                    $(`#${data}`).append(trophyHtml);
+                    $(`#${data}`).addClass('fw-bold fs-5 text-warning')
+                })
+
+            }
+
             if (res.total_institute && res.total_institute.length >= 5) {
                 var facultyData = {
                     labels: ['CA', 'IAS', 'IEAT', 'IED', 'IM'],
@@ -192,7 +239,6 @@
 
     //intitialize
     function initializePage() {
-        showTotalData();
         loadDataAndInitializeChart();
         totalStudentsFaculties();
     }
@@ -284,7 +330,7 @@
                     } else {
                         $('#btn_update_sem').text('Update Sem');
                         Swal.fire('Error!',
-                        '',
+                        'Cannot go back any further.',
                         'error')
                     }
                 }
@@ -297,6 +343,11 @@
                 method: 'get',
                 success: function (res) {
                     $('#semester_id').val(res.id);
+                    if(res.semester == 2){
+                        $('#btn_update_sem').prop('disabled', true);
+                        $('#first_sem').prop('selected', false);                        
+                        $('#second_sem').prop('selected', true);                        
+                    }
                 }
             });
         });

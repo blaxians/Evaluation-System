@@ -11,8 +11,8 @@
                         <input type="hidden" id="semester_id" name="id">
                         <label for="year" class="fw-semibold">Semester:</label>
                         <select class="form-select" aria-label="Default select example" name="semester">
-                            <option value="1" selected>1st Semester</option>
-                            <option value="2" >2nd Semester</option>
+                            <option value="1" selected id="first_sem">1st Semester</option>
+                            <option value="2" id="second_sem">2nd Semester</option>
                           </select>
                     </div>
                 </div>
