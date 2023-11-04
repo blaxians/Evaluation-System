@@ -129,7 +129,7 @@
                     $('<tr class="text-capitalize text-start">').append(
                         $(`<td id='top_rated_${index+1}'>`).text(`${index+1} .`),
                         $('<td>').text(name),
-                        $('<td>').text(institute),
+                        $('<td class="text-center">').text(institute),
                         $('<td class="text-center">').text(average),
                         $('<td class="text-center">').text(equivalent)
                     ).appendTo('#top_rated_faculty');
@@ -145,14 +145,27 @@
                 final_top_rated_id = td_array_id.splice(0, 3);
                 $.each(final_top_rated_id, (index, data) => {
                     let trophyCount = 3 - index;
-                    let trophyHtml = '';
-                    
+                    let trophyHtml = ''; 
+                    let trophyColor = (data == 'top_rated_1') ? '#FFD700' : (data == 'top_rated_2') ? '#c0c0c0' : (data == 'top_rated_3') ? '#CD8032' : '';
                     while(trophyCount > 0){ 
-                        trophyHtml += '<i class="bi bi-trophy-fill ms-2 text-warning fs-4"></i>';
+                        trophyHtml += `<i class="bi bi-trophy-fill ms-2 fs-4" style="color:${trophyColor};"></i>`;
                         trophyCount --
                     }
+                    // if(data == 'top_rated_1'){
+                    //         $(`#trophy_${data}`).css({
+                    //             color: '#FFD700'
+                    //         })
+                    //     } else if(data == 'top_rated_2'){
+                    //         $(`#trophy_${data}`).css({
+                    //             color: '#c0c0c0'
+                    //         })
+                    //     } else if(data == 'top_rated_3') {
+                    //         $(`#trophy_${data}`).css({
+                    //             color: '#CD8032'
+                    //         })
+                    //     }
                     $(`#${data}`).append(trophyHtml);
-                    $(`#${data}`).addClass('fw-bold fs-5 text-warning')
+                    $(`#${data}`).addClass('fw-bold fs-5')
                 })
 
             }

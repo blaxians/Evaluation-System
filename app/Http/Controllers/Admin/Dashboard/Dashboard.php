@@ -19,7 +19,7 @@ class Dashboard extends Controller
         return view('pages.admin.dasboard.index');
     }
 
-    public function shxow()
+    public function show()
     {
         $year_sem = YearSem::orderBy('id', 'DESC')->first();
         return response()->json($year_sem);
@@ -310,7 +310,7 @@ class Dashboard extends Controller
             array_push(
                 $array,
                 [
-                    'name' => $value->last_name . ' ' . $value->first_name . ' ' . $value->middle_name,
+                    'name' => $value->last_name . ', ' . $value->first_name . ' ' . $value->middle_name,
                     'institute' => $value->institute,
                     'average' => $value->average,
                     'equivalent' => $value->equivalent
