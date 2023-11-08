@@ -96,7 +96,7 @@
                 ctx.textBaseline = "middle";
                 ctx.fillStyle = "#000";
 
-                var text = donePercentage;
+                var text = (donePercentage == 'NaN%') ? 'No data' : donePercentage;
                 var textX = Math.round((width - ctx.measureText(text).width) / 2);
                 var textY = height / 1.8;
 
@@ -114,11 +114,12 @@
             var numberFormat = res.total_faculty.toLocaleString();
             $('#dashboard_total_students').text(res.total_student);
             $('#dashboard_total_faculties').text(numberFormat);
-
+            
             if (res.dean && res.student) {
                 chart(res.dean[0], res.dean[1], res.student[0], res.student[1]);
+
             } else {
-                console.log("Data not available.");
+                console.log("Data not available.");  
             }
 
             if(res.top_10){
@@ -147,7 +148,7 @@
                 
                 const final_top_rated_1 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_1[0]}`).append(`
-                <i class="bi bi-trophy-fill ms-2 fs-4" style="color:#FFD700;"></i>`);
+                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#FFD700;"></i>`);
 
                 // html card 1 
                     let topRatedName1 = $(`#${final_top_rated_1[1]}`).text();
@@ -175,7 +176,7 @@
 
                 const final_top_rated_2 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_2[0]}`).append(`
-                <i class="bi bi-trophy-fill ms-2 fs-4" style="color:#c0c0c0;"></i>`);
+                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#c0c0c0;"></i>`);
 
                 // html card 2
                 let topRatedName2 = $(`#${final_top_rated_2[1]}`).text();
@@ -203,7 +204,7 @@
 
                 const final_top_rated_3 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_3[0]}`).append(`
-                <i class="bi bi-trophy-fill ms-2 fs-4" style="color:#CD8032;"></i>`);
+                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#CD8032;"></i>`);
 
                 // html card 3
                 let topRatedName3 = $(`#${final_top_rated_3[1]}`).text();
@@ -264,6 +265,7 @@
                         borderWidth: 1
                     }]
                 };
+
                 $('#barchart_faculty_load').addClass('d-none');
                 $('#facultyChart').removeClass('d-none');
                 updateBarGraphWithData(facultyData);
