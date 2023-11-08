@@ -129,7 +129,7 @@
                     $('<tr class="text-capitalize text-start">').append(
                         $(`<td id='top_rated_${index+1}'>`).text(`${index+1} .`),
                         $(`<td id="top_rated_name_${index+1}">`).text(name),
-                        $(`<td id="top_rated_intitute_${index+1}">`).text(institute),
+                        $(`<td class="text-center" id="top_rated_intitute_${index+1}">`).text(institute),
                         $(`<td class="text-center" id="top_rated_average_${index+1}">`).text(average),
                         $(`<td class="text-center" id="top_rated_equi_${index+1}">`).text(equivalent)
                     ).appendTo('#top_rated_table_faculty');

@@ -28,7 +28,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/logo/ca.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">College of Agriculture</h6>
@@ -41,7 +41,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/logo/ias.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Arts and Sciences</h6>
@@ -54,7 +54,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/logo/ieat.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Engineering and Applied Technology</h6>
@@ -67,7 +67,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/logo/ied.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Education</h6>
@@ -80,7 +80,7 @@ class Report extends Controller
                         <div class="card h-100">
                             <div class="card-body">
                                 <div class="my-3 text-center border-bottom pb-2">
-                                    <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle" width="100">
+                                    <img src="assets/img/logo/im.png" class="img-thumbnail rounded-circle" width="100">
                                 </div>
                                 <div class="my-3 text-center">
                                     <h6 class="fw-semibold">Institute of Management</h6>

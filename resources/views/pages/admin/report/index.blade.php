@@ -16,11 +16,11 @@
                 <div class="card">
                     <div class="card-body overflow-x-scroll" id="institute_card_report">
 
-                        <div class="text-center">
-                            <div class="spinner-border text-secondary my-5" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
+                    <div class="text-center">
+                        <div class="spinner-border text-secondary my-5" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

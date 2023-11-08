@@ -114,7 +114,10 @@
         <div class="row mt-1 g-4 px-2">
             <div class="col bg-white rounded shadow-sm h-100 d-flex flex-column p-4 mb-4">
                 <div class="text-center">
-                    <h3 class="py-2 m-0">Top Rated Faculties</h3>
+                    <div class="py-2 m-0 h3">
+                        {{-- <span class="border-bottom pb-1 border-2 border-success">Top Rated Faculties</span> --}}
+                        Top Rated Faculties
+                    </div>
                 </div>
 
                 <div class="text-center mt-3">
@@ -124,11 +127,11 @@
                     </div>
 
                     {{-- top rated card  --}}
-                    <div class="row my-2 gx-3 mb-3">
+                    {{-- <div class="row my-2 gx-3 mb-3">
 
                         <div class="col-md-4" id="top_rated_first">
 
-                            {{-- <div class="card rounded-1 bg-white text-center h-100">
+                            <div class="card rounded-1 bg-white text-center h-100">
                                 <div class="card-body p-4">
                                     <div class="position-relative border-bottom">
                                         <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle mb-3" width="75">
@@ -142,13 +145,13 @@
                                     <p class="fs-6 fw-semibold mt-2 mb-0 p-0">Blas, Ian Jhon Lamery</p>
                                     <p class="fs-6 text-secondary p-0">Outstanding</p>
                                 </div>
-                            </div> --}}
+                            </div>
 
                         </div>
 
                         <div class="col-md-4" id="top_rated_second">
 
-                            {{-- <div class="border rounded-1 bg-white p-4 text-center h-100">
+                            <div class="border rounded-1 bg-white p-4 text-center h-100">
                                 <div class="position-relative border-bottom">
                                     <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle mb-3" width="75">
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-0" style="background-color:#c0c0c0">
@@ -160,13 +163,13 @@
                                 
                                 <p class="fs-6 fw-semibold mt-2 mb-0 p-0">Jekjekjek, Gerald Jek</p>
                                 <p class="fs-6 text-secondary p-0">Outstanding</p>
-                            </div> --}}
+                            </div>
 
                         </div>
 
                         <div class="col-md-4" id="top_rated_third">
 
-                            {{-- <div class="border rounded-1 bg-white p-4 text-center h-100">
+                            <div class="border rounded-1 bg-white p-4 text-center h-100">
                                 <div class="position-relative border-bottom">
                                     <img src="assets/img/main/basc.png" class="img-thumbnail rounded-circle mb-3" width="75">
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-0" style="background-color:#CD8032;">
@@ -178,11 +181,11 @@
                                 
                                 <p class="fs-6 fw-semibold mt-2 mb-0 p-0">torres, jek jek angeles</p>
                                 <p class="fs-6 text-secondary p-0">Outstanding</p>
-                            </div> --}}
+                            </div>
 
                         </div>
                         
-                    </div>
+                    </div> --}}
                     {{-- top rated card  end--}}
 
                     <div class="d-none" id="top_rated_faculty">
