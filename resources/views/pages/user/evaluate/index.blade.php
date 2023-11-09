@@ -8,7 +8,7 @@
             @csrf
             <div class="rounded bg-light p-3 my-3">
               <input type="hidden" name="evaluation_id" value="{{ $id }}">
-              <span class="fw-semibold me-2">Faculty Name:</span><label class="">{{ $faculties->first_name.' '.$faculties->middle_name.' '.$faculties->last_name }}</label>
+              <span class="fw-semibold me-2">Faculty Name:</span><label class="text-capitalize fw-bold">{{ $faculties->first_name.' '.$faculties->middle_name.' '.$faculties->last_name }}</label>
             </div>
 
             <div class="alert alert-success my-3 px-3 fw-semibold" role="alert">
@@ -25,35 +25,35 @@
                       <th>Descriptive Rating</th>
                     </tr>
                     <tr>
-                      <td><i class="bi bi-star-fill me-2 text-primary"></i>5</td>
+                      <td><i class="bi bi-star-fill me-2 text-warning"></i>5</td>
                       <td></td>
                       <td width="400px"><div class="progress" role="progressbar">
                         <div class="progress-bar" style="width:100%;">Outstanding</div>
                       </div></td>
                     </tr>
                     <tr>
-                      <td><i class="bi bi-star-fill me-2 text-primary"></i>4</td>
+                      <td><i class="bi bi-star-fill me-2 text-warning"></i>4</td>
                       <td></td>
                       <td width="600px"><div class="progress" role="progressbar">
                         <div class="progress-bar" style="width:80%;">Very Satisfactory</div>
                       </div></td>
                     </tr>
                     <tr>
-                      <td><i class="bi bi-star-fill me-2 text-primary"></i>3</td>
+                      <td><i class="bi bi-star-fill me-2 text-warning"></i>3</td>
                       <td></td>
                       <td width="400px"><div class="progress" role="progressbar">
                         <div class="progress-bar" style="width:60%;">Satisfactory</div>
                       </div></td>
                     </tr>
                     <tr>
-                      <td><i class="bi bi-star-fill me-2 text-primary"></i>2</td>
+                      <td><i class="bi bi-star-fill me-2 text-warning"></i>2</td>
                       <td></td>
                       <td width="400px"><div class="progress" role="progressbar">
                         <div class="progress-bar" style="width:40%;">Fairly Satisfactory</div>
                       </div></td>
                     </tr>
                     <tr>
-                      <td><i class="bi bi-star-fill me-2 text-primary"></i>1</td>
+                      <td><i class="bi bi-star-fill me-2 text-warning"></i>1</td>
                       <td></td>
                       <td width="400px"><div class="progress" role="progressbar">
                         <div class="progress-bar" style="width:20%;">Needs Improvement</div>

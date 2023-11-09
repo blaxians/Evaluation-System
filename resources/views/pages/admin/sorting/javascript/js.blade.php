@@ -12,6 +12,21 @@
 
      })
     //default functions
+        //change coolor intitute
+        function changeColor(){
+            const campuses = $('#sorting_campuses ul li').children();
+            $.each(campuses, (index, data) => {
+                if($(`#${data.id}`).hasClass('active')){
+                    $(`#${data.id}`).addClass('text-dark fw-semibold')
+                    $(`#${data.id}`).removeClass('text-muted')
+                } else {
+                    $(`#${data.id}`).removeClass('text-dark fw-semibold')
+                    $(`#${data.id}`).addClass('text-muted')
+                }
+            })
+        } 
+
+
         //scroll to top
         function scrollUpSorting(){
             $(window).scroll(function () {
@@ -168,6 +183,7 @@
         
         $('#sorting_campuses').on('click', '#campus_select_main', function(){
             
+
             const sorting_student_id = $('#sorting_filter_student div.col').children().get();
             sorting_student_id.map((data, index) => {
                 var value = data;
@@ -187,6 +203,7 @@
             mainCampus();
             resetSelectOption();
             disabledButton();
+            changeColor();
         })
         $('#sorting_campuses').on('click', '#campus_select_btvc', function(){
             const sorting_student_id = $('#sorting_filter_student div.col').children().get();
@@ -209,6 +226,7 @@
             btvcCampus();
             resetSelectOption();
             disabledButton();
+            changeColor();
         })
         $('#sorting_campuses').on('click', '#campus_select_drt', function(){
             const sorting_student_id = $('#sorting_filter_student div.col').children().get();
@@ -231,6 +249,8 @@
             drtCampus();
             resetSelectOption();
             disabledButton();
+            changeColor();
+
         })
         $('#sorting_campuses').on('click', '#campus_select_ffhnas', function(){
             const sorting_student_id = $('#sorting_filter_student div.col').children().get();
@@ -253,6 +273,8 @@
             ffhnasCampus();
             resetSelectOption();
             disabledButton();
+            changeColor();
+
         })
      }
 
@@ -416,6 +438,7 @@
 
         //button sorting
         $(document).off('click', '#btn_filter_sorting').on('click', '#btn_filter_sorting', function() {
+            changeColor();
             let main_campus = $('#campus_select_main').attr('data-id');
             let main_insti = $(`#${insti_id}`).val();
             let main_course = $(`#${course_id}`).val();

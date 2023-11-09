@@ -5,7 +5,7 @@
         <!-- title of the page start -->
         <div class="row py-1 m-0 mt-3 bg-white rounded d-flex shadow-sm flex-shrink-0">
             <div class="col py-2">
-                <h3 class="m-0 fw-bold primary-text fs-4">Sorting</h3>
+                <h3 class="m-0 fw-bold primary-text fs-4">Campuses</h3>
             </div>
         </div>
         <!-- title of the page end -->
@@ -14,25 +14,25 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                        {{-- title --}}
+                        {{-- title
                         <div class="mb-4">
                             <h3 class="card-title fw-bold text-primary">Campuses</h3>
-                        </div>
+                        </div> --}}
 
                         {{-- campus selection --}}
                         <div id="sorting_campuses">
                             <ul class="nav nav-tabs fw-semibold">
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_main"></a>
+                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_main"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_btvc"></a>
+                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_btvc"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_drt"></a>
+                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_drt"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize" role="button" id="campus_select_ffhnas"></a>
+                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_ffhnas"></a>
                                 </li>
                             </ul>
                         </div>
@@ -47,31 +47,31 @@
                         {{-- student sorting --}}
                         <div class="row g-2 d-flex" id="sorting_filter_student">
                             <div class="col">
-                                <select class="form-select form-select-sm text-primary fw-semibold" id="institute_select"
+                                <select class="form-select form-select-sm text-success  fw-semibold" id="institute_select"
                                 data-id="institute">
                                     <option class="d-none" id="option_reset_institute" selected value="">&#xF876; Institute</option>
                                 </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="course_select"
+                                <select class="form-select form-select-sm text-success d  fw-semibold" id="course_select"
                                 data-id="course">
                                     <option class="d-none option_reset" id="option_reset_course" selected value="">&#xF6FD; Course</option>
                                   </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="year_select"
+                                <select class="form-select form-select-sm text-success d  fw-semibold" id="year_select"
                                 data-id="year">
                                     <option class="d-none option_reset" id="option_reset_year" selected value="">&#xF17A; Year Level</option>
                                   </select>
                             </div>
                             <div class="col">
-                                <select class="form-select form-select-sm d text-primary fw-semibold" id="section_select"
+                                <select class="form-select form-select-sm text-success d fw-semibold" id="section_select"
                                 data-id="section">
                                     <option class="d-none option_reset" id="option_reset_section" selected value="">&#xF571; Section</option>
                                   </select>
                             </div>
                             <div class="col-1">
-                                <button class="btn btn-primary btn-sm" type="button" id="btn_filter_sorting">
+                                <button class="btn btn-secondary btn-sm" type="button" id="btn_filter_sorting">
                                     <i class="bi bi-search fw-bold me-2"></i>
                                     Filter</button>
                             </div>
