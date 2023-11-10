@@ -23,16 +23,20 @@
                         <div id="sorting_campuses">
                             <ul class="nav nav-tabs fw-semibold">
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_main"></a>
+                                    <a class="nav-link text-capitalize text-muted" role="button"
+                                        id="campus_select_main"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_btvc"></a>
+                                    <a class="nav-link text-capitalize text-muted" role="button"
+                                        id="campus_select_btvc"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_drt"></a>
+                                    <a class="nav-link text-capitalize text-muted" role="button"
+                                        id="campus_select_drt"></a>
                                 </li>
                                 <li class="nav-item">
-                                  <a class="nav-link text-capitalize text-muted" role="button" id="campus_select_ffhnas"></a>
+                                    <a class="nav-link text-capitalize text-muted" role="button"
+                                        id="campus_select_ffhnas"></a>
                                 </li>
                             </ul>
                         </div>
@@ -48,30 +52,34 @@
                         <div class="row g-2 d-flex" id="sorting_filter_student">
                             <div class="col">
                                 <select class="form-select form-select-sm text-success  fw-semibold" id="institute_select"
-                                data-id="institute">
-                                    <option class="d-none" id="option_reset_institute" selected value="">&#xF876; Institute</option>
+                                    data-id="institute">
+                                    <option class="d-none" id="option_reset_institute" selected value="">&#xF876;
+                                        Institute</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <select class="form-select form-select-sm text-success d  fw-semibold" id="course_select"
-                                data-id="course">
-                                    <option class="d-none option_reset" id="option_reset_course" selected value="">&#xF6FD; Course</option>
-                                  </select>
+                                    data-id="course">
+                                    <option class="d-none option_reset" id="option_reset_course" selected value="">
+                                        &#xF6FD; Course</option>
+                                </select>
                             </div>
                             <div class="col">
                                 <select class="form-select form-select-sm text-success d  fw-semibold" id="year_select"
-                                data-id="year">
-                                    <option class="d-none option_reset" id="option_reset_year" selected value="">&#xF17A; Year Level</option>
-                                  </select>
+                                    data-id="year">
+                                    <option class="d-none option_reset" id="option_reset_year" selected value="">
+                                        &#xF17A; Year Level</option>
+                                </select>
                             </div>
                             <div class="col">
                                 <select class="form-select form-select-sm text-success d fw-semibold" id="section_select"
-                                data-id="section">
-                                    <option class="d-none option_reset" id="option_reset_section" selected value="">&#xF571; Section</option>
-                                  </select>
+                                    data-id="section">
+                                    <option class="d-none option_reset" id="option_reset_section" selected value="">
+                                        &#xF571; Section</option>
+                                </select>
                             </div>
                             <div class="col-1">
-                                <button class="btn btn-secondary btn-sm" type="button" id="btn_filter_sorting">
+                                <button class="btn btn-secondary btn-sm text-nowrap" type="button" id="btn_filter_sorting">
                                     <i class="bi bi-search fw-bold me-2"></i>
                                     Filter</button>
                             </div>
@@ -83,7 +91,8 @@
                             <div class="col mt-3">
                                 <div class="card">
                                     <div class="car-body p-3">
-                                        <table id="student_table_sorting" class="table bg-white rounded shadow-sm table-hover">
+                                        <table id="student_table_sorting"
+                                            class="table bg-white rounded shadow-sm table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
@@ -101,7 +110,7 @@
                                                 {{-- student data here  --}}
                                             </tbody>
                                         </table>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +128,7 @@
         {{-- modal --}}
         @include('pages.admin.sorting.modal.view')
     </div>
-    @section('javascript')
-        @include('pages.admin.sorting.javascript.js')
-    @endsection
+@section('javascript')
+    @include('pages.admin.sorting.javascript.js')
+@endsection
 @endsection
