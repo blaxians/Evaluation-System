@@ -81,7 +81,7 @@ class Dean extends Controller
     {
         $id = $request->id;
         $dean = User::find($id);
-      
+
 
         $id = $request->id;
         $status = $request->status;
@@ -106,19 +106,19 @@ class Dean extends Controller
                             <th>Status</th>
                         </thead>
                         <tbody>';
-            if(count($faculties) > 0){
-                
-                foreach($faculties as $faculty){
+            if (count($faculties) > 0) {
 
-                    if($faculty->status == 1){
+                foreach ($faculties as $faculty) {
+
+                    if ($faculty->status == 1) {
                         $dean_status = '<span class="badge text-bg-success">Done</span>';
                     } else {
                         $dean_status = '<span class="badge text-bg-warning">Pending</span>';
                     }
                     $dean_table .= '<tr>
-                                    <td>'.$faculty->name.'</td>
-                                    <td>'.$faculty->institute.'</td>
-                                    <td>'.$dean_status.'</td>
+                                    <td>' . $faculty->name . '</td>
+                                    <td>' . $faculty->institute . '</td>
+                                    <td>' . $dean_status . '</td>
                                 </tr>';
                 }
                 $dean_table .= '</tbody>
@@ -129,27 +129,31 @@ class Dean extends Controller
                                 </tr>
                             </tbody>
                         </table>';
-}
-            
-            return response()->json(['dean'=>$dean, 'faculties'=>$faculties, 'dean_table'=>$dean_table]);
+            }
+
+            return response()->json(['dean' => $dean, 'faculties' => $faculties, 'dean_table' => $dean_table]);
         }
     }
 
-        
-    
+
+
 
     public function post(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'username' => 'required|unique:users',
-            'institute' => 'required|unique:users'
+            'institute' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->messages());
         } else {
             $valid = $request->all();
+            $exist = User::where('role', 'dean')->where('institute', $valid['institute'])->first();
+            if ($exist !== null) {
+                return response()->json(['error' => 'Institute Dean already exist']);
+            }
             array_shift($valid);
             $user = new User();
             $user->name = $valid['name'];
