@@ -6,7 +6,7 @@
                 <button class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="pb-4 border-bottom fs-5">Faculty Name: <span class="fw-semibold fs-5"
+                <div class="pb-4 border-bottom fs-5">Faculty Name: <span class="fw-semibold fs-5 text-capitalize"
                         id="naem_faculty"></span></div>
                 <div id="view_faculty_score_table">
                     {{-- table here --}}

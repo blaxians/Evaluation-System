@@ -369,7 +369,7 @@ class Report extends Controller
 
 
 
-
+        
         return response()->json([
             'name' => $faculty_name, 'faculties' => $faculties_score, 'faculties_detail' => $faculties, 'btn_gen' => $gen_button_active,
             'final_average' => $final_average['total']
@@ -821,6 +821,7 @@ class Report extends Controller
         // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
         // return response()->json(['status'=>'success',
 
+        // dd($faculties);
         return view('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average', 'new_year_sem'));
     }
 

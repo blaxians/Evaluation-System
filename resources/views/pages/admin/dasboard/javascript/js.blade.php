@@ -132,7 +132,12 @@
                         $(`<td id="top_rated_name_${index+1}">`).text(name),
                         $(`<td class="text-center" id="top_rated_intitute_${index+1}">`).text(institute),
                         $(`<td class="text-center" id="top_rated_average_${index+1}">`).text(average),
-                        $(`<td class="text-center" id="top_rated_equi_${index+1}">`).text(equivalent)
+                        $(`<td class="text-center" id="top_rated_equi_${index+1}">`).text(equivalent),
+                        $(`<td class="text-center">
+                            <button class="btn btn-secondary btn-sm"
+                            data-bs-toggle="modal" data-bs-target="#topratedfaculty">
+                            <i class="bi bi-eye-fill"></i></button>
+                            </td>`)
                     ).appendTo('#top_rated_table_faculty');
                 })
 

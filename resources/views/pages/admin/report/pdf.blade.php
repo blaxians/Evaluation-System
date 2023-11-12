@@ -72,18 +72,22 @@
     <div class="main-container bg-white">
         <div class="container-fluid px-5">
             <div class="row mt-3">
-                <div class="col-2">
+                <div class="col-2 pt-3">
                     <img src="/assets/img/main/basc.png" class="img-fluid rounded-circle" width="150">
                 </div>
                 <div class="col-8">
                         <div class="my-2 text-center">
                             <p class="m-0 p-0 fs-6">Republic of the Philippines</p>
-                            <h5 class="m-0 p-0 fw-bold text-success">BULACAN AGRICULTURAL STATE COLLEGE</h5>
+                            <h5 class="m-0 p-0 fw-bold text-success" style="color:#385623 !important;">BULACAN AGRICULTURAL STATE COLLEGE</h5>
+                            <p class="m-0 p-0 px-5 fs-6 fw-bold">Office of Student Affairs and Services Student Welfare Services Unit</p>
                             <p class="m-0 p-0 fs-6">Pinaod, San Ildefonso, Bulacan, Philippines 3010</p>
                     </div>
                 </div>
+                <div class="col-2 pt-3">
+                    <img src="/assets/img/logo/osas.png" class="img-fluid rounded-circle" width="150">
+                </div>
             </div>
-            <hr class="border border-success border-2 m-0 opacity-75">
+            <hr class="border border-1 m-0 opacity-75" style="border-color:#385623 !important;">
     
             <div class="row mt-2 ">
                 <p class="mt-2" id="date_pdf"></p>

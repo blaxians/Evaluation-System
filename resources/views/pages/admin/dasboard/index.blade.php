@@ -197,6 +197,7 @@
                                 <th scope="col">Insitute</th>
                                 <th scope="col">Average</th>
                                 <th scope="col">Equivalent</th>
+                                <th scope="col">View</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -214,6 +215,7 @@
         {{-- modals start --}}
        
         @include('pages.admin.dasboard.modal.edit')
+        @include('pages.admin.dasboard.modal.top_faculty')
         {{-- modals end --}}
 
     </div>
