@@ -125,10 +125,32 @@
             if(res.top_10){
                 $('#top_rated_faculty').removeClass('d-none');
                 $('#top_rated_faculty_load').addClass('d-none');
+                function formatOrdinal(number) {
+                    var suffix = "th";
+
+                    if (number % 100 >= 11 && number % 100 <= 13) {
+                        suffix = "th";
+                    } else {
+                        switch (number % 10) {
+                            case 1:
+                                suffix = "st";
+                                break;
+                            case 2:
+                                suffix = "nd";
+                                break;
+                            case 3:
+                                suffix = "rd";
+                                break;
+                        }
+                    }
+
+                    return number + suffix;
+                }
+                
                 $.each(res.top_10, (index, data) => {
                     const {name, institute, average, equivalent} = data;
                     $('<tr class="text-capitalize text-start">').append(
-                        $(`<td id='top_rated_${index+1}'>`).text(`${index+1} .`),
+                        $(`<td class="text-center" id='top_rated_${index+1}'>`).text((index+1 > 3) ? formatOrdinal(index+1) : '' ),
                         $(`<td id="top_rated_name_${index+1}">`).text(name),
                         $(`<td class="text-center" id="top_rated_intitute_${index+1}">`).text(institute),
                         $(`<td class="text-center" id="top_rated_average_${index+1}">`).text(average),
@@ -139,6 +161,8 @@
                             <i class="bi bi-eye-fill"></i></button>
                             </td>`)
                     ).appendTo('#top_rated_table_faculty');
+
+
                 })
 
                 const rated_faculty = $('#top_rated_faculty tbody tr').children();
@@ -153,7 +177,7 @@
                 
                 const final_top_rated_1 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_1[0]}`).append(`
-                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#FFD700;"></i>`);
+                <p class="fs-4">&#x1F947;</p>`);
 
                 // html card 1 
                     let topRatedName1 = $(`#${final_top_rated_1[1]}`).text();
@@ -181,7 +205,7 @@
 
                 const final_top_rated_2 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_2[0]}`).append(`
-                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#c0c0c0;"></i>`);
+                <p class="fs-4">&#x1F948</p>`);
 
                 // html card 2
                 let topRatedName2 = $(`#${final_top_rated_2[1]}`).text();
@@ -209,13 +233,12 @@
 
                 const final_top_rated_3 = td_array_id.splice(0, 5);
                 $(`#${final_top_rated_3[0]}`).append(`
-                <i class="fa-solid fa-medal ms-2 fs-4" style="color:#CD8032;"></i>`);
+                <p class="fs-4">&#x1F949</p>`);
 
                 // html card 3
                 let topRatedName3 = $(`#${final_top_rated_3[1]}`).text();
                     let topRatedInstitute3 = $(`#${final_top_rated_3[2]}`).text();
                     let topRatedEquivalent3 = $(`#${final_top_rated_3[4]}`).text();
-                    console.log(topRatedEquivalent3[4])
 
                     const topHtml_3 = `<div class="card rounded-1 bg-white text-center h-100">
                                     <div class="card-body p-4">

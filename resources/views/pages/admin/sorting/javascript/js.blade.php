@@ -85,6 +85,7 @@
         //view student status if done or not modal
         function viewStudentSorting(){
             $('#student_table_sorting').on('click', '#btn_view_button_sorting', function(){
+                
                 let view_id = $(this).data('id'); 
                 let view_status = $(this).data('status'); 
 
@@ -97,6 +98,7 @@
                         status:view_status
                     },
                     success: function(res){
+                        
 
                         $('#view_student_name_sorting').text(res.student['name']);
                         $('#view_student_name1_sorting').text(res.student['name']);
@@ -112,6 +114,8 @@
                             $('#view_student_status_sorting').addClass('text-bg-warning');
                         }
                         
+                    }, error: function(err){
+                        console.log(err)
                     }
                 })
             })
@@ -457,6 +461,7 @@
                     main_section: main_section
                 },
                 success: function(res) {
+                    
                     const table = $('#student_table_sorting').DataTable({
                         destroy: true,
                         data: res,
@@ -475,7 +480,7 @@
                                     if (row.status === 'Done' || row.actions) {
                                         buttons += '<button class="btn btn-secondary btn-sm me-2" data-bs-toggle="modal" id="btn_view_button_sorting" data-bs-target="#view_student_modal_sorting" data-status="' + row.status + '" data-id="' + row.id + '"><i class="bi bi-eye-fill"></i></button>';
                                         buttons += '<button class="btn btn-success btn-sm" id="btn_changepass_button_sorting" data-id="' + row.id + '"><i class="bi bi-unlock-fill"></i></button>';
-                                    }
+                                    } 
 
                                     return buttons;
                                 }
@@ -491,6 +496,8 @@
                             }
                         }
                     });
+
+                    
                 },
                 error: function(err) {
                     console.log(err);
@@ -1182,6 +1189,7 @@
                     main_section: main_section
                 },
                 success: function(res) {
+                    
                     const table = $('#student_table_sorting').DataTable({
                         destroy: true,
                         data: res,

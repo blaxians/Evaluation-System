@@ -10,15 +10,15 @@
     function ToggleCard(){
         $(document).on('click', '#toggleCardBody', function(){
             $("#cardBody").toggleClass('collapse')
-            $('#main_card').toggleClass('border-primary');
-            $('#card_header').toggleClass('border-primary');
-            $('#criteria_title').toggleClass('text-primary');
+            $('#main_card').toggleClass('border-success');
+            $('#card_header').toggleClass('border-success');
+            $('#criteria_title').toggleClass('text-success');
             
             
             var svgIcon = $('#svg_carret').find("svg");
 
             if (svgIcon.hasClass("bi-caret-right-fill")){
-                $('#svg_carret').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-primary" viewBox="0 0 16 16">
+                $('#svg_carret').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-success" viewBox="0 0 16 16">
                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
                 `)
@@ -31,15 +31,15 @@
         })
         $(document).on('click', '#toggleCardBody_2', function(){
             $("#cardBody_2").toggleClass('collapse')
-            $('#main_card_2').toggleClass('border-primary');
-            $('#card_header_2').toggleClass('border-primary');
-            $('#criteria_title_2').toggleClass('text-primary');
+            $('#main_card_2').toggleClass('border-success');
+            $('#card_header_2').toggleClass('border-success');
+            $('#criteria_title_2').toggleClass('text-success');
             
             
             var svgIcon = $('#svg_carret_2').find("svg");
 
             if (svgIcon.hasClass("bi-caret-right-fill")){
-                $('#svg_carret_2').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-primary" viewBox="0 0 16 16">
+                $('#svg_carret_2').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-success" viewBox="0 0 16 16">
                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
                 `)
@@ -52,15 +52,15 @@
         })
         $(document).on('click', '#toggleCardBody_3', function(){
             $("#cardBody_3").toggleClass('collapse')
-            $('#main_card_3').toggleClass('border-primary');
-            $('#card_header_3').toggleClass('border-primary');
-            $('#criteria_title_3').toggleClass('text-primary');
+            $('#main_card_3').toggleClass('border-success');
+            $('#card_header_3').toggleClass('border-success');
+            $('#criteria_title_3').toggleClass('text-success');
             
             
             var svgIcon = $('#svg_carret_3').find("svg");
 
             if (svgIcon.hasClass("bi-caret-right-fill")){
-                $('#svg_carret_3').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-primary" viewBox="0 0 16 16">
+                $('#svg_carret_3').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-success" viewBox="0 0 16 16">
                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
                 `)
@@ -73,15 +73,15 @@
         })
         $(document).on('click', '#toggleCardBody_4', function(){
             $("#cardBody_4").toggleClass('collapse')
-            $('#main_card_4').toggleClass('border-primary');
-            $('#card_header_4').toggleClass('border-primary');
-            $('#criteria_title_4').toggleClass('text-primary');
+            $('#main_card_4').toggleClass('border-success');
+            $('#card_header_4').toggleClass('border-success');
+            $('#criteria_title_4').toggleClass('text-success');
             
             
             var svgIcon = $('#svg_carret_4').find("svg");
 
             if (svgIcon.hasClass("bi-caret-right-fill")){
-                $('#svg_carret_4').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-primary" viewBox="0 0 16 16">
+                $('#svg_carret_4').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-success" viewBox="0 0 16 16">
                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
                 `)
@@ -94,15 +94,15 @@
         })
         $(document).on('click', '#toggleCardBody_5', function(){
             $("#cardBody_5").toggleClass('collapse')
-            $('#main_card_5').toggleClass('border-primary');
-            $('#card_header_5').toggleClass('border-primary');
-            $('#criteria_title_5').toggleClass('text-primary');
+            $('#main_card_5').toggleClass('border-success');
+            $('#card_header_5').toggleClass('border-success');
+            $('#criteria_title_5').toggleClass('text-success');
             
             
             var svgIcon = $('#svg_carret_5').find("svg");
 
             if (svgIcon.hasClass("bi-caret-right-fill")){
-                $('#svg_carret_5').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-primary" viewBox="0 0 16 16">
+                $('#svg_carret_5').html(`<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill text-success" viewBox="0 0 16 16">
                 <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg>
                 `)
@@ -133,29 +133,41 @@
 
     //function submit
     function submitAnswer() {
-    $(document).on('submit', '#evaluation_form', function (e) {
+    $(document).on('submit', '#evaluation_form', function(e) {
         e.preventDefault();
         const fd = new FormData(this);
-        $('#btn_submit_faculties').text('Processing..');
-        $.ajax({
-            url: "{{ route('evaluate.user') }}",
-            method: 'post',
-            data: fd,
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: (res) => {
-                if(res == 'success'){
-                    Swal.fire(
-                        'Evaluated!',
-                        'Faculty evaluated successfully.',
-                        'success'
-                    )
-                    $('#btn_submit_faculties').text('Submit');
-                    window.location.href = '/evaluation';
+        Swal.fire({
+            title: "Review evaluation before submitting?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Submit now",
+            denyButtonText: `Review`,
+            allowOutsideClick: false 
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('evaluate.user') }}",
+                        method: 'post',
+                        data: fd,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        success: (res) => {
+                            if(res == 'success'){
+                                Swal.fire(
+                                    'Evaluated!',
+                                    'Faculty evaluated successfully.',
+                                    'success'
+                                )
+                                window.location.href = '/evaluation';
+                            }
+                        }
+                    })
+                } else if (result.isDenied) {
+                    $('html, body').animate({ scrollTop: 400 }, 'normal');
                 }
-            }
-        })
+            });
 
     });
 }

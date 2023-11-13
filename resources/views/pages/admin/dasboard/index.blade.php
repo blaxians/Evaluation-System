@@ -192,7 +192,7 @@
                         <table class="table table-bordered table-hover" id="top_rated_table_faculty">
                             <thead>
                               <tr>
-                                <th scope="col" width="150">Top</th>
+                                <th scope="col" width="90">Top</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Insitute</th>
                                 <th scope="col">Average</th>

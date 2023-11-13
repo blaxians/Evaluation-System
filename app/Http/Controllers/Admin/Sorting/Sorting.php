@@ -343,6 +343,8 @@ class Sorting extends Controller
     
         $faculty_table .= '</tbody>
                     </table>';
+        
+        // dd($faculty_table);
     
         return response()->json([
             'student' => $student,

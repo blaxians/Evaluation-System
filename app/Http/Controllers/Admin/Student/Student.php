@@ -72,7 +72,7 @@ class Student extends Controller
         if (count($faculties) > 0) {
             foreach ($faculties as $value) {
                 $details = Faculties::find($value->faculties_id);
-                $value->name = $details->last_name . ' ' . $details->first_name . ' ' . $details->middle_name;
+                $value->name = $details->last_name . ', ' . $details->first_name . ' ' . $details->middle_name;
                 $value->institute = $details->institute;
 
                 $span = ($value->status == 1) ? '<span class="badge text-bg-success">Done</span>' : '<span class="badge text-bg-warning">Pending</span>';

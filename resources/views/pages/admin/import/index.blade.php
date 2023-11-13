@@ -17,7 +17,7 @@
 @endsection
 @section('admin')
 
-    <div class="container-fluid h-100">
+    <div class="container-fluid">
         <div class="row px-4">
             <div class="bg-light rounded px-4 shadow-sm mt-3">
                 <div class="row mt-3">
