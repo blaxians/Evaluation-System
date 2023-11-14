@@ -12,21 +12,21 @@
                 </div>
 
                 <div class="row my-2 px-2">
-                    <div class="rounded-1 border">
-                        <h4>Ratings:</h4>
+                    <div class="rounded-1 border p-2">
+                        <h5>Ratings:</h5>
                         <div class="d-flex justify-content-evenly">
-                            <p style="font-size:14px;">Outstanding (O)</p>
-                            <p style="font-size:14px;">Fairly Satisfactory (FS)</p>
-                            <p style="font-size:14px;">Satisfactory (S)</p>
-                            <p style="font-size:14px;">Very Satisfactory (VS)</p>
-                            <p style="font-size:14px;">Needs Improvement (NI)</p>
+                            <p style="font-size:15px;">Outstanding (<span class="fw-bold">O</span>)</p>
+                            <p style="font-size:15px;">Fairly Satisfactory (<span class="fw-bold">FS</span>)</p>
+                            <p style="font-size:15px;">Satisfactory (<span class="fw-bold">S</span>)</p>
+                            <p style="font-size:15px;">Very Satisfactory (<span class="fw-bold">VS</span>)</p>
+                            <p style="font-size:15px;">Needs Improvement (<span class="fw-bold">NI</span>)</p>
                         </div>
                     </div>
                 </div>
 
                 <div id="view_faculty_score_table">
                     {{-- table here --}}
-                    
+
                 </div>
             </div>
             <div class="modal-footer">
