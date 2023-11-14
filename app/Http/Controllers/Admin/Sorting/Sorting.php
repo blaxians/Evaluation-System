@@ -16,13 +16,13 @@ class Sorting extends Controller
 
     public function index(Request $request)
     {
-        
+
         return view('pages.admin.sorting.sorting    ');
     }
 
     public function campus()
     {
-        
+
         $campus = User::select('campus')
             ->groupBy('campus')
             ->get();
@@ -114,7 +114,7 @@ class Sorting extends Controller
     //     $campus = $request->main_campus;
     //     $institute = $request->main_insti;
     //     $course = $request->main_course;
-        
+
     //     $year = User::select('year_level')
     //         ->where('campus', $campus)
     //         ->where('institute', $institute)
@@ -153,7 +153,7 @@ class Sorting extends Controller
 
     // public function section(Request $request)
     // {
-        
+
     //     $campus = $request->main_campus;
     //     $institute = $request->main_insti;
     //     $course = $request->main_course;
@@ -264,13 +264,13 @@ class Sorting extends Controller
         ])->get();
 
         $studentIds = $students->pluck('id')->toArray();
-        
+
         $studentEvaluations = Evaluate::whereIn('user_id', $studentIds)
             ->where('year_sem', $new_year_sem)
             ->get();
 
         $evaluationStatus = $studentEvaluations->groupBy('user_id')
-            ->map(fn($evaluations) => $evaluations->every(fn($eval) => $eval->status == 1));
+            ->map(fn ($evaluations) => $evaluations->every(fn ($eval) => $eval->status == 1));
 
         $new_data = $students->map(function ($student) use ($evaluationStatus) {
             return [
@@ -294,14 +294,14 @@ class Sorting extends Controller
     {
         $id = $request->id;
         $student = User::find($id);
-    
+
         if ($student === null) {
             return response()->json(['error' => 'Student not found']);
         }
-    
+
         $status = $request->status;
-        $student->load(['evaluate.faculty']);
-    
+        $student->load(['evaluate.faculties']);
+
         $faculty_table = '<table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -311,28 +311,28 @@ class Sorting extends Controller
                                 </tr>
                             </thead>
                             <tbody>';
-    
+
         if (count($student->evaluate) === 0) {
-           
+
             $faculty_table .= '<tr>
                                 <td colspan="3" class="text-center">No Data</td>
                             </tr>';
         } else {
-            
+
             foreach ($student->evaluate as $value) {
                 $faculty = $value->faculty;
-    
+
                 if ($faculty) {
                     $faculty_name = $faculty->last_name . ' ' . $faculty->first_name . ' ' . $faculty->middle_name;
                     $faculty_insti = $faculty->institute;
                     $span = ($value->status == 1) ? '<span class="badge text-bg-success">Done</span>' : '<span class="badge text-bg-warning">Pending</span>';
                 } else {
-                   
+
                     $faculty_name = 'No Data';
                     $faculty_insti = 'No Data';
                     $span = 'No Data';
                 }
-    
+
                 $faculty_table .= '<tr>
                                     <td>' . $faculty_name . '</td>
                                     <td>' . $faculty_insti . '</td>
@@ -340,19 +340,19 @@ class Sorting extends Controller
                                 </tr>';
             }
         }
-    
+
         $faculty_table .= '</tbody>
                     </table>';
-        
+
         // dd($faculty_table);
-    
+
         return response()->json([
             'student' => $student,
             'status' => $status,
             'faculty_table' => $faculty_table,
         ]);
     }
-    
+
 
 
     public function resetPassword(Request $request)
@@ -367,5 +367,4 @@ class Sorting extends Controller
             return response()->json('success');
         }
     }
-
 }

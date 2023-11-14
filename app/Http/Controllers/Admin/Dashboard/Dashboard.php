@@ -126,13 +126,16 @@ class Dashboard extends Controller
         //Top Rated
         $faculties = Faculties::all();
         foreach ($faculties as  $faculty) {
-            $evaluates = $faculty->evaluate;
+            $year_sem = YearSem::orderBy('id', 'DESC')->first();
+            $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
+            $evaluates = $faculty->evaluate->where('year_sem', $new_year_sem)->where('status', 1);
             $score = [];
+            $participant = 0;
             foreach ($evaluates as $value) {
+                $participant++;
                 $evaluation = Evaluation::where('evaluate_id', $value->id)->get();
                 foreach ($evaluation as  $evaluation_value) {
                     $question = Question::find($evaluation_value->question_id);
-
                     if (array_key_exists($question->criteria, $score)) {
                         $score[$question->criteria] += intVal($evaluation_value->score);
                     } else {
@@ -166,9 +169,11 @@ class Dashboard extends Controller
 
             $computation = [];
             foreach ($score as $key => $value) {
+
                 if ($key === "Teacher's Personality") {
                     $percent = 10;
-                    $formula = intVal($value) / $hps[0] * $percent;
+                    $formula = intVal($value) / $hps[0] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -184,7 +189,8 @@ class Dashboard extends Controller
                     $computation[$key] = [$value, $percent, $formula, $equivalent];
                 } else if ($key === "Classroom Management") {
                     $percent = 10;
-                    $formula = intVal($value) / $hps[1] * $percent;
+                    $formula = intVal($value) / $hps[1] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -200,7 +206,8 @@ class Dashboard extends Controller
                     $computation[$key] = [$value, $percent, $formula, $equivalent];
                 } else if ($key === "Knowledge of the Subject Matter") {
                     $percent = 20;
-                    $formula = intVal($value) / $hps[2] * $percent;
+                    $formula = intVal($value) / $hps[2] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -216,7 +223,8 @@ class Dashboard extends Controller
                     $computation[$key] = [$value, $percent, $formula, $equivalent];
                 } else if ($key === "Teaching Skills") {
                     $percent = 20;
-                    $formula = intVal($value) / $hps[3] * $percent;
+                    $formula = intVal($value) / $hps[3] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -232,7 +240,8 @@ class Dashboard extends Controller
                     $computation[$key] = [$value, $percent, $formula, $equivalent];
                 } else if ($key === "Skills in Evaluating the Students") {
                     $percent = 20;
-                    $formula = intVal($value) / $hps[4] * $percent;
+                    $formula = intVal($value) / $hps[4] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -248,7 +257,8 @@ class Dashboard extends Controller
                     $computation[$key] = [$value, $percent, $formula, $equivalent];
                 } else if ($key === "Attitude towards the Subject and the Students") {
                     $percent = 20;
-                    $formula = intVal($value) / $hps[5] * $percent;
+                    $formula = intVal($value) / $hps[5] * $percent / $participant;
+                    $formula = number_format($formula, 1);
                     $equivalent = '';
                     if ($formula <= 100 && $formula >= 90) {
                         $equivalent = 'Outstanding';
@@ -285,7 +295,6 @@ class Dashboard extends Controller
             $faculty->equivalent = $equivalent;
         }
 
-
         function bubbleSort($array)
         {
             $n = count($array);
@@ -320,7 +329,6 @@ class Dashboard extends Controller
 
         $top = array_slice($array, -10);
         $top_10 = array_reverse($top);
-
 
         return response()->json([
             'total_faculty' => $number_format_faculty,

@@ -15,7 +15,7 @@ class Evaluate extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function faculty()
+    public function faculties()
     {
         return $this->belongsTo(Faculties::class);
     }
