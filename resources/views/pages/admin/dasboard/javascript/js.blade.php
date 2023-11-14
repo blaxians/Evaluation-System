@@ -5,7 +5,26 @@
         viewSemester();
         initializePage();
         scrollUpDashboard();
-    })
+        viewTopRatedAlls();
+    }) 
+    function viewTopRatedAlls(){
+        $(document).on('click', '#btn_view_top_ratedAll', function() {
+           
+            let id = $(this).attr('data-id');
+            $.ajax({
+                url: "{{ route('get.views') }}",
+                method: 'get',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(res) {
+                    $('#view_faculty_score_table_top_rated').html(res.faculties);
+                    $('#naem_faculty_top_rated').text(res.name);
+                }
+            })
+        });
+    }
 
     function scrollUpDashboard() {
         $(window).scroll(function() {
@@ -148,6 +167,7 @@
 
                 $.each(res.top_10, (index, data) => {
                     const {
+                        id,
                         name,
                         institute,
                         average,
@@ -164,7 +184,7 @@
                             .toFixed(1)),
                         $(`<td class="text-center" id="top_rated_equi_${index+1}">`).text(equivalent),
                         $(`<td class="text-center">
-                            <button class="btn btn-secondary btn-sm"
+                            <button data-id="${id}" id="btn_view_top_ratedAll" class="btn btn-secondary btn-sm"
                             data-bs-toggle="modal" data-bs-target="#topratedfaculty">
                             <i class="bi bi-eye-fill"></i></button>
                             </td>`)

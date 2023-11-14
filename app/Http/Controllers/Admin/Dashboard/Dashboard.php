@@ -513,6 +513,19 @@ class Dashboard extends Controller
             $equivalent = 'Needs Improvement';
         }
 
+        function generateAcronym($name) {
+            $words = explode(' ', $name);
+            $acronym = '';
+        
+            foreach ($words as $word) {
+                if (!empty($word)) {
+                    $acronym .= strtoupper(substr($word, 0, 1));
+                }
+            }
+        
+            return $acronym;
+        }
+
         // eto ung total and ung equivalent
         $final_average = ['total' => $average, 'equivalent' => $equivalent];
 
@@ -544,7 +557,7 @@ class Dashboard extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
                                     
                                 </tr>';
             }
@@ -553,7 +566,7 @@ class Dashboard extends Controller
                                 <td></td>
                                 <td></td>
                                 <td>' . $final_average['total'] . '%</td>
-                                <td><span class="badge text-bg-secondary">' . $final_average['equivalent'] . '</span></td>
+                                <td><span class="badge text-bg-secondary">' . generateAcronym($final_average['equivalent']) . '</span></td>
                                 </tr>';
         } else {
             $gen_button_active = '0';
