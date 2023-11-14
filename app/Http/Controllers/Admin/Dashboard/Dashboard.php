@@ -319,6 +319,7 @@ class Dashboard extends Controller
             array_push(
                 $array,
                 [
+                    'id' => $value->id,
                     'name' => $value->last_name . ', ' . $value->first_name . ' ' . $value->middle_name,
                     'institute' => $value->institute,
                     'average' => $value->average,
