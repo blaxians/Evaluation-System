@@ -339,6 +339,18 @@ class Report extends Controller
                     </thead>
                     <tbody>';
 
+        function generateAcronym($name) {
+            $words = explode(' ', $name);
+            $acronym = '';
+        
+            foreach ($words as $word) {
+                if (!empty($word)) {
+                    $acronym .= strtoupper(substr($word, 0, 1));
+                }
+            }
+        
+            return $acronym;
+        }
         if (count($computation) > 0) {
             $gen_button_active = '1';
             foreach ($computation as $key => $value) {
@@ -353,7 +365,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
                                     
                                 </tr>';
             }
@@ -362,7 +374,7 @@ class Report extends Controller
                                 <td></td>
                                 <td></td>
                                 <td>' . $final_average['total'] . '%</td>
-                                <td><span class="badge text-bg-secondary">' . $final_average['equivalent'] . '</span></td>
+                                <td><span class="badge text-bg-secondary">' . generateAcronym($final_average['equivalent']) . '</span></td>
                                 </tr>';
         } else {
             $gen_button_active = '0';
@@ -568,6 +580,19 @@ class Report extends Controller
                         </tr>
                     </thead>
                     <tbody>';
+        
+        function generateAcronym($name) {
+            $words = explode(' ', $name);
+            $acronym = '';
+        
+            foreach ($words as $word) {
+                if (!empty($word)) {
+                    $acronym .= strtoupper(substr($word, 0, 1));
+                }
+            }
+        
+            return $acronym;
+        }
 
         if (count($computation) > 0) {
             $gen_button_active = '1';
@@ -583,7 +608,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . $equivalents . '</span></td>
+                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
                                 </tr>';
             }
             $faculties_score .= '<tr class="text-center">
@@ -591,7 +616,7 @@ class Report extends Controller
                                 <td></td>
                                 <td></td>
                                 <td>' . $final_average['total'] . '%</td>
-                                <td><span class="badge text-bg-secondary">' . $final_average['equivalent'] . '</span></td>
+                                <td><span class="badge text-bg-secondary">' . generateAcronym($final_average['equivalent']) . '</span></td>
                                 </tr>';
         } else {
             $gen_button_active = '0';
