@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Rated\Rated;
 use App\Models\YearSem;
 use App\Models\Evaluation;
 use App\Http\Controllers\User\User;
@@ -146,6 +147,12 @@ Route::controller(Sorting::class)->group(function () {
     Route::get('/sorting/search', 'search')->name('get.search')->middleware(['auth', 'admin']);
     Route::get('/sorting/view/student', 'view')->name('get.view')->middleware(['auth', 'admin']);
     Route::post('/sorting/resetpassword', 'resetPassword')->name('sorting.resetPassword')->middleware(['auth', 'admin']);
+});
+
+
+//Admin Rated
+Route::controller(Rated::class)->group(function () {
+    Route::get('/rated', 'index')->name('index.rated')->middleware(['auth', 'admin']);
 });
 
 //User Routes
