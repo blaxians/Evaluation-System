@@ -348,7 +348,6 @@ class Dashboard extends Controller
         $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
         $faculties = Faculties::find($id);
         $evaluates = $faculties->evaluate->where('year_sem', $new_year_sem)->where('status', 1);
-
         $score = [];
         $student = 0;
         foreach ($evaluates as $value) {
