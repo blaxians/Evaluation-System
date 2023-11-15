@@ -72,7 +72,7 @@ Route::controller(Dashboard::class)->group(function () {
     Route::any('/dashboard/edit', 'edit')->name('edit.dashboard')->middleware(['auth', 'admin']);
     Route::any('/dashboard/stats', 'statistic')->name('statistic')->middleware(['auth', 'admin']);
     Route::any('/dashboard/student_rate', 'student_rate')->name('student_rate')->middleware(['auth', 'admin']);
-    Route::get('/dashboard/view', 'view')->name('get.view')->middleware(['auth', 'admin']);
+    Route::get('/dashboard/view', 'view')->name('get.views')->middleware(['auth', 'admin']);
 });
 
 // Admin Questionnaire
