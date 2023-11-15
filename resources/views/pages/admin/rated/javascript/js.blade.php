@@ -1,12 +1,12 @@
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         showTopRatedFaculty();
     })
 
-    function showTopRatedFaculty(){
-        $('#top_rated_facultys').on('change', '#selected_top_rateds', function(){
+    function showTopRatedFaculty() {
+        $('#top_rated_facultys').on('change', '#selected_top_rateds', function() {
             let vals = $(this).val();
-            
+
             $.ajax({
                 url: "{{ route('rated.select') }}",
                 method: 'get',
@@ -14,9 +14,9 @@
                     _token: '{{ csrf_token() }}',
                     selected: vals
                 },
-                success: function(res){
-                    
-                    
+                success: function(res) {
+
+
                     let top_table = `
                     <table class="table table-bordered table-hover" id="top_rated_table_faculty">
                             <thead>
@@ -31,16 +31,22 @@
                             </thead>
                             <tbody>
                     `;
-                
-                    $.each(res.top_10, (index, data) => {
-                        const {id, name, institute, average, equivalent} = data;
+
+                    $.each(res.top, (index, data) => {
+                        const {
+                            id,
+                            name,
+                            institute,
+                            average,
+                            equivalent
+                        } = data;
 
                         top_table += `
                         <tr>
                             <td>${index + 1}</td>
                             <td>${name}</td>
                             <td>${institute}</td>
-                            <td>${average}</td>
+                            <td>${average.toFixed(1)}</td>
                             <td>${equivalent}</td>
                             <td class="text-center">
                                 <button data-id="${id}" class="btn btn-secondary btn-sm">
@@ -54,8 +60,9 @@
 
                     $('#table_top_rated_eval').html(top_table);
                     $('table').DataTable();
-                    
-                }, error: function(err){
+
+                },
+                error: function(err) {
                     console.log(err)
                 }
             })

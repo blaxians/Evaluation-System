@@ -24,6 +24,7 @@ class Rated extends Controller
 
         //all
         if ($selected === 'all') {
+
             $faculties = Faculties::all();
             foreach ($faculties as  $faculty) {
                 $year_sem = YearSem::orderBy('id', 'DESC')->first();
@@ -237,8 +238,8 @@ class Rated extends Controller
                 $participant = 0;
                 foreach ($evaluates as $value) {
                     $user = User::find($value->user_id);
-
                     if ($user->role === $selected) {
+
                         $participant++;
                         $evaluation = Evaluation::where('evaluate_id', $value->id)->get();
                         foreach ($evaluation as  $evaluation_value) {
