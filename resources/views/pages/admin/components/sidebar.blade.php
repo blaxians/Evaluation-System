@@ -71,7 +71,7 @@
             <div class="{{ request()->is('rated') ? 'bg-light text-success' : 'bg-white' }} py-3 ps-5 ms-3">
                 <span class="ps-4"><i class="bi bi-caret-right-fill me-2"></i>Faculty</span>
             </div>            
-            <a href="#"
+            <a href="{{ route('index.institute') }}"
                 class="list-group-item p-0 list-group-item-action text-secondary fw-semibold nav-link ">
             <div class="{{ request()->is('institute') ? 'bg-light text-success' : 'bg-white' }} py-3 ps-5 ms-3">
                 <span class="ps-4"><i class="bi bi-caret-right-fill me-2"></i>Institute</span>
