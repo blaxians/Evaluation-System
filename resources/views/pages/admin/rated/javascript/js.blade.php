@@ -1,7 +1,27 @@
 <script>
     $(document).ready(function() {
         showTopRatedFaculty();
+        viewTopRatedAllss();
     })
+
+    function viewTopRatedAllss(){
+        $(document).on('click', '#btn_view_top_ratedAlls', function() {
+           
+            let id = $(this).attr('data-id');
+            $.ajax({
+                url: "{{ route('get.views') }}",
+                method: 'get',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id
+                },
+                success: function(res) {
+                    $('#view_faculty_score_table_top_rateds').html(res.faculties);
+                    $('#naem_faculty_top_rateds').text(res.name);
+                }
+            })
+        });
+    }
 
     function showTopRatedFaculty() {
         $('#top_rated_facultys').on('change', '#selected_top_rateds', function() {
@@ -15,8 +35,6 @@
                     selected: vals
                 },
                 success: function(res) {
-
-
                     let top_table = `
                     <table class="table table-bordered table-hover" id="top_rated_table_faculty">
                             <thead>
@@ -49,7 +67,7 @@
                             <td>${average.toFixed(1)}</td>
                             <td>${equivalent}</td>
                             <td class="text-center">
-                                <button data-id="${id}" class="btn btn-secondary btn-sm">
+                                <button id="btn_view_top_ratedAlls" data-bs-toggle="modal" data-bs-target="#topratedfacultys" data-id="${id}" class="btn btn-secondary btn-sm">
                                 <i class="bi bi-eye-fill"></i></button>
                             </td>
                         </tr>

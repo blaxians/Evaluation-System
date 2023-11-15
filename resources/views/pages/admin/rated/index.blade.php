@@ -34,6 +34,10 @@
         {{-- top rated content  end --}}
 
     </div>
+
+    {{-- modal  --}}
+    @include('pages.admin.rated.modal.top_faculty')
+    {{-- modal  --}}
     
 @endsection
 

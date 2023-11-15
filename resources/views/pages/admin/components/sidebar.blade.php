@@ -54,12 +54,28 @@
         <div class="{{ Request::segment(1) === 'sorting' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fa-solid fa-sort me-2"></i>Filter Students
         </div>
-        
-        <a href="{{ route('index.rated') }}"
-            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
-        {{ Request::segment(1) === 'rated' ? 'text-success bg-success' : '' }}">
-        <div class="{{ Request::segment(1) === 'rated' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
+        @php
+            $class1 = (Request::segment(1) == 'rated' || Request::segment(1) == 'institute') ? 'text-success bg-success' : '';
+            $class2 = (Request::segment(1) == 'rated' || Request::segment(1) == 'institute') ? 'bg-light text-success' : 'bg-white';
+            $class3 = (Request::segment(1) == 'rated' || Request::segment(1) == 'institute') ? 'show' : '';
+        @endphp
+        <a role="button" data-bs-toggle="collapse" href="#topratedcollapse"
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link {{ $class1 }}">
+        <div class="py-3 ps-5 ms-2 {{ $class2 }}">
             <i class="fa-solid fa-star me-2"></i>Top Rated
+        </div>
+
+        <div class="collapse {{ $class3 }}" id="topratedcollapse">
+            <a href="{{ route('index.rated') }}"
+                class="list-group-item p-0 list-group-item-action text-secondary fw-semibold nav-link ">
+            <div class="{{ request()->is('rated') ? 'bg-light text-success' : 'bg-white' }} py-3 ps-5 ms-3">
+                <span class="ps-4"><i class="bi bi-caret-right-fill me-2"></i>Faculty</span>
+            </div>            
+            <a href="#"
+                class="list-group-item p-0 list-group-item-action text-secondary fw-semibold nav-link ">
+            <div class="{{ request()->is('institute') ? 'bg-light text-success' : 'bg-white' }} py-3 ps-5 ms-3">
+                <span class="ps-4"><i class="bi bi-caret-right-fill me-2"></i>Institute</span>
+            </div>            
         </div>
 
         </a>
@@ -98,10 +114,6 @@
 
         {{-- modals --}}
         @include('pages.admin.components.modal.change_pass')
-    
-
-
-
 
     </div>
 </div>
