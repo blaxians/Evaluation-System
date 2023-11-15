@@ -339,16 +339,17 @@ class Report extends Controller
                     </thead>
                     <tbody>';
 
-        function generateAcronym($name) {
+        function generateAcronym($name)
+        {
             $words = explode(' ', $name);
             $acronym = '';
-        
+
             foreach ($words as $word) {
                 if (!empty($word)) {
                     $acronym .= strtoupper(substr($word, 0, 1));
                 }
             }
-        
+
             return $acronym;
         }
         if (count($computation) > 0) {
@@ -365,7 +366,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
+                                
                                     
                                 </tr>';
             }
@@ -580,17 +581,18 @@ class Report extends Controller
                         </tr>
                     </thead>
                     <tbody>';
-        
-        function generateAcronym($name) {
+
+        function generateAcronym($name)
+        {
             $words = explode(' ', $name);
             $acronym = '';
-        
+
             foreach ($words as $word) {
                 if (!empty($word)) {
                     $acronym .= strtoupper(substr($word, 0, 1));
                 }
             }
-        
+
             return $acronym;
         }
 

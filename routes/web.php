@@ -153,6 +153,7 @@ Route::controller(Sorting::class)->group(function () {
 //Admin Rated
 Route::controller(Rated::class)->group(function () {
     Route::get('/rated', 'index')->name('index.rated')->middleware(['auth', 'admin']);
+    Route::any('/rated/select', 'rated')->name('rated.select')->middleware(['auth', 'admin']);
 });
 
 //User Routes
