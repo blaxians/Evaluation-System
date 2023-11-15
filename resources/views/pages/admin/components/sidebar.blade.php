@@ -30,14 +30,14 @@
             class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
         {{ Request::segment(1) === 'faculties' ? 'text-success bg-success' : '' }}">
         <div class="{{ Request::segment(1) === 'faculties' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
-            <i class="fas fa-chalkboard-teacher me-2"></i>Faculties
+            <i class="fas fa-chalkboard-teacher me-2"></i>Faculty
         </div>
         </a>
         <a href="{{ route('index.dean') }}"
             class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link
         {{ Request::segment(1) === 'dean' ? 'text-success bg-success' : '' }}">
         <div class="{{ Request::segment(1) === 'dean' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
-            <i class="fa-solid fa-user-tie me-2"></i>Dean's
+            <i class="fa-solid fa-user-tie me-2"></i>Dean
         </div>
         </a>
         <a href="{{ route('index.student') }}"
@@ -47,12 +47,21 @@
             <i class="fas fa-users me-2"></i>All Students
         </div>
         </a>
+
         <a href="{{ route('index.sorting') }}"
             class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
         {{ Request::segment(1) === 'sorting' ? 'text-success bg-success' : '' }}">
         <div class="{{ Request::segment(1) === 'sorting' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fa-solid fa-sort me-2"></i>Filter Students
         </div>
+        
+        <a href="{{ route('index.rated') }}"
+            class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
+        {{ Request::segment(1) === 'rated' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'rated' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
+            <i class="fa-solid fa-star me-2"></i>Top Rated
+        </div>
+
         </a>
         <a href="{{ route('index.report') }}"
             class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link

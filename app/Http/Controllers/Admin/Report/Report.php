@@ -327,7 +327,7 @@ class Report extends Controller
 
 
         $faculty_name = $faculties->first_name . ' ' . $faculties->middle_name . ' ' . $faculties->last_name;
-        $faculties_score = '<table class="table table-borderred table-hover">
+        $faculties_score = '<table class="table table-bordered table-hover">
                     <thead class="table-success">
                         <tr class="text-center">
                             <th>Areas of Evaluation</th>
@@ -352,6 +352,7 @@ class Report extends Controller
 
             return $acronym;
         }
+
         if (count($computation) > 0) {
             $gen_button_active = '1';
             foreach ($computation as $key => $value) {
@@ -366,7 +367,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                
+                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
                                     
                                 </tr>';
             }
@@ -570,7 +571,7 @@ class Report extends Controller
 
 
         $faculty_name = $faculties->first_name . ' ' . $faculties->middle_name . ' ' . $faculties->last_name;
-        $faculties_score = '<table class="table table-borderred table-hover">
+        $faculties_score = '<table class="table table-bordered table-hover">
                     <thead class="table-success">
                         <tr class="text-center">
                             <th>Areas of Evaluation</th>
@@ -610,7 +611,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
+                                    <td></td>
                                 </tr>';
             }
             $faculties_score .= '<tr class="text-center">
