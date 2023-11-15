@@ -367,7 +367,7 @@ class Report extends Controller
                                     <td>' . $total_score . '</td>
                                     <td>' . $percentage . '%</td>
                                     <td>' . $equation . '</td>
-                                    <td><span class="badge text-bg-warning">' . generateAcronym($equivalents) . '</span></td>
+                                    <td></td>
                                     
                                 </tr>';
             }
