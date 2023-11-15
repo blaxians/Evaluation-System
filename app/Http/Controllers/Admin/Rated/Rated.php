@@ -237,6 +237,7 @@ class Rated extends Controller
                 $participant = 0;
                 foreach ($evaluates as $value) {
                     $user = User::find($value->user_id);
+
                     if ($user->role === $selected) {
                         $participant++;
                         $evaluation = Evaluation::where('evaluate_id', $value->id)->get();
