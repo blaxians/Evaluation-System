@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Student\Student;
 use App\Http\Controllers\Admin\Dashboard\Dashboard;
 use App\Http\Controllers\Admin\Faculties\Faculties;
 use App\Http\Controllers\Admin\Import\Import;
+use App\Http\Controllers\Admin\Institute\Institute;
 use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Admin\Questionnaire\Questionnaire;
 use App\Http\Controllers\Admin\Report\Report;
@@ -149,12 +150,18 @@ Route::controller(Sorting::class)->group(function () {
     Route::post('/sorting/resetpassword', 'resetPassword')->name('sorting.resetPassword')->middleware(['auth', 'admin']);
 });
 
-
 //Admin Rated
 Route::controller(Rated::class)->group(function () {
     Route::get('/rated', 'index')->name('index.rated')->middleware(['auth', 'admin']);
     Route::get('/rated/select', 'rated')->name('rated.select')->middleware(['auth', 'admin']);
     Route::get('/rated/view', 'view')->name('rated.view')->middleware(['auth', 'admin']);
+});
+
+//Admin Rated Institute
+Route::controller(Institute::class)->group(function () {
+    Route::get('/institute', 'index')->name('index.institute')->middleware(['auth', 'admin']);
+    Route::get('/institute/select', 'select')->name('institute.select')->middleware(['auth', 'admin']);
+    // Route::get('/institute/view', 'view')->name('institute.view')->middleware(['auth', 'admin']);
 });
 
 //User Routes
