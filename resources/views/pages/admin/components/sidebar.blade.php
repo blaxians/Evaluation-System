@@ -55,10 +55,10 @@
             <i class="fa-solid fa-sort me-2"></i>Filter Students
         </div>
         
-        <a href="#"
+        <a href="{{ route('index.rated') }}"
             class="list-group-item p-0 list-group-item-action text-secondary fw-bold nav-link 
-        {{ Request::segment(1) === 'toprated' ? 'text-success bg-success' : '' }}">
-        <div class="{{ Request::segment(1) === 'sorting' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
+        {{ Request::segment(1) === 'rated' ? 'text-success bg-success' : '' }}">
+        <div class="{{ Request::segment(1) === 'rated' ? 'bg-light' : 'bg-white' }} py-3 ps-5 ms-2">
             <i class="fa-solid fa-star me-2"></i>Top Rated
         </div>
 

@@ -351,6 +351,7 @@ class Report extends Controller
         
             return $acronym;
         }
+        
         if (count($computation) > 0) {
             $gen_button_active = '1';
             foreach ($computation as $key => $value) {
