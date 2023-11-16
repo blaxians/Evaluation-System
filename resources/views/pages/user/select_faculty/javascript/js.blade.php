@@ -4,8 +4,19 @@
         modifyDataTable();
         addProffessor();
         showSetYear();
+        dataPrivacyCheckbox();
 
     });
+    //function to check the checkbox
+    function dataPrivacyCheckbox(){
+        $(document).off('change', '#data_privacy_radiobutton').on('change', '#data_privacy_radiobutton', function(){
+            if($(this).is(':checked')){
+                $('#btn_prof_confirm2').prop('disabled', false);
+            }
+        })
+    }
+
+
     //show on set year
     function showSetYear(){
         $.ajax({
@@ -94,7 +105,7 @@
             updateSelectedItems();
         });
 
-        $(document).on('click', '#btn_prof_finalize', function() {
+        $(document).off('click','#btn_prof_finalize').on('click', '#btn_prof_finalize', function() {
             $('#table').DataTable().search('').draw();
 
             if (Object.keys(selectedItems).length > 0) {
@@ -128,7 +139,7 @@
 
 
         //confirm button
-        $(document).on('click', '#btn_prof_confirm', function() {
+        $(document).off('click','#btn_prof_confirm2').on('click', '#btn_prof_confirm2', function() {
             var arrayID = Object.keys(selectedItems);
             console.log(arrayID);
             $.ajax({

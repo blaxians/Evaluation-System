@@ -66,6 +66,7 @@ class Faculties extends Controller
             'first_name' => 'required',
             'middle_name' => 'required',
             'last_name' => 'required',
+            'position' => 'required'
         ]);
 
         if ($valid->fails()) {

@@ -38,6 +38,11 @@
                         <input type="text" class="form-control my-1" data-bs-placement="right" name="last_name" id="last_name" placeholder="Last Name" required>
                         <label for="last_name">Last Name</label>
                     </div>
+
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control my-1" data-bs-placement="right" name="position" id="position" placeholder="Position" required>
+                        <label for="position">Position</label>
+                    </div>
                     
 
                     <div class="modal-footer">

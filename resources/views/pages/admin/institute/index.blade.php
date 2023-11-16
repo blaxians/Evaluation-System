@@ -28,8 +28,203 @@
                         </select>
                     </div>
                 </div>
-                <div class="card-body p-5" id="top_rated_per_institute_card">
-                    <div class="h1 my-5 text-secondary text-center">Loading..</div>
+                <div class="card-body p-4" id="top_rated_per_institute_card">
+                    {{-- <div class="h1 my-5 text-secondary text-center">Loading..</div> --}}
+                    <div class="row g-4">
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target="#modal_top_rated_institute">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="rounded-1 border p-3">
+                                <div>
+                                    <h5>Teacher's Personality</h5>
+                                </div>
+                                <div>
+                                    <p>Total Faculty: 20</p>
+                                </div>
+                                <div>
+                                    <table class="table table-bordered">
+                                        <thead class="table-success">
+                                            <tr>
+                                                <th>Rate</th>
+                                                <th>Frequency</th>
+                                                <th>Percentage</th>
+                                                <th>View</th>
+                                            </tr>
+                                        </thead class="table-success">
+                                        <tbody>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3</td>
+                                                <td>10%</td>
+                                                <td>
+                                                    <button class="btn btn-secondary btn-sm">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
