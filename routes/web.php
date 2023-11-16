@@ -161,7 +161,7 @@ Route::controller(Rated::class)->group(function () {
 Route::controller(Institute::class)->group(function () {
     Route::get('/institute', 'index')->name('index.institute')->middleware(['auth', 'admin']);
     Route::get('/institute/select', 'select')->name('institute.select')->middleware(['auth', 'admin']);
-    // Route::get('/institute/view', 'view')->name('institute.view')->middleware(['auth', 'admin']);
+    Route::get('/institute/view', 'view')->name('institute.view')->middleware(['auth', 'admin']);
 });
 
 //User Routes
