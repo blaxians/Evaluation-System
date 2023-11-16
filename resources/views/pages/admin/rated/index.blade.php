@@ -4,7 +4,7 @@
         <!-- title of the page start -->
         <div class="row py-1 m-0 mt-3 bg-white rounded d-flex shadow-sm flex-shrink-0">
             <div class="col py-2">
-                <h3 class="m-0 fw-bold primary-text fs-4">Top Rated</h3>
+                <h3 class="m-0 fw-bold primary-text fs-4">Top Rated per Faculty</h3>
             </div>
         </div>
         <!-- title of the page end -->
@@ -34,6 +34,10 @@
         {{-- top rated content  end --}}
 
     </div>
+
+    {{-- modal  --}}
+    @include('pages.admin.rated.modal.top_faculty')
+    {{-- modal  --}}
     
 @endsection
 
