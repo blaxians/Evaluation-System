@@ -2,12 +2,10 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5"></h1>
+        <h1 class="modal-title fs-5" id="facultyperinsti_title_modal"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-
-        faculty details...
+      <div class="modal-body p-3" id="name_of_rated_facultyperinsti" >
 
       </div>
       <div class="modal-footer">

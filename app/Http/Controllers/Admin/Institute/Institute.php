@@ -18,8 +18,7 @@ class Institute extends Controller
 
     public function select(Request $request)
     {
-        // $insitute = $request->insitute;
-        $insitute = 'College of Agriculture';
+        $insitute = $request->institute;
         $faculties = Faculties::where('institute', $insitute)->get();
         $year_sem = YearSem::orderBy('id', 'DESC')->first();
         $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
@@ -132,10 +131,11 @@ class Institute extends Controller
 
             $name = $faculty->last_name . ' ' . $faculty->middle_name . ' ' . $faculty->first_name;
             foreach ($score as $key => $value) {
-
-                if ($participant != 0) {
+                $formula = '';
+                if ($participant != 0 && $hps[0] != 0) {
                     $formula = (intVal($value) / $hps[0]) * 100 / $participant;
                 }
+            
                 if ($formula <= 100 && $formula >= 90) {
                     if (!in_array($name, $criteria[$key - 1][0]['names'])) {
                         array_push($criteria[$key - 1][0]['names'], $name);
