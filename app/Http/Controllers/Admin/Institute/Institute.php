@@ -20,93 +20,160 @@ class Institute extends Controller
     {
         // $insitute = $request->insitute;
         $insitute = 'College of Agriculture';
-        $array = [];
-
         $faculties = Faculties::where('institute', $insitute)->get();
-        $critiria = [
-            1 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
+        $year_sem = YearSem::orderBy('id', 'DESC')->first();
+        $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
+
+
+        $criteria = [
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
             ],
-            2 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
             ],
-            3 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
             ],
-            4 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
             ],
-            5 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
             ],
-            6 => [
-                [
-                    1 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    2 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    3 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    4 => ['count' => 0, 'percent' => 0, 'names' => []],
-                    5 => ['count' => 0, 'percent' => 0, 'names' => []],
-                ]
-            ]
+            [
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []],
+                ['names' => []]
+            ],
+
         ];
 
 
+        $hps = [0, 0, 0, 0, 0, 0];
+        $question = Question::all();
+        foreach ($question as $value) {
+            if ($value->criteria === "Teacher's Personality") {
+                $hps[0]++;
+            } else if ($value->criteria === "Classroom Management") {
+                $hps[1]++;
+            } else if ($value->criteria === "Knowledge of the Subject Matter") {
+                $hps[2]++;
+            } else if ($value->criteria === "Teaching Skills") {
+                $hps[3]++;
+            } else if ($value->criteria === "Skills in Evaluating the Students") {
+                $hps[4]++;
+            } else if ($value->criteria === "Attitude towards the Subject and the Students") {
+                $hps[5]++;
+            }
+        }
+
+        foreach ($hps as $key => $value) {
+            $hps[$key] = $value * 5;
+        }
+
         foreach ($faculties as  $faculty) {
-
-            $year_sem = YearSem::orderBy('id', 'DESC')->first();
-            $new_year_sem = $year_sem->year . ' ' . $year_sem->semester;
             $evaluates = $faculty->evaluate->where('year_sem', $new_year_sem)->where('status', 1);
-            foreach ($evaluates as $value) {
+            $score = [
+                1 => 0,
+                2 => 0,
+                3 => 0,
+                4 => 0,
+                5 => 0,
+                6 => 0,
+            ];
 
+
+            $participant = 0;
+            foreach ($evaluates as $value) {
+                $participant++;
                 $evaluation = Evaluation::where('evaluate_id', $value->id)->get();
                 foreach ($evaluation as  $evaluation_value) {
                     $answer = $evaluation_value->score;
                     $question = Question::find($evaluation_value->question_id);
                     if ($question->criteria == "Teacher's Personality") {
-                        $store = $critiria[1][0][$answer];
-                        $store['count']++;
-                        dd($store['names']);
+                        $score[1] += $answer;
                     } else  if ($question->criteria == "Classroom Management") {
+                        $score[2] += $answer;
                     } else  if ($question->criteria == "Knowledge of the Subject Matter") {
+                        $score[3] += $answer;
                     } else  if ($question->criteria == "Teaching Skills") {
+                        $score[4] += $answer;
                     } else  if ($question->criteria == "Skills in Evaluating the Students") {
+                        $score[5] += $answer;
                     } else {
+                        $score[6] += $answer;
+                    }
+                }
+            }
+
+
+            $name = $faculty->last_name . ' ' . $faculty->middle_name . ' ' . $faculty->first_name;
+            foreach ($score as $key => $value) {
+
+                if ($participant != 0) {
+                    $formula = (intVal($value) / $hps[0]) * 100 / $participant;
+                }
+                if ($formula <= 100 && $formula >= 90) {
+                    if (!in_array($name, $criteria[$key - 1][0]['names'])) {
+                        array_push($criteria[$key - 1][0]['names'], $name);
+                    }
+                } else if ($formula <= 89 && $formula >= 85) {
+                    if (!in_array($name, $criteria[$key - 1][1]['names'])) {
+                        array_push($criteria[$key - 1][1]['names'], $name);
+                    }
+                } else if ($formula <= 84 && $formula >= 80) {
+                    if (!in_array($name, $criteria[$key - 1][2]['names'])) {
+                        array_push($criteria[$key - 1][2]['names'], $name);
+                    }
+                } else if ($formula <= 79 && $formula >= 75) {
+                    if (!in_array($name, $criteria[$key - 1][3]['names'])) {
+                        array_push($criteria[$key - 1][3]['names'], $name);
+                    }
+                } else {
+                    if (!in_array($name, $criteria[$key - 1][4]['names'])) {
+                        array_push($criteria[$key - 1][4]['names'], $name);
                     }
                 }
             }
         }
+
+
+        $total_faculty = count($faculties);
+        foreach ($criteria as $key => $value) {
+            foreach ($value as $keys => $values) {
+                $count = count($values['names']);
+                $percent = $count / $total_faculty * 100;
+                $criteria[$key][$keys]['percent'] = $percent;
+                $criteria[$key][$keys]['count'] = $count;
+            }
+        }
+
         return response()->json([
-            'top' => $array,
+            'data' => $criteria,
+            'total_faculty' => count($faculties),
         ]);
     }
 }
