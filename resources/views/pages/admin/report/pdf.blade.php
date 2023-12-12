@@ -71,6 +71,7 @@
     
     <div class="main-container bg-white">
         <div class="container-fluid px-5">
+
             <div class="row mt-3">
                 <div class="col-2 pt-3">
                     <img src="/assets/img/main/basc.png" class="img-fluid rounded-circle" width="150">
@@ -89,9 +90,27 @@
             </div>
             <hr class="border border-1 m-0 opacity-75" style="border-color:#385623 !important;">
     
-            <div class="row mt-2 ">
+            <!-- <div class="row mt-2 ">
                 <p class="mt-2" id="date_pdf"></p>
                 <h2 class="text-center my-2 fw-bold text-uppercase">CERTIFICATION</h1>
+            </div> -->
+            <div class="row mt-3">
+                <center>
+                    <p class="fw-bold m-0 p-0">FACULTY EVALUATION REPORT</p>
+                    <p class="m-0 p-0 text-uppercase">({{$type}} EVALUATION)</p>
+                    <p id="type_js" class="d-none">{{$type}}</p>
+                </center>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="d-flex justify-content-start flex-column">
+                    <p class="m-0 p-0 fw-bold text-uppercase">NAME OF FACULTY: <span style="font-weight: normal;">{{ $faculties->first_name." ".$faculties->middle_name." ".$faculties->last_name}}<span> </p>
+                    <p class="m-0 p-0 fw-bold text-uppercase">POSITION: <span style="font-weight: normal;">{{$faculties->position}}<span></p>
+                    <p class="m-0 p-0 fw-bold text-uppercase">COLLEGE/INSTITUTE: <span style="font-weight: normal;">{{$faculties->institute}}</span></p>   
+                    <p class="m-0 p-0 fw-bold text-uppercase">DATE OF EVALUATION: <span style="font-weight: normal;" id="date_pdf"></span></p>
+                    <p class="m-0 p-0 fw-bold text-uppercase">ACADEMIC YEAR AND SEMESTER: <span style="font-weight: normal;">{{$new_year_sem}}</span></p>
+                    <p class="m-0 p-0 fw-bold text-uppercase">RATING: </p>
+                </div>
             </div>
             @php 
                 $text_base = ($type == 'student') ?
@@ -100,14 +119,41 @@
                     in the specified term: ';
                 $roles = ($type == 'student' ? 'average student' : 'supervisor')
             @endphp
-            <div class="row mt-4">
+            <!-- <div class="row mt-4">
                 <p class="fw-bold p-1">To whom it may concern:</p>
                 <p class="m-0 p-1">
                     {{ $text_base }}
                 </p>
+            </div> -->
+            <div class="mt-1 row">
+                <table class="table custom-table">
+                    <thead>
+                        <tr>
+                            <td class="text-capitalize fw-semibold">areas of evaluation</td>
+                            <td class="text-capitalize fw-semibold">% (Percentage)</td>
+                            <td class="text-capitalize fw-semibold">verbal description</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @foreach($computation as $key => $comp)
+                       <tr>
+                            <td class="text-start">I. {{$key}}</td>
+                             <td>{{$comp[2]}}%</td>
+                            <td>{{$comp[3]}}</td>
+                        </tr>
+                       @endforeach
+                       
+                        <tr>
+                            <td class="text-end fw-semibold">Overall Rating: </td>
+                            <td>{{ $final_average['total']}}%</td>
+                            <td>{{ $final_average['equivalent']}}</td>
+                       
+                        </tr>
+                    </tbody>
+                </table>
             </div>
     
-            <div class="row mt-3">
+            <!-- <div class="row mt-3">
                 <table class="table custom-table">
                     <thead>
                         <tr class="text-center">
@@ -126,15 +172,50 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
-            <p class="d-none" id="type_js">{{ $type }}</p>
+            </div> -->
+            
+            <!-- <p class="d-none" id="type_js">{{ $type }}</p>
             <div class="row mt-2">
                 <p class="m-0 p-1">This certificate is being issued for faculty reclassification purposes under DBM-CHED Joint 
                     Circular No.3, s.2023.
                 </p>
+            </div> -->
+
+            <div class="mt-2 row">
+                <p class="fw-bold m-0 p-0">Legend:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Verbal Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>90-100</td>
+                            <td>Outstanding (O)</td>
+                        </tr>
+                        <tr>
+                            <td>85-89</td>
+                            <td>Very Satifactory(VS)</td>
+                        </tr>
+                        <tr>
+                            <td>80-84</td>
+                            <td>Satifactory(S)</td>
+                        </tr>
+                        <tr>
+                            <td>75-79</td>
+                            <td>Fairly Satifactory(FS)</td>
+                        </tr>
+                        <tr>
+                            <td>Below 75</td>
+                            <td>Needs Improvement</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
     
-            <div class="row mt-5 pb-2 text-center">
+            <!-- <div class="row mt-5 pb-2 text-center">
                 <p class="text-uppercase fw-bold mb-0 pb-0">Eiffel n. marcelo</p>
                 <p class="m-0">Institute QCE Coordinator, Insitute of Arts and Sciences</p>
             </div>
@@ -146,6 +227,20 @@
                 <p class="mt-3">Reviewed by:</p>
                 <p class="text-uppercase fw-bold mb-0 pb-0">robert a. capalad</p>
                 <p class="m-0">Head, QCE Evaluation Committee</p>
+            </div> -->
+            <!-- <div class="mt-2 row">
+                <p class="text-capitalize">general comments/suggestions</p>
+                <ul>
+                    <li>Always on time</li>
+                    <li>Always on time</li>
+                </ul>
+            </div> -->
+            <div class="mt-5 pt-5 row ">
+                <div class="col-6"></div>
+                <div class="col-6"><p class="fw-semibold">CONFORME:______________________________<br><span style="font-size:12px; padding-left:8em">&nbsp;SIGNATURE OVER PRINTED NAME</span></p></div>
+                <div class="col-6"></div>
+                <div class="col-6"><p class="fw-semibold">DATE:____________________________________</p></div>
+            
             </div>
     
     
@@ -166,7 +261,6 @@
             var formattedTime = currentTime.toLocaleDateString('en-PH', options);
 
             $("#date_pdf").text(formattedTime);
-
             generatePDF();
         });
         
@@ -181,7 +275,7 @@
             html2canvas(element, { scale: scale }).then(canvas => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPDF('p', 'mm', 'a4');
-                pdf.addImage(imgData, 'PNG', 0, 0, 210, 250); 
+                pdf.addImage(imgData, 'PNG', 0, 0, 210, 240); 
 
                 let file_name = $('#type_js').text();
                 var up_file_name = file_name[0].toUpperCase() + file_name.slice(1);

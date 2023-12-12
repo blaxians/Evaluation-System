@@ -325,7 +325,6 @@ class Report extends Controller
         // eto ung total and ung equivalent
         $final_average = ['total' => $average, 'equivalent' => $equivalent];
 
-
         $faculty_name = $faculties->first_name . ' ' . $faculties->middle_name . ' ' . $faculties->last_name;
         $faculties_score = '<table class="table table-bordered table-hover">
                     <thead class="table-success">
@@ -352,6 +351,7 @@ class Report extends Controller
 
             return $acronym;
         }
+    
 
         if (count($computation) > 0) {
             $gen_button_active = '1';
@@ -719,7 +719,7 @@ class Report extends Controller
             $hps[$key] = $value * 5;
         }
 
-
+        
         $computation = [];
         foreach ($score as $key => $value) {
             if ($key === "Teacher's Personality") {
@@ -845,6 +845,8 @@ class Report extends Controller
         $final_average = ['total' => $average, 'equivalent' => $equivalent];
 
 
+       
+
         // Type if student or dean ung ni click na view
         $type = $data[1];
         // $pdf = Pdf::loadView('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average'));
@@ -854,12 +856,9 @@ class Report extends Controller
         // return $pdf->download('Evaluation_Report_of_' . date('F d, Y') . '.pdf');
         // return response()->json(['status'=>'success',
 
-        // dd($faculties);
+       
         return view('pages.admin.report.pdf', compact('faculties', 'computation', 'type', 'final_average', 'new_year_sem'));
     }
 
-    public function reportPdfStudent()
-    {
-        return view('pages.admin.report.pdf');
-    }
+   
 }
