@@ -4,6 +4,7 @@
         showFaculties();
         viewFaculties();
         updateFaculties();
+        deleteFaculties();
 
     })
 
@@ -122,9 +123,31 @@
                     $('#first_name1').val(first_name);
                     $('#middle_name1').val(middle_name);
                     $('#last_name1').val(last_name);
-
+                    $('#position1').val(position);
+                    $
                 }
             })
+        })
+    }
+
+    // function to delete faculty
+    function deleteFaculties(){
+        $(document).on('click', '#faculties_btn_delete', function(){
+            let id = $(this).attr('data-id');
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    //delete funciton here
+                    
+                }
+              })
         })
     }
 

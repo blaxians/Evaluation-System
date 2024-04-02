@@ -237,11 +237,11 @@
                     </div>
                     {{-- criteria 6 end --}}
 
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col">
                             <textarea class="form-control" placeholder="(Optional) Comments/Suggestions:" id="floatingTextarea2"></textarea> 
                         </div>
-                    </div> -->
+                    </div>
 
                     {{-- button --}}
                     <div class="d-flex justify-content-end py-3">

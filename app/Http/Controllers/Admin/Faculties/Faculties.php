@@ -44,8 +44,9 @@ class Faculties extends Controller
                                             <td class="d-flex">
                                                 <button class="btn btn-secondary btn-sm me-1" id="faculties_btn_edit" data-id="'.$facultie->id.'">
                                                 <i class="bi bi-pencil-square"></i></button>
+                                                <button class="btn btn-danger btn-sm me-1" id="faculties_btn_delete" data-id="'.$facultie->id.'">
+                                                <i class="bi bi-trash"></i></button>
                                             </td>
-                                            
                                         </tr>';
                             }
 

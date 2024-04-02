@@ -31,11 +31,9 @@
                 <div class="card-body p-4">
                     <div class="my-3 text-center" id="totoal_faculty">
                     </div>
-                    {{-- <div class="h1 my-5 text-secondary text-center">Loading..</div> --}}
                     <div class="row g-4" id="top_rated_per_institute_card">
-                        
+                        <div class="h1 my-5 text-secondary text-center">Select Institute</div>
                     </div>
-                    
                 </div>
             </div>
         </div>

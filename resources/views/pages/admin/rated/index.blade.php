@@ -26,7 +26,7 @@
                         </div>
                     </div>
                     <div class="card-body p-3" id="table_top_rated_eval">
-                        <div class="h1 my-5 text-secondary text-center">Loading..</div>
+                        <div class="h1 my-5 text-secondary text-center">Select top rated</div>
                     </div>
                 </div>
             </div>

@@ -35,6 +35,10 @@
                         <input type="text" class="form-control" id="last_name1" name="last_name" data-bs-placement="right">
                         <label for="floatingInput">Last name</label>
                     </div>
+                    <div class="form-floating my-2">
+                        <input type="text" class="form-control" id="position1" name="last_name" data-bs-placement="right">
+                        <label for="floatingInput">Position</label>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-success" id="faculties_btn_update">Update Faculty</button>
